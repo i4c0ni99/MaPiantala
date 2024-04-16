@@ -23,7 +23,6 @@ L'applicazione dovrà offrire le seguenti funzionalità chiave:
   - Condivisione di foto e testi relativi alle attività di coltivazione.
   - Implementazione di funzionalità di reminder per ricordare gli utenti di semina, raccolta, annaffiamento, concimazione, e altre pratiche agricole.
 - **Livelli di Utenti**:
-  - Definizione di quattro livelli di utenti:
-	  - Proprietari di terreni	
-	  - Gestori
-	  - Manutentori e Amministratori, con permessi e funzionalità specifici per ciascun livello.
+  - Proprietari di terreni	
+  - Gestori
+  - Manutentori e Amministratori, con permessi e funzionalità specifici per ciascun livello.

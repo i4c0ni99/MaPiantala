@@ -2,10 +2,10 @@ import { useState } from 'react'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, _] = useState(0)
   return (
     <>
-      Hello, World!
+      Hello, World! {count}
     </>
   )
 }

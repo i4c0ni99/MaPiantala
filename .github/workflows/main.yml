@@ -6,4 +6,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Importing FE unit tests
-        uses: ./react-ts-test-app/.github/workflow/unit-tests
+        uses: ./react-ts-test-app/.github/workflow/unit-tests.yml

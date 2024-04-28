@@ -2,9 +2,29 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import { TestComponent } from './pages/TestComponents.tsx';
+
+const router = createBrowserRouter([
+  {
+    path: "/app",
+    element: <App />,
+  },
+  {
+    path: "/test",
+    element: <TestComponent />,
+  },
+  {
+    path: "*",
+    element: <h1>404!</h1>,
+  }
+]);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>,
 )

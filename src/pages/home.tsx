@@ -3,6 +3,7 @@ import { ButtonType } from "../components/button/button-types";
 import { Card } from "../components/card/Card.component";
 import { Navbar } from "../components/navbar/navbar.component";
 
+
 export function Home() {
     const onButtonClick = (index: number) => {
         console.log("Button clicked", index);
@@ -59,38 +60,36 @@ export function Home() {
         "username": "historybuff",
         "imageUrlUser": "https://example.com/historybuff.jpg"
     }]
-    const buttonsAvailable: ButtonType[] = [
-        ButtonType.Accent,
-        ButtonType.Ghost,
-        ButtonType.Link,
-        ButtonType.Neutral,
-        ButtonType.Primary,
-        ButtonType.Secondary,
-    ];
-
+    
 
 
     return (
         <>
-            <div className="w-3/4 my-2 mx-36 fixed z-50 ">
+            <nav className="w-3/4 mx-36 fixed z-50 mt-4 ">
                 <Navbar></Navbar>
-            </div>
-            {user.map(function (card) {
-                return (
-                    <>
+            </nav>
+            <button className="btn btn-outline btn-circle btn-lg btn-accent z-50 fixed text-2xl bottom-8 right-36">+</button>
+            <main className=" w-6/12 mx-auto pt-20">
+                {user.map((card) => {
 
-                        <Card
-                            title={card.title}
-                            description={card.description}
-                            Button={cardButton}
-                            imageUrl={card.imageUrl}
-                            imageUrlUser="https://cdn-icons-png.flaticon.com/512/3237/3237472.png"
-                            username={card.username}
-                        ></Card>
-                    </>
-                )
+                    return (
 
-            })}
+                        <div className="mt-8">
+                            <Card
+
+                                title={card.title}
+                                description={card.description}
+                                Button={cardButton}
+                                imageUrl={card.imageUrl}
+                                imageUrlUser="https://cdn-icons-png.flaticon.com/512/3237/3237472.png"
+                                username={card.username}
+                            ></Card>
+                        </div>
+                    )
+
+                })}
+
+            </main>
 
         </>
     );

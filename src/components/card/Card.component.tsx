@@ -19,7 +19,7 @@ export const Card: React.FC<ICardProps> = function ({
 }: ICardProps) {
     return (
 
-        <div className="card size-6/12 bg-base-300 shadow-xl left-96 mt-4 mb-4  top-32">
+        <div className="card size-full bg-base-300">
             {imageUrlUser && username && (
                 <div className="mx-4 my-4">
 
@@ -43,7 +43,9 @@ export const Card: React.FC<ICardProps> = function ({
             <div className="card-body">
                 <h2 className="card-title">{title}</h2>
                 <p>{description}</p>
-                {Button}
+                <div className="w-32">
+                    {Button}
+                </div>
             </div>
         </div>
 

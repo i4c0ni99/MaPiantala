@@ -25,7 +25,7 @@ export default {
           "error": "#ec0042",         
           "error-content": "#130001",
         },
-      },
+      },'light'
     ],
   },
   content: [

@@ -1,6 +1,6 @@
 import { Button } from "../components/button/Button.component";
 import { ButtonType } from "../components/button/button-types";
-import { Card } from "../components/card/Card.component";
+import { Card } from "../components/card/card.component";
 import { Navbar } from "../components/navbar/navbar.component";
 
 export function Home() {

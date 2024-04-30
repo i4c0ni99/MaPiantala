@@ -2,11 +2,13 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
+import './404.css'
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
 import { Home } from './pages/home.tsx';
+import { NotFound } from './pages/404/404.tsx'
 
 const router = createBrowserRouter([
   {
@@ -19,7 +21,7 @@ const router = createBrowserRouter([
   },
   {
     path: "*",
-    element: <h1>404!</h1>,
+    element: <NotFound />,
   }
 ]);
 

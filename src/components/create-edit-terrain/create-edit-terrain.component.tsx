@@ -1,46 +1,27 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { Terrain } from "../../types/terrain.class";
 
 export interface ITerrain {
-    title: string;
-    position: string;
-    slot: number;
-    description: string;
-    isPublic: boolean;
-    onSubmission?: (data: ITerrain) => void;
+    terrainCreated: Terrain
+    onSubmission?: (data: Terrain) => void;
 }
 
-export class Terrain implements ITerrain {
-    constructor(
-        public title: string,
-        public position: string,
-        public slot: number,
-        public description: string,
-        public isPublic: boolean
-    ) { }
-}
+
 
 export const CreateEditTerrain = ({
-    title = '',
-    position = '',
-    description = '',
-    isPublic = true,
-    slot = 1,
+    terrainCreated,
     onSubmission = undefined
 }: ITerrain) => {
     // Initial state for the form
-    const [terrain, setTerrain] = useState<ITerrain>({
-        title: '',
-        position: '',
-        slot: 0,
-        description: '',
-        isPublic: false
-    });
+    const [terrain, setTerrain] = useState<Terrain>(
+        new Terrain(terrainCreated.title, terrainCreated.description, terrainCreated.imageUrl, terrainCreated.position, terrainCreated.slot, terrainCreated.isPublic, terrainCreated.user)
+    );
 
     useEffect(() => {
         setTerrain(
-            { title, position, description, isPublic, slot, onSubmission }
+            new Terrain(terrainCreated.title, terrainCreated.description, terrainCreated.imageUrl, terrainCreated.position, terrainCreated.slot, terrainCreated.isPublic, terrainCreated.user)
         )
-    }, [title, position, description, isPublic, slot]);
+    }, [terrainCreated]);
 
     // Handle input changes
     const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -66,10 +47,12 @@ export const CreateEditTerrain = ({
         // Create a new Terrain instance with the form data
         const newTerrain = new Terrain(
             terrain.title,
+            terrain.description,
+            terrain.imageUrl,
             terrain.position,
             terrain.slot,
-            terrain.description,
-            terrain.isPublic
+            terrain.isPublic,
+            terrain.user
         );
         console.log('New Terrain Created:', newTerrain);
 

@@ -9,6 +9,7 @@ import {
 import { Home } from './pages/home.tsx';
 import { TerrainUpsert } from './pages/terrain-upsert.tsx';
 import { Navbar } from './components/navbar/navbar.component.tsx';
+import { EventPage } from './pages/event.tsx';
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
   {
     path: "*",
     element: <h1>404!</h1>,
+  },
+  {
+    path: "/event",
+    element: <EventPage />
   }
 ]);
 

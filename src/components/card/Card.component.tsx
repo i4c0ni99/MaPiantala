@@ -1,44 +1,38 @@
+import { Terrain } from "../../types/terrain.class";
 import { IButton } from "../button/Button.component";
 
 export interface ICard {
-    title: string;
-    description: string;
-    imageUrl?: string;
-    username?: string
-    imageUrlUser?: string
+    terrainCard: Terrain
     Button?: React.ReactElement<IButton>;
 }
 
 export const Card: React.FC<ICard> = function ({
-    title,
-    description,
-    imageUrl,
-    Button,
-    username,
-    imageUrlUser
+    terrainCard,
+    Button
+   
 }: ICard) {
     return (
         <div className="card size-full bg-base-300">
-            {imageUrlUser && username && (
+            {terrainCard.user.profilePicture && terrainCard.user.username && (
                 <div className="mx-4 my-4">
                     <div className="avatar">
                         <div className="w-10 rounded-full ">
-                            <img src={imageUrlUser} />
+                            <img src={terrainCard.user.profilePicture} />
                         </div>
                     </div>
 
-                    <div className="badge badge-default mx-1 badge-lg ">{username}</div>
+                    <div className="badge badge-default mx-1 badge-lg ">{terrainCard.user.username}</div>
                 </div>
             )}
 
-            {imageUrl && (
+            {terrainCard.imageUrl && (
                 <figure className="px-10 pt-2">
-                    <img src={imageUrl} alt={title} className="rounded-xl" />
+                    <img src={terrainCard.imageUrl} alt={terrainCard.title} className="rounded-xl" />
                 </figure>
             )}
             <div className="card-body">
-                <h2 className="card-title">{title}</h2>
-                <p>{description}</p>
+                <h2 className="card-title">{terrainCard.title}</h2>
+                <p>{terrainCard.description}</p>
                 <div className="w-32">
                     {Button}
                 </div>

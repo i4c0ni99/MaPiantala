@@ -31,7 +31,7 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <div className="fixed w-full">
+    <div className="fixed w-full z-50">
       <nav className="px-12 mt-8">
         <Navbar></Navbar>
       </nav>

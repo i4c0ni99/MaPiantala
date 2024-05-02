@@ -2,7 +2,6 @@ import { Button } from "../components/button/Button.component";
 import { ButtonType } from "../components/button/button-types";
 import { Card } from "../components/card/Card.component";
 import { getTerrains } from "../services/terrains.service";
-import { Navbar } from "../components/navbar/navbar.component";
 import { Terrain } from "../types/terrain.interface";
 import { useState, useEffect } from 'react';
 

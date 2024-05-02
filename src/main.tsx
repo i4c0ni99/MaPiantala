@@ -7,6 +7,8 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import { Home } from './pages/home.tsx';
+import { TerrainUpsert } from './pages/terrain-upsert.tsx';
+import { Navbar } from './components/navbar/navbar.component.tsx';
 
 const router = createBrowserRouter([
   {
@@ -18,6 +20,10 @@ const router = createBrowserRouter([
     element: <Home />,
   },
   {
+    path: "/terrain-upsert",
+    element: <TerrainUpsert />
+  },
+  {
     path: "*",
     element: <h1>404!</h1>,
   }
@@ -25,6 +31,14 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <div className="fixed w-full">
+      <nav className="px-12 mt-8">
+        <Navbar></Navbar>
+      </nav>
+    </div>
+
+    <main className="pt-32">
+      <RouterProvider router={router} />
+    </main>
   </React.StrictMode>,
 )

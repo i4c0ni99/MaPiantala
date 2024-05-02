@@ -1,14 +1,11 @@
 import { useState } from "react";
 import { Moon, Sunny } from "../../assets/Icon/Iconi";
 export const Navbar: React.FC<any> = function ({ }: any) {
-    
-    
-        const [theme, setTheme] = useState('light');
-        
+    const [theme, setTheme] = useState('light');
+
     function toggleTheme() {
-            setTheme(theme === 'dark' ? 'light' : 'dark');
+        setTheme(theme === 'dark' ? 'light' : 'dark');
     }
-    
 
     return (
         <>
@@ -40,7 +37,7 @@ export const Navbar: React.FC<any> = function ({ }: any) {
                     <label className="swap swap-rotate">
 
                         {/* this hidden checkbox controls the state */}
-                        <input type="checkbox" className="theme-controller" value="synthwave" onClick={toggleTheme}/>
+                        <input type="checkbox" className="theme-controller" value="synthwave" onClick={toggleTheme} />
 
                         {/* sun icon */}
                         <Sunny></Sunny>

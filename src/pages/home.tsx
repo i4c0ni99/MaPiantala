@@ -32,13 +32,9 @@ export function Home() {
 
     return (
         <>
-            <nav className="w-3/4 mx-36 fixed z-50 mt-4">
-                <Navbar></Navbar>
-            </nav>
-
             <button className="btn btn-outline btn-circle btn-lg btn-accent z-50 fixed text-2xl bottom-8 right-36">+</button>
 
-            <main className="w-6/12 mx-auto pt-20">
+            <main className="w-6/12 mx-auto">
                 {terrains.map(
                     (terrain) =>
                         <div className="mt-8">

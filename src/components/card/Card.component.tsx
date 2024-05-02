@@ -1,34 +1,30 @@
-import { IButtonProps } from "../button/Button.component";
+import { IButton } from "../button/Button.component";
 
-export interface ICardProps {
+export interface ICard {
     title: string;
     description: string;
     imageUrl?: string;
     username?: string
     imageUrlUser?: string
-    Button?: React.ReactElement<IButtonProps>;
+    Button?: React.ReactElement<IButton>;
 }
 
-export const Card: React.FC<ICardProps> = function ({
+export const Card: React.FC<ICard> = function ({
     title,
     description,
     imageUrl,
     Button,
     username,
     imageUrlUser
-}: ICardProps) {
+}: ICard) {
     return (
-
         <div className="card size-full bg-base-300">
             {imageUrlUser && username && (
                 <div className="mx-4 my-4">
-
                     <div className="avatar">
-
                         <div className="w-10 rounded-full ">
                             <img src={imageUrlUser} />
                         </div>
-
                     </div>
 
                     <div className="badge badge-default mx-1 badge-lg ">{username}</div>
@@ -48,7 +44,5 @@ export const Card: React.FC<ICardProps> = function ({
                 </div>
             </div>
         </div>
-
-
     );
 };

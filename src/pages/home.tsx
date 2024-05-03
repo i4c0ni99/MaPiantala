@@ -3,6 +3,8 @@ import { getTerrainsMock } from "../mocks/getTerrains.mock";
 import { Terrain } from "../types/terrain.class";
 import { useState, useEffect } from 'react';
 
+
+
 export function Home() {
     const [terrains, setTerrains] = useState<Terrain[]>([]);
 
@@ -21,7 +23,7 @@ export function Home() {
 
     return (
         <>
-            <button className="btn btn-outline btn-circle btn-lg btn-accent z-50 fixed text-2xl bottom-8 right-36">+</button>
+            <button className="btn btn-outline btn-circle btn-lg btn-accent z-50 fixed text-2xl bottom-8 right-36" ><a href="/terrain-upsert">+</a></button>
 
             <main className="w-6/12 mx-auto">
                 {terrains.map(

@@ -5,13 +5,13 @@ export function getTerrainsMock(): Promise<Terrain[]> {
         resolve([{
             title: "Title 1",
             description: "Description 1",
-            imageUrl: "https://imageurl1.com",
+            imageUrl: "https://placeholder.com/500x500",
             position: "Position 1",
             slot: 1,
             isPublic: true,
             user: {
                 email: "user1@example.com",
-                profilePicture: "https://profilepicture1.com",
+                profilePicture: "https://placeholder.com/200x200",
                 firstName: "John",
                 lastName: "Doe",
                 username: "johndoe"
@@ -20,13 +20,13 @@ export function getTerrainsMock(): Promise<Terrain[]> {
         {
             title: "Title 2",
             description: "Description 2",
-            imageUrl: "https://imageurl2.com",
+            imageUrl: "https://placeholder.com/500x500",
             position: "Position 2",
             slot: 2,
             isPublic: false,
             user: {
                 email: "user2@example.com",
-                profilePicture: "https://profilepicture2.com",
+                profilePicture: "https://placeholder.com/200x200",
                 firstName: "Jane",
                 lastName: "Smith",
                 username: "janesmith"

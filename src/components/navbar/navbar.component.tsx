@@ -23,15 +23,15 @@ export const Navbar: React.FC<any> = function ({ }: any) {
                             <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
                             <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
                                 {/* Sidebar content here */}
-                                <li><a>Sidebar Item 1</a></li>
-                                <li><a>Sidebar Item 2</a></li>
+                                <li><a href="">Terreni</a></li>
+                                <li ><a href="/event">Eventi</a></li>
 
                             </ul>
                         </div>
                     </div>
                 </div>
                 <div className="navbar-center">
-                    <a className="btn btn-ghost text-xl">MaPiantala</a>
+                    <a className="btn btn-ghost text-xl " href="/home">MaPiantala</a>
                 </div>
                 <div className="navbar-end">
                     <label className="swap swap-rotate">

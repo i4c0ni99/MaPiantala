@@ -22,7 +22,7 @@ export function EventPage() {
 
 
     return <>
-        <button className="btn btn-outline btn-circle btn-lg btn-accent z-50 fixed text-2xl bottom-8 right-36">+</button>
+        <button className="btn btn-outline btn-circle btn-lg btn-accent z-50 fixed text-2xl bottom-8 right-36"><a href="/terrain-upsert">+</a></button>
 
         <main className="w-6/12 mx-auto">
 

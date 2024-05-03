@@ -1,8 +1,6 @@
-import { Button } from "../components/button/Button.component";
-import { ButtonType } from "../components/button/button-types";
 import { Card } from "../components/card/Card.component";
-import { getTerrains } from "../services/terrains.service";
-import { Terrain } from "../types/terrain.interface";
+import { getTerrainsMock } from "../mocks/getTerrains.mock";
+import { Terrain } from "../types/terrain.class";
 import { useState, useEffect } from 'react';
 
 export function Home() {
@@ -11,8 +9,8 @@ export function Home() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response: Terrain[] = await getTerrains();
-                setTerrains(response);
+                const terrains: Terrain[] = await getTerrainsMock();
+                setTerrains(terrains);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -20,14 +18,6 @@ export function Home() {
 
         fetchData();
     }, []);
-
-    const cardButton = (
-        <Button
-            text="Prenota"
-            style={ButtonType.Accent}
-            onButtonClick={() => console.log("fu")}
-        />
-    );
 
     return (
         <>
@@ -37,13 +27,7 @@ export function Home() {
                 {terrains.map(
                     (terrain) =>
                         <div className="mt-8">
-                            <Card
-                                title={terrain.title}
-                                description={terrain.description}
-                                Button={cardButton}
-                                imageUrl={terrain.imageUrl}
-                                imageUrlUser={terrain.user.profilePicture}
-                                username={terrain.user.username}
+                            <Card terrainCard={terrain}
                             ></Card>
                         </div>
                 )}

@@ -1,15 +1,13 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
-import { Home } from './pages/home.tsx';
-import { TerrainUpsert } from './pages/terrain-upsert.tsx';
-import { Navbar } from './components/navbar/navbar.component.tsx';
-import { EventPage } from './pages/event.tsx';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.tsx";
+import "./index.css";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Home } from "./pages/home.tsx";
+import { TerrainUpsert } from "./pages/terrain-upsert.tsx";
+import { Navbar } from "./components/navbar/navbar.component.tsx";
+import { EventPage } from "./pages/event.tsx";
+import { PlantStats } from "./pages/plant-stats.tsx";
 
 const router = createBrowserRouter([
   {
@@ -22,7 +20,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/terrain-upsert",
-    element: <TerrainUpsert />
+    element: <TerrainUpsert />,
   },
   {
     path: "*",
@@ -30,11 +28,15 @@ const router = createBrowserRouter([
   },
   {
     path: "/event",
-    element: <EventPage />
-  }
+    element: <EventPage />,
+  },
+  {
+    path: "/plant-statistic",
+    element: <PlantStats />,
+  },
 ]);
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <div className="fixed w-full z-50">
       <nav className="px-12 mt-8">
@@ -45,5 +47,5 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
     <main className="pt-32">
       <RouterProvider router={router} />
     </main>
-  </React.StrictMode>,
-)
+  </React.StrictMode>
+);

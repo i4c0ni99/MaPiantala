@@ -25,6 +25,7 @@ export const Navbar: React.FC<any> = function ({ }: any) {
                                 {/* Sidebar content here */}
                                 <li><a href="">Terreni</a></li>
                                 <li ><a href="/event">Eventi</a></li>
+                                <li><a href="/plant-statistic">Le mie piante</a></li>
 
                             </ul>
                         </div>

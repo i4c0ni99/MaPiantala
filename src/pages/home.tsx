@@ -21,14 +21,6 @@ export function Home() {
         fetchData();
     }, []);
 
-    const cardButton = (
-        <Button
-            text="Prenota"
-            style={ButtonType.Accent}
-            onButtonClick={() => console.log("fu")}
-        />
-    );
-
     return (
         <>
             <button className="btn btn-outline btn-circle btn-lg btn-accent z-50 fixed text-2xl bottom-8 right-36">+</button>

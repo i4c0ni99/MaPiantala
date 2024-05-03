@@ -1,34 +1,16 @@
 import { Event } from "../../types/Event.class";
 import { IButton } from "../button/Button.component";
-import { useEffect, useState } from "react";
 
 export interface ICardEvent {
     eventInCard: Event
     Button?: React.ReactElement<IButton>;
-
 }
-
-
-
 
 export const EventCard: React.FC<ICardEvent> = function ({
     eventInCard,
     Button,
-
 }: ICardEvent) {
-    const [event, setEvent] = useState<Event>(
-
-
-        new Event(eventInCard.title, eventInCard.description, eventInCard.imageUrl, eventInCard.date, eventInCard.user)
-
-    )
-    useEffect(() => {
-
-        setEvent(new Event(eventInCard.title, eventInCard.description, eventInCard.imageUrl, eventInCard.date, eventInCard.user))
-    }, [eventInCard])
-
     return (
-
         <div className="card size-full bg-base-300">
             {eventInCard.user.profilePicture && eventInCard.user.username && (
                 <div className="mx-4 my-4">

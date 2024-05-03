@@ -1,5 +1,3 @@
-import { Button } from "../components/button/Button.component";
-import { ButtonType } from "../components/button/button-types";
 import { Card } from "../components/card/Card.component";
 import { getTerrainsMock } from "../mocks/getTerrains.mock";
 import { Terrain } from "../types/terrain.class";

@@ -23,7 +23,8 @@ export const Navbar: React.FC<any> = function ({ }: any) {
                             <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
                             <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
                                 {/* Sidebar content here */}
-                                <li><a href="">Terreni</a></li>
+                                <li><a href="/home">Home</a></li>
+                                <li><a href="/terrain-upsert">Terreni</a></li>
                                 <li ><a href="/event">Eventi</a></li>
                                 <li><a href="/plant-statistic">Le mie piante</a></li>
 

@@ -1,20 +1,45 @@
 import { Plant } from "../types/Plant.class";
-import { Time } from "../types/Time.class";
+import { GrowthPeriod } from "../types/Plant.growthPeriod.enum";
+import { StatePlant } from "../types/Plant.state.enum";
+import { Type } from "../types/Plant.type.enum";
 
 export function getPlantsMock(): Promise<Plant[]> {
   return new Promise((resolve) => {
     resolve([
       {
         name: "Pomodoro",
-        type: "Ortaggio",
-        growthPeriod: "Estivo",
-        time: new Time(60, 50),
+        type: Type.Verdura,
+        state: StatePlant.Semina,
+        growthPeriod: GrowthPeriod.Estivo,
+        time: new Date("2024-04-01"),
       },
       {
         name: "Girasoli",
-        type: "Fiore",
-        growthPeriod: "Stagionale",
-        time: new Time(20, 30),
+        type: Type.Fiore,
+        growthPeriod: GrowthPeriod.Primaverile,
+        state: StatePlant.Crescita,
+        time: new Date("2024-04-01"),
+      },
+      {
+        name: "Tulipani",
+        type: Type.Fiore,
+        growthPeriod: GrowthPeriod.Primaverile,
+        state: StatePlant.Raccolta,
+        time: new Date("2024-04-01"),
+      },
+      {
+        name: "Patate",
+        type: Type.Verdura,
+        growthPeriod: GrowthPeriod.Autunnale,
+        state: StatePlant.Crescita,
+        time: new Date("2024-04-01"),
+      },
+      {
+        name: "Cocomero",
+        type: Type.Frutta,
+        growthPeriod: GrowthPeriod.Estivo,
+        state: StatePlant.Semina,
+        time: new Date("2024-04-01"),
       },
     ]);
   });

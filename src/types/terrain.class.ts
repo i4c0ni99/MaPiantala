@@ -5,10 +5,10 @@ export class Terrain {
         public title: string,
         public description: string,
         public imageUrl: string,
-        public position: string,
-        public slot: number,
-        public isPublic: boolean,
-        public user: User
+        public position?: string,
+        public slot?: number,
+        public isPublic?: boolean,
+        public user?: User
     ) {
 
     }

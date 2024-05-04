@@ -13,7 +13,7 @@ export const Card: React.FC<ICard> = function ({
 }: ICard) {
     return (
         <div className="card size-full bg-base-300">
-            {terrainCard.user.profilePicture && terrainCard.user.username && (
+            {terrainCard.user?.profilePicture && terrainCard.user.username && (
                 <div className="mx-4 my-4">
                     <div className="avatar">
                         <div className="w-10 rounded-full ">

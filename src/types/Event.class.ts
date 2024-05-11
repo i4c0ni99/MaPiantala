@@ -7,7 +7,7 @@ export class Event {
         public title: string,
         public description: string,
         public imageUrl: string,
-        public eventdate: Date,
+        public date: Date,
         public user: User
     ) {
 

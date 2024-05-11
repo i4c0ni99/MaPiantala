@@ -1,16 +1,13 @@
 
 import { Card } from "../components/card/Card.component";
-import { getEventsMock } from "../mocks/getEvents.mock";
 import { getTerrainsMock } from "../mocks/getTerrains.mock";
 import { Terrain } from "../types/terrain.class";
-import { Event } from "../types/Event.class";
 import { useState, useEffect } from 'react';
 import { Button, IButton } from "../components/button/Button.component";
 import { ButtonType } from "../components/button/button-types";
 
 export function Home() {
     const [terrains, setTerrains] = useState<Terrain[]>([]);
-    const [events, setEvents] = useState<Event[]>([]);
 
     const reserve = () => console.log("Prenotazione");
     const button: React.ReactElement<IButton> = (
@@ -26,9 +23,7 @@ export function Home() {
         const fetchData = async () => {
             try {
                 const terrains: Terrain[] = await getTerrainsMock();
-                const events: Event[] = await getEventsMock();
                 setTerrains(terrains);
-                setEvents(events)
             } catch (error) {
                 console.error('Error fetching data:', error);
             }

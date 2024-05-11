@@ -4,7 +4,7 @@ import { Terrain } from "../types/terrain.class";
 export function TerrainUpsert() {
     return <>
         <div className="size-3/4 mx-auto">
-            <CreateEditTerrain 
+            <CreateEditTerrain
                 terrainCreated={
                     new Terrain(
                         '',
@@ -18,9 +18,10 @@ export function TerrainUpsert() {
                             '',
                             'Gigi',
                             'Iaconi',
-                            'i4c0ni99')
-                        )
-                } 
+                            'i4c0ni99',
+                            '')
+                    )
+                }
                 onSubmission={(data: Terrain) => console.log("AA", data)}>
             </CreateEditTerrain>
         </div>

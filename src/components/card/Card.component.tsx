@@ -3,13 +3,13 @@ import { IButton } from "../button/Button.component";
 
 export interface ICard {
     terrainCard: Terrain
-    Button?: React.ReactElement<IButton>;
+    Button: React.ReactElement<IButton>;
 }
 
 export const Card: React.FC<ICard> = function ({
     terrainCard,
     Button
-   
+
 }: ICard) {
     return (
         <div className="card size-full bg-base-300">
@@ -33,8 +33,10 @@ export const Card: React.FC<ICard> = function ({
             <div className="card-body">
                 <h2 className="card-title">{terrainCard.title}</h2>
                 <p>{terrainCard.description}</p>
-                <div className="w-32">
-                    {Button}
+                <div className="w-full ">
+                    <div className="w-32">
+                        {Button}
+                    </div>
                 </div>
             </div>
         </div>

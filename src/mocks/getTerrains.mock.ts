@@ -14,7 +14,8 @@ export function getTerrainsMock(): Promise<Terrain[]> {
                 profilePicture: "https://placeholder.com/200x200",
                 firstName: "John",
                 lastName: "Doe",
-                username: "johndoe"
+                username: "johndoe",
+                copertinePicture: ""
             }
         },
         {
@@ -29,7 +30,8 @@ export function getTerrainsMock(): Promise<Terrain[]> {
                 profilePicture: "https://placeholder.com/200x200",
                 firstName: "Jane",
                 lastName: "Smith",
-                username: "janesmith"
+                username: "janesmith",
+                copertinePicture: ""
             }
         }
         ]);

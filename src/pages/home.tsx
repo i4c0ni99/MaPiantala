@@ -31,6 +31,7 @@ export function Home() {
                         <div className="mt-8">
                             <Card terrainCard={terrain}
                             ></Card>
+                                
                         </div>
                 )}
             </main>

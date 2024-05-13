@@ -1,3 +1,5 @@
+import { Terrain } from "./terrain.class";
+
 export class User {
 
     constructor(
@@ -6,7 +8,8 @@ export class User {
         public firstName: string,
         public lastName: string,
         public username: string,
-        public copertinePicture: string
+        public copertinePicture: string,
+        
 
     ) {
 

@@ -15,7 +15,7 @@ export function getTerrainsMock(): Promise<Terrain[]> {
                 firstName: "John",
                 lastName: "Doe",
                 username: "johndoe",
-                copertinePicture: ""
+                copertinePicture: "",
             }
         },
         {

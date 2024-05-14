@@ -7,7 +7,8 @@ export class Event {
         public description: string ,
         public imageUrl: string ,
         public date: Date ,
-        public user: User 
+        public user: User ,
+        public position:string
     ) {
         
     }

@@ -1,6 +1,6 @@
 export enum Type{
-    Verdura,
-    Fiore,
-    Frutta,
+    Verdura = 'Verdure',
+    Fiore = 'Fiore',
+    Frutta = 'Frutta',
     
 }

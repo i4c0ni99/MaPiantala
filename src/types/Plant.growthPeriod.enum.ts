@@ -1,8 +1,8 @@
 export enum GrowthPeriod {
-    Primaverile,
-    Estivo,
-    Autunnale,
-    Invernale,
-    Stagionale
+    Primaverile= 'Primaverile',
+    Estivo = 'Estivo',
+    Autunnale = 'Autunnale',
+    Invernale = 'Invernale',
+    Stagionale = 'Stagionale'
     
 }

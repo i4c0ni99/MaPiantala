@@ -14,7 +14,9 @@ export function getEventsMock(): Promise<Event[]> {
                     firstName: "John",
                     lastName: "Doe",
                     username: "johndoe"
-                }
+                },
+                position :" Via Corrado IV"
+
             },
             {
                 title: "Dolor Sit",
@@ -27,7 +29,8 @@ export function getEventsMock(): Promise<Event[]> {
                     firstName: "Jane",
                     lastName: "Smith",
                     username: "janesmith"
-                }
+                },
+                position :" Via Corrado IV"
             }
         ]);
     });

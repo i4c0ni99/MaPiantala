@@ -14,12 +14,12 @@ export const CreateEditTerrain = ({
 }: ITerrain) => {
     // Initial state for the form
     const [terrain, setTerrain] = useState<Terrain>(
-        new Terrain(terrainCreated.title, terrainCreated.description, terrainCreated.imageUrl, terrainCreated.position, terrainCreated.slot, terrainCreated.isPublic, terrainCreated.user)
+        new Terrain(terrainCreated.title, terrainCreated.description, terrainCreated.imageUrl, terrainCreated.position, terrainCreated.slot, terrainCreated.isPublic, terrainCreated.user,terrainCreated.comments)
     );
 
     useEffect(() => {
         setTerrain(
-            new Terrain(terrainCreated.title, terrainCreated.description, terrainCreated.imageUrl, terrainCreated.position, terrainCreated.slot, terrainCreated.isPublic, terrainCreated.user)
+            new Terrain(terrainCreated.title, terrainCreated.description, terrainCreated.imageUrl, terrainCreated.position, terrainCreated.slot, terrainCreated.isPublic, terrainCreated.user,terrainCreated.comments)
         )
     }, [terrainCreated]);
 
@@ -52,7 +52,8 @@ export const CreateEditTerrain = ({
             terrain.position,
             terrain.slot,
             terrain.isPublic,
-            terrain.user
+            terrain.user,
+            terrain.comments
         );
         console.log('New Terrain Created:', newTerrain);
 

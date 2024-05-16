@@ -10,6 +10,7 @@ import { Home } from './pages/home.tsx';
 import { TerrainUpsert } from './pages/terrain-upsert.tsx';
 import { Navbar } from './components/navbar/navbar.component.tsx';
 import { EventPage } from './pages/event.tsx';
+import { EventUpsert } from './pages/event-upser.tsx';
 
 const router = createBrowserRouter([
   {
@@ -31,7 +32,12 @@ const router = createBrowserRouter([
   {
     path: "/event",
     element: <EventPage />
+  },
+  {
+    path: "/event-upsert",
+    element: <EventUpsert />
   }
+
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
@@ -41,7 +47,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <Navbar></Navbar>
       </nav>
     </div>
-
+    
     <main className="pt-32">
       <RouterProvider router={router} />
     </main>

@@ -36,6 +36,7 @@ export function getEventsMock(): Promise<Event[]> {
                 description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
                 imageUrl: "https://placeholder.com/500x500",
                 date: new Date(),
+                position: "via genova",
                 user: {
                     email: "john.doe@example.com",
                     profilePicture: "https://placeholder.com/200x200",
@@ -49,6 +50,7 @@ export function getEventsMock(): Promise<Event[]> {
                 description: "Dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
                 imageUrl: "https://placeholder.com/600x400",
                 date: new Date(),
+                position: "via genova",
                 user: {
                     email: "jane.smith@example.com",
                     profilePicture: "https://placeholder.com/250x250",

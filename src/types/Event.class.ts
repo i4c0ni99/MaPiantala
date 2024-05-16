@@ -10,7 +10,7 @@ export class Event {
         public date: Date,
         public user: User,
         public comments: Comment[],
-        public position: String
+        public position: string
 
     ) {
 

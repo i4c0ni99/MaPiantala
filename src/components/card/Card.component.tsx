@@ -9,8 +9,6 @@ export interface ICard {
 
 export const Card: React.FC<ICard> = function ({
     terrainCard,
-    Button
-
 }: ICard) {
     return (
         <div className="card size-full bg-base-300">

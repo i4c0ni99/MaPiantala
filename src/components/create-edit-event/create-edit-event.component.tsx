@@ -14,12 +14,12 @@ export const CreateEditEvent = ({
 }: IEvent) => {
     // Initial state for the form
     const [event, setEvent] = useState<Event>(
-        new Event(eventCreated.title, eventCreated.description, eventCreated.imageUrl, eventCreated.date, eventCreated.user, eventCreated.position)
+        new Event(eventCreated.title, eventCreated.description, eventCreated.imageUrl, eventCreated.date, eventCreated.user, eventCreated.comments,eventCreated.position,)
     );
 
     useEffect(() => {
         setEvent(
-            new Event(eventCreated.title, eventCreated.description, eventCreated.imageUrl, eventCreated.date, eventCreated.user, eventCreated.position)
+            new Event(eventCreated.title, eventCreated.description, eventCreated.imageUrl, eventCreated.date, eventCreated.user, eventCreated.comments,eventCreated.position)
         )
     }, [eventCreated]);
 
@@ -54,6 +54,7 @@ export const CreateEditEvent = ({
             event.imageUrl,
             event.date,
             event.user,
+            event.comments,
             event.position
         );
         console.log('New Terrain Created:', newEvent);

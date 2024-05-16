@@ -1,7 +1,7 @@
 import { Terrain } from "../types/terrain.class";
 
 export function getTerrainsMock(): Promise<Terrain[]> {
-    const date: Date = new Date()
+    
 
     const user1 = {
         email: 'john.doe@example.com',

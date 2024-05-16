@@ -1,15 +1,18 @@
 import { User } from "./User.class";
-
+import { Comment } from "./Comment.class";
 export class Event {
 
 
-    constructor(public title: string ,
-        public description: string ,
-        public imageUrl: string ,
-        public date: Date ,
-        public user: User ,
-        public position:string
+
+    constructor(public title: string,
+        public description: string,
+        public imageUrl: string,
+        public date: Date,
+        public user: User,
+        public comments: Comment[],
+        public position: string
+
     ) {
-        
+
     }
 };

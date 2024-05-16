@@ -53,9 +53,9 @@ export function getTerrainsMock(): Promise<Terrain[]> {
                 profilePicture: "https://placeholder.com/200x200",
                 firstName: "John",
                 lastName: "Doe",
+                password: " ",
                 username: "johndoe"
             }, comments: [mainComment]
-
         },
 
         {
@@ -68,9 +68,11 @@ export function getTerrainsMock(): Promise<Terrain[]> {
             user: {
                 email: "user1@example.com",
                 profilePicture: "https://placeholder.com/200x200",
+
                 firstName: "John",
                 lastName: "Doe",
-                username: "johndoe"
+                username: "johndoe",
+                password: " "
             },
             comments: [mainComment]
 

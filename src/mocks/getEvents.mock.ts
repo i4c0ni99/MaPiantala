@@ -42,6 +42,7 @@ export function getEventsMock(): Promise<Event[]> {
                     profilePicture: "https://placeholder.com/200x200",
                     firstName: "John",
                     lastName: "Doe",
+
                     username: "johndoe"
 
                 }, comments: [mainComment]
@@ -51,6 +52,7 @@ export function getEventsMock(): Promise<Event[]> {
 
 
             
+
             {
                 title: "Dolor Sit",
                 description: "Dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
@@ -62,6 +64,7 @@ export function getEventsMock(): Promise<Event[]> {
                     profilePicture: "https://placeholder.com/250x250",
                     firstName: "Jane",
                     lastName: "Smith",
+
                     username: "janesmith"
 
                 }, comments: [mainComment]
@@ -69,6 +72,7 @@ export function getEventsMock(): Promise<Event[]> {
                 },
 
             
+
         ]);
     });
 }

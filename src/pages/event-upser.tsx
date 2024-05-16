@@ -18,7 +18,9 @@ export function EventUpsert() {
                             '',
                             'Gigi',
                             'Iaconi',
-                            'i4c0ni99'),
+                            'i4c0ni99',
+                            '',
+                            ''),
                         [],
                         ''
                     )

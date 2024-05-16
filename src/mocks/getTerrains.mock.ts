@@ -8,7 +8,9 @@ export function getTerrainsMock(): Promise<Terrain[]> {
         profilePicture: 'https://www.viaggioff.it/wp-content/uploads/2022/07/Agriexperience-2-770x513.jpg',
         firstName: 'John',
         lastName: 'Doe',
-        username: 'johndoe'
+        username: 'johndoe',
+        password: '',
+        copertinePicture: ''
     };
 
     const user2 = {
@@ -16,7 +18,9 @@ export function getTerrainsMock(): Promise<Terrain[]> {
         profilePicture: 'https://www.viaggioff.it/wp-content/uploads/2022/07/Agriexperience-2-770x513.jpg',
         firstName: 'Jane',
         lastName: 'Smith',
-        username: 'janesmith'
+        username: 'janesmith',
+        password: '',
+        copertinePicture: ''
     };
 
     // Definizione della struttura di una risposta (Answer)
@@ -55,7 +59,8 @@ export function getTerrainsMock(): Promise<Terrain[]> {
                 lastName: "Doe",
 
                 password: " ",
-                username: "johndoe"
+                username: "johndoe",
+                copertinePicture: ""
             }, comments: [mainComment]
 
         },
@@ -74,7 +79,8 @@ export function getTerrainsMock(): Promise<Terrain[]> {
                 firstName: "Jane",
                 lastName: "Smith",
                 username: "janesmith",
-                copertinePicture: ""
+                copertinePicture: "",
+                password: ""
             },
             comments: [mainComment]
 

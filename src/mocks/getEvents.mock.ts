@@ -6,7 +6,10 @@ export function getEventsMock(): Promise<Event[]> {
         profilePicture: 'https://www.viaggioff.it/wp-content/uploads/2022/07/Agriexperience-2-770x513.jpg',
         firstName: 'John',
         lastName: 'Doe',
-        username: 'johndoe'
+        username: 'johndoe',
+        password: '',
+        copertinePicture: ""
+        
     };
 
     const answer1 = {
@@ -37,15 +40,17 @@ export function getEventsMock(): Promise<Event[]> {
                 imageUrl: "https://placeholder.com/500x500",
                 date: new Date(),
                 position :" Via Corrado IV",
+                comments: [mainComment],
                 user: {
                     email: "john.doe@example.com",
                     profilePicture: "https://placeholder.com/200x200",
                     firstName: "John",
                     lastName: "Doe",
 
-                    username: "johndoe"
-
-                }, comments: [mainComment]
+                    username: "johndoe",
+                    password: "",
+                    copertinePicture: ""
+                }
 
                 },
                 
@@ -66,9 +71,9 @@ export function getEventsMock(): Promise<Event[]> {
                     profilePicture: "https://placeholder.com/250x250",
                     firstName: "Jane",
                     lastName: "Smith",
-
-                    username: "janesmith"
-
+                    password: '',
+                    username: "janesmith",
+                    copertinePicture: ""
                 }, comments: [mainComment]
 
                 },

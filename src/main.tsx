@@ -65,7 +65,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       </nav>
     </div>
     
-    <main className="pt-32">
+    <main >
       <RouterProvider router={router} />
     </main>
   </React.StrictMode>

@@ -1,3 +1,4 @@
+import { Comment } from "./Comment.class";
 import { User } from "./User.class";
 
 export class Terrain {
@@ -8,7 +9,8 @@ export class Terrain {
         public position: string,
         public slot: number,
         public isPublic: boolean,
-        public user: User
+        public user: User,
+        public comments:Comment[]
     ) {
 
     }

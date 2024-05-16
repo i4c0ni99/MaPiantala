@@ -1,4 +1,5 @@
 import { Terrain } from "../../types/terrain.class";
+import { CommentCollaps } from "../Collaps/collapsComment.compone";
 import { IButton } from "../button/Button.component";
 
 export interface ICard {
@@ -8,7 +9,7 @@ export interface ICard {
 
 export const Card: React.FC<ICard> = function ({
     terrainCard,
-    Button
+
 
 }: ICard) {
     return (
@@ -30,14 +31,9 @@ export const Card: React.FC<ICard> = function ({
                     <img src={terrainCard.imageUrl} alt={terrainCard.title} className="rounded-xl" />
                 </figure>
             )}
-            <div className="card-body">
-                <h2 className="card-title">{terrainCard.title}</h2>
-                <p>{terrainCard.description}</p>
-                <div className="w-full ">
-                    <div className="w-32">
-                        {Button}
-                    </div>
-                </div>
+
+            <div className="mt-4 mb-4 mx-auto w-4/5">
+            <CommentCollaps terrain={terrainCard}/>
             </div>
         </div>
     );

@@ -3,6 +3,7 @@ import { Comment } from "./Comment.class";
 export class Event {
 
 
+
     constructor(public title: string,
         public description: string,
         public imageUrl: string,
@@ -10,6 +11,7 @@ export class Event {
         public user: User,
         public comments: Comment[],
         public position: String
+
     ) {
 
     }

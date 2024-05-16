@@ -11,7 +11,7 @@ export interface ICollapsComment {
     Button?: React.ReactElement<IButton>
 }
 
-export const CommentCollaps: React.FC<ICollapsComment> = function ({ terrain, event, Button }: ICollapsComment) {
+export const CommentCollaps: React.FC<ICollapsComment> = function ({ terrain, Button }: ICollapsComment) {
     const [user] = useState(new User(
         'i4c0ni99@gmail.com',
         '',

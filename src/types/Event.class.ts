@@ -8,7 +8,8 @@ export class Event {
         public imageUrl: string,
         public date: Date,
         public user: User,
-        public comments: Comment[]
+        public comments: Comment[],
+        public position: String
     ) {
 
     }

@@ -30,8 +30,10 @@ export const Navbar: React.FC<any> = function ({ user }: INavBar) {
                             <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
                             <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
                                 {/* Sidebar content here */}
-                                <li><a href="">Terreni</a></li>
+                                <li><a href="/terrain">Terreni</a></li>
                                 <li ><a href="/event">Eventi</a></li>
+                                <li ><a href="/plant">Piante</a></li>
+
 
                             </ul>
                         </div>

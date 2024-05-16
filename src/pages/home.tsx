@@ -1,12 +1,23 @@
+
 import { Card } from "../components/card/Card.component";
 import { getTerrainsMock } from "../mocks/getTerrains.mock";
 import { Terrain } from "../types/terrain.class";
 import { useState, useEffect } from 'react';
-
-
+import { Button, IButton } from "../components/button/Button.component";
+import { ButtonType } from "../components/button/button-types";
 
 export function Home() {
     const [terrains, setTerrains] = useState<Terrain[]>([]);
+
+    const reserve = () => console.log("Prenotazione");
+    const button: React.ReactElement<IButton> = (
+        <Button
+            style={ButtonType.Secondary}
+            text={"Prenota"}
+            onButtonClick={reserve}
+        >
+        </Button>
+    );
 
     useEffect(() => {
         const fetchData = async () => {
@@ -25,12 +36,13 @@ export function Home() {
         <>
             <button className="btn btn-outline btn-circle btn-lg btn-accent z-50 fixed text-2xl bottom-8 right-36" ><a href="/terrain-upsert">+</a></button>
 
-            <main className="w-6/12 mx-auto">
+            <main className="pt-32 w-6/12 mx-auto">
                 {terrains.map(
                     (terrain) =>
                         <div className="mt-8">
+
                             <Card terrainCard={terrain}
-                            ></Card>
+                            ></Card>                                
                         </div>
                 )}
             </main>

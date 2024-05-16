@@ -2,9 +2,17 @@ import { CreateEditTerrain } from "../components/create-edit-terrain/create-edit
 import { User } from "../types/User.class";
 import { Terrain } from "../types/terrain.class";
 export function TerrainUpsert() {
-    return <>
+    const user = new User(
+        'i4c0ni99@gmail.com',
+        '',
+        'Gigi',
+        'Iaconi',
+        'i4c0ni99')
+
+
+    return (<>
         <div className="size-3/4 mx-auto">
-            <CreateEditTerrain 
+            <CreateEditTerrain
                 terrainCreated={
                     new Terrain(
                         '',
@@ -13,16 +21,26 @@ export function TerrainUpsert() {
                         '',
                         0,
                         false,
+
                         new User(
                             'i4c0ni99@gmail.com',
                             '',
                             'Gigi',
                             'Iaconi',
-                            'i4c0ni99')
-                        )
-                } 
+                            'i4c0ni99',
+
+                            '')
+
+                            'b1a1a87f5a7cbe62533df07e8df2fdee')
+
+                        user,
+                        []
+
+                    )
+                }
                 onSubmission={(data: Terrain) => console.log("AA", data)}>
             </CreateEditTerrain>
         </div>
     </>
+    )
 }   

@@ -1,6 +1,12 @@
 import { useState } from "react";
 import { Moon, Sunny } from "../../assets/Icon/Iconi";
-export const Navbar: React.FC<any> = function ({ }: any) {
+import { User } from "../../types/User.class";
+import { LoginModal } from "../login/login.component";
+
+export interface INavBar {
+    user: User
+}
+export const Navbar: React.FC<any> = function ({ user }: INavBar) {
     const [theme, setTheme] = useState('light');
 
     function toggleTheme() {
@@ -9,7 +15,8 @@ export const Navbar: React.FC<any> = function ({ }: any) {
 
     return (
         <>
-            <div className="navbar bg-base-300 rounded-3xl ">
+
+            <div className="navbar bg-base-300 rounded-3xl  ">
                 <div className="navbar-start">
                     <div className="drawer ">
                         <input id="my-drawer" type="checkbox" className="drawer-toggle" />
@@ -56,13 +63,16 @@ export const Navbar: React.FC<any> = function ({ }: any) {
                         </div>
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                             <li>
-                                <a className="justify-between">
+                                <a href="/profile" className="justify-between">
                                     Profile
-                                    <span className="badge">New</span>
                                 </a>
                             </li>
                             <li><a>Settings</a></li>
-                            <li><a>Logout</a></li>
+                            {user ? <li><a>Logout</a></li> :
+
+                                <LoginModal />
+
+                            }
                         </ul>
                     </div>
                 </div>

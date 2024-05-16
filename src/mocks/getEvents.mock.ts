@@ -51,7 +51,9 @@ export function getEventsMock(): Promise<Event[]> {
                 
 
 
+
             
+
 
             {
                 title: "Dolor Sit",
@@ -71,7 +73,6 @@ export function getEventsMock(): Promise<Event[]> {
 
                 },
 
-            
 
         ]);
     });

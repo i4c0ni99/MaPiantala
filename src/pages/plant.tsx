@@ -23,7 +23,7 @@ export function PlantPage() {
     return (
         <>
             <button className="btn btn-outline btn-circle btn-lg btn-accent z-50 fixed text-2xl bottom-8 right-36" ><a href="/create-plant">+</a></button>
-            <div className="flex flex-auto gap-4 flex-wrap place-content-center ">
+            <div className="flex flex-auto gap-4 flex-wrap place-content-center pt-32">
                 {plants.map((plant) =>
                     <PlantCard plant={plant}></PlantCard>
                 )}

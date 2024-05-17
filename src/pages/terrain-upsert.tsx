@@ -5,7 +5,7 @@ export function TerrainUpsert() {
 
 
     return (<>
-        <div className="size-3/4 mx-auto">
+        <div className="size-3/4 mx-auto pt-32">
             <CreateEditTerrain
                 terrainCreated={
                     new Terrain(

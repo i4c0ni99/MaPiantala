@@ -5,7 +5,7 @@ import { Event } from "../types/Event.class";
 
 export function EventUpsert() {
     return <>
-        <div className="size-3/4 mx-auto">
+        <div className="size-3/4 mx-auto pt-32">
             <CreateEditEvent
                 eventCreated={
                     new Event(

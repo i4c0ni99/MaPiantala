@@ -6,7 +6,8 @@ import { useState, useEffect } from 'react';
 import { Button, IButton } from "../components/button/Button.component";
 import { ButtonType } from "../components/button/button-types";
 
-export function Home() {
+
+export function TerrainPage() {
     const [terrains, setTerrains] = useState<Terrain[]>([]);
 
     const reserve = () => console.log("Prenotazione");

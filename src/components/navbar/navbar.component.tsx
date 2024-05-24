@@ -4,9 +4,9 @@ import { User } from "../../types/User.class";
 import { LoginModal } from "../login/login.component";
 
 export interface INavBar {
-    user: User
+    user?: User
 }
-export const Navbar: React.FC<any> = function ({ user }: INavBar) {
+export const Navbar: React.FC<INavBar> = function ({ user }: INavBar) {
     const [theme, setTheme] = useState('light');
 
     function toggleTheme() {

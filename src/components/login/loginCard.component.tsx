@@ -29,17 +29,19 @@ export const HeroLogin: React.FC<IHeroLogin> = function ({
     type == "password" ? setPassword(value) : setEmail(value);
   };
   return (
-    <div className="hero bg-base-300 size-auto ">
+    <div className="card hero bg-base-100 size-auto ">
       <form method="dialog">
         {/* if there is a button in form, it will close the modal */}
-        <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 ">
-          ✕
-        </button>
-        <div className="card flex flex-col w-full max-w-sm shadow-2xl bg-base-100 p-5">
-          <div className="flex flex-row items-center">
+        
+        <div className="card flex flex-col w-full max-w-sm bg-base-100 p-5">
+          <div className="flex flex-row">
+            <div className="flex flex-row items-center">
             <PiPlantLight className="fill-green-700 border size-10 rounded-full border-green-800 m-3" />
             <h1 className="text-green-700 text-3xl m-2"> MaPiantala</h1>
-            
+            </div>
+            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 ">
+          ✕
+        </button>
           </div>
           <div className="text-center">
             <h1 className="text-2xl mt-2">Accedi</h1>

@@ -1,6 +1,7 @@
 import md5 from "md5";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { PiPlantLight } from "react-icons/pi";
+import { UserImage } from "../image-profile/image-profile.component";
 
 export interface IHeroRegister {
   onSubmission?: (data: string) => void;
@@ -46,8 +47,8 @@ export const HeroRegister: React.FC<IHeroRegister> = function ({
   };
 
   return (
-    <div className="hero  bg-base-300 size-full ">
-      <form method="dialog">
+    <div className="card hero bg-base-300 size-full ">
+      <form method="dialog"  className="card-body">
         {/* if there is a button in form, it will close the modal */}
         <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 ">
           ✕
@@ -58,12 +59,11 @@ export const HeroRegister: React.FC<IHeroRegister> = function ({
             <h1 className="text-green-700 text-3xl m-2">MaPiantala</h1>
           </div>
           <div className="text-center">
-            <h1 className="text-xl mt-2">Registra</h1>
+            <h1 className="text-2xl mt-2">Registra</h1>
           </div>
-          <div className="card w-auto max-w-sm shadow-2xl bg-base-100">
-            <form
-              className="card-body h-96 overflow-y-auto scrollbar-hide mb-2 rounded-lg mr-2"
-              onSubmit={handleSubmit}
+          <div className="card w-auto max-w-sm">
+            <div
+              className="h-96 overflow-y-auto scrollbar-hide mb-2 rounded-lg mr-2"
             >
               <div className="form-control">
                 <label className="label">
@@ -98,7 +98,7 @@ export const HeroRegister: React.FC<IHeroRegister> = function ({
                 </label>
                 <input
                   type="email"
-                  placeholder="email"
+                  placeholder="Email"
                   value={email}
                   className="input input-bordered"
                   onChange={handleChange}
@@ -126,24 +126,17 @@ export const HeroRegister: React.FC<IHeroRegister> = function ({
                 </label>
                 <input
                   type="password"
-                  placeholder="password"
+                  placeholder="Riscrivi password"
                   className="input input-bordered"
                   value={verifyPassword}
                   onChange={handleChangeVerifyPassword}
                   //required
                 />
               </div>
-              <button
-                onClick={() =>
-                  (
-                    document.getElementById("my_modal_5") as HTMLDialogElement
-                  ).showModal()
-                }
-                className="btn btn-primary items-center flex-col mt-2"
-              >
-                Continua
-              </button>
-            </form>
+              <div className="form-control">
+                <UserImage />
+              </div>
+            </div>
 
             <p className="items-start mx-8">
               Disponi già di un account MaPiantala?
@@ -156,7 +149,7 @@ export const HeroRegister: React.FC<IHeroRegister> = function ({
               }
               className="items-start mx-8 my-4 underline hover:text-blue-500"
             >
-              Accedi
+              {"->"} Accedi
             </a>
           </div>
         </div>

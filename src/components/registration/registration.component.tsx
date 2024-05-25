@@ -18,7 +18,7 @@ export const UserRegistration = () => {
         <div className="size-auto">
           <HeroRegister
             onSubmission={(data: string) =>
-              console.log("login component", data)
+              console.log("registration component", data)
             }
           />
         </div>

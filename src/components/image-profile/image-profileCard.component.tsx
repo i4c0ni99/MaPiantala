@@ -1,15 +1,24 @@
 import { ChangeEvent, MouseEvent, useState } from "react";
-import { IHeroRegister } from "../registration/registrationCard.component";
+import { PiPlantLight } from "react-icons/pi";
+import { User } from "../../types/User.class";
 
-export const HeroImageAccount: React.FC<IHeroRegister> = function ({
-  onSubmission,
-}: IHeroRegister) {
+export interface IHeroImage {
+  onSubmission?: (data: string) => void
+  user : User
+}
+
+export const HeroImageAccount: React.FC<IHeroImage> = function ({
+  onSubmission,user
+}: IHeroImage) {
   const [profilePicture, setProfilePicture] = useState<string>(
     "https://cdn-icons-png.flaticon.com/512/3237/3237472.png"
   );
 
   const handleSubmit = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
+    user.profilePicture=profilePicture
+    console.log("Form submitted");
+
     if (onSubmission) {
       onSubmission(profilePicture);
     }
@@ -26,30 +35,47 @@ export const HeroImageAccount: React.FC<IHeroRegister> = function ({
   };
 
   return (
-    <div className="card hero bg-base-300 size-full p-5 ">
-      <form className="flex flex-col">
-        <h1 className="text-3xl m-2">Inserisci immagine account</h1>
-        <div className="mx-auto mt-2 ">
-          <img
-            alt="Immagine vuota"
-            className="size-24 rounded-full"
-            src={profilePicture}
-          />
-        </div>
-        <input
-          type="file"
-          className="my-2 mx-auto"
-          onChange={handleChangeImage}
-        />
+    <div className="card hero bg-base-100 size-auto ">
+      <div className="card flex flex-col w-full max-w-sm bg-base-100 p-5">
         <div className="flex flex-row">
-          <p className=" text-info w-auto my-2">
-            *L'immagine può anche non essere inserita
-          </p>
+          <div className="flex flex-row items-center">
+            <PiPlantLight className="fill-green-700 border size-10 rounded-full border-green-800 m-3" />
+            <h1 className="text-green-700 text-3xl m-2"> MaPiantala</h1>
+          </div>
+          {/* FIXME CHIUSURA SCHEDA NON FUNZIONA */}
+          <button
+            className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 "
+          >
+            ✕
+          </button>
         </div>
-        <button className="btn btn-primary w-auto ml-auto" onClick={handleSubmit}>
-          Riepilogo
-        </button>
-      </form>
+        <h1 className="text-3xl m-2">Immagine account</h1>
+        <form>
+          <div className="mx-auto mt-2 ">
+            <img
+              alt="Immagine vuota"
+              className="size-24 rounded-full mx-auto"
+              src={profilePicture}
+            />
+          </div>
+          <input
+            type="file"
+            className="my-2 mx-auto"
+            onChange={handleChangeImage}
+          />
+          <div className="flex flex-row">
+            <p className=" text-info w-auto my-2">
+              *L'immagine può anche non essere inserita
+            </p>
+          </div>
+          <button
+            className="btn btn-primary w-auto ml-auto"
+            onClick={(e) => handleSubmit(e)}
+          >
+            Riepilogo
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

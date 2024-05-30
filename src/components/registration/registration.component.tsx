@@ -1,3 +1,4 @@
+import { User } from "../../types/User.class";
 import { HeroRegister } from "./registrationCard.component";
 
 export const UserRegistration = () => {
@@ -16,10 +17,11 @@ export const UserRegistration = () => {
 
       <dialog id="my_modal_4" className=" modal size-auto mx-auto">
         <div className="size-auto">
-          <HeroRegister
-            onSubmission={(data: string) =>
-              console.log("registration component", data)
-            }
+          <HeroRegister user={new User('','','','','',false)}
+            onSubmission={(data: User) => {
+              console.log("registration component", data);
+              return data;
+            }}
           />
         </div>
       </dialog>

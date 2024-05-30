@@ -1,26 +1,18 @@
-import { HeroImageAccount } from "./image-profileCard.component";
 
-export const UserImage: React.FC<{ onSubmission: (data: string) => void }> = ({
-  onSubmission,
-}) => {
+import { User } from "../../types/User.class";
+import { HeroImageAccount } from "./image-profileCard.component";
+interface IImageProfile{
+  user : User
+}
+export const UserImage : React.FC<IImageProfile> = ({user}) => {
   return (
     <>
-      <button
-        onClick={() =>
-          (
-            document.getElementById("my_modal_5") as HTMLDialogElement
-          ).showModal()
-        }
-        className="btn btn-primary items-center flex-col mt-2"
-      >
-        Continua
-      </button>
       <dialog
         id="my_modal_5"
         className="modal max-sm: size-3/4 mx-auto my-auto"
       >
         <div className="size-auto">
-          <HeroImageAccount onSubmission={onSubmission} />
+          <HeroImageAccount user = {user} />
         </div>
       </dialog>
     </>

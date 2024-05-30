@@ -1,25 +1,21 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import { PiPlantLight } from "react-icons/pi";
-import { UserRegistration } from "../registration/registration.component";
+import md5 from "md5";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { User } from "../../types/User.class";
+import { UserRegistration } from "../registration/registration.component";
+import { PiPlantLight } from "react-icons/pi";
 
 export interface IHeroLogin {
-  onSubmission?: (data: User) => void;
+  onSubmission?: (data: string) => void;
 }
 
 // Simulated database for registered users
 const registeredUsers: User[] = [];
 
 // Function to find a user by email or username
-const findRegisteredUser = (
-  email: string,
-  username: string
-): User | undefined => {
+const findRegisteredUser = (username: string): User | undefined => {
   return registeredUsers.find((user) => {
-    user.email === email || user.username === username
-      ? verifyPassword(user, user.password)
-      : "";
+    user.username === username ? verifyPassword(user, user.password) : "";
   });
 };
 
@@ -31,14 +27,24 @@ export const HeroLogin: React.FC<IHeroLogin> = function ({
   onSubmission,
 }: IHeroLogin) {
   const [username, setUsername] = useState<string>("");
-  const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string>("");
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault;
-    console.log("Form accesso");
+    e.preventDefault();
+    username;
+    password;
+
+    // Check if the user is registered
+    const existingUser = findRegisteredUser(username);
+
+    if (!existingUser) {
+      setErrorMessage("L'utente non è registrato");
+      console.log("User not registered:", existingUser);
+      return;
+    }
 
     // Validazione password
     if (password.length < 6) {
@@ -46,29 +52,22 @@ export const HeroLogin: React.FC<IHeroLogin> = function ({
       return;
     }
 
-    // Check if the user is registered
-    const existingUser = findRegisteredUser(email, username);
-
-    if (!existingUser) {
-      setErrorMessage("Utente non è registrato");
-      console.log("User not registered:", existingUser);
-      return;
-    }
+    cleanError;
 
     if (onSubmission) {
-      onSubmission(existingUser);
+      onSubmission(username);
+
+      onSubmission(md5(password).toString());
     }
+  };
 
+  const cleanError = () => {
     setErrorMessage("");
-  };
+  }
 
-  const handleChangeEmailUsername = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value, type } = e.target;
-    type == "email" ? setEmail(value) : setUsername(value);
-  };
-
-  const handleChangePassword = (e: ChangeEvent<HTMLInputElement>) => {
-    setPassword(e.target.value);
+    type == "password" ? setPassword(value) : setUsername(value);
   };
 
   const togglePasswordVisibility = () => {
@@ -76,85 +75,137 @@ export const HeroLogin: React.FC<IHeroLogin> = function ({
   };
 
   return (
-    <div className="card hero bg-base-100 size-auto ">
-      <form method="dialog">
-        {/* if there is a button in form, it will close the modal */}
-
-        <div className="card flex flex-col w-full max-w-sm bg-base-100 p-5">
-          <div className="flex flex-row">
-            <div className="flex flex-row items-center">
-              <PiPlantLight className="fill-green-700 border size-10 rounded-full border-green-800 m-3" />
-              <h1 className="text-green-700 text-3xl m-2"> MaPiantala</h1>
-            </div>
-            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2 ">
-              ✕
-            </button>
-          </div>
-          <div className="text-center">
-            <h1 className="text-2xl my-2">Accedi</h1>
-          </div>
-          <form className="card w-auto" onSubmit={(e) => handleSubmit(e)}>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Username o Email</span>
-              </label>
-              <input
-                type={"text" || "email"}
-                placeholder="Username o Email"
-                value={username}
-                className="input input-bordered"
-                onChange={(e) => handleChangeEmailUsername(e)}
-                //required
-              />
-            </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Password</span>
-              </label>
-              <div className="relative">
-                <input
-                  type={showPassword ? "text" : "password"}
-                  placeholder="Almeno 6 caratteri"
-                  value={password}
-                  className="input input-bordered w-full pr-10"
-                  onChange={(e) => handleChangePassword(e)}
-                  //required
-                />
-                <button
-                  type="button"
-                  onClick={togglePasswordVisibility}
-                  className="absolute inset-y-0 right-0 pr-3 flex items-center"
-                >
-                  {showPassword ? <FaEyeSlash /> : <FaEye />}
-                </button>
+    <div className="hero bg-base-300 size-full ">
+      <div className="hero-content flex-col">
+        <form method="dialog">
+          {/* if there is a button in form, it will close the modal */}
+          <button onClick={cleanError}className="btn btn-sm btn-circle btn-ghost absolute right-2 top-30 ">
+            ✕
+          </button>
+        </form>
+        <div className="text-center mt-2 size-full">
+          <div className="flex flex-row items-center size-full">
+            <div className="flex w-full mb-2 items-center">
+              <div className="border-2 border-accent rounded-full">
+                <PiPlantLight className="fill-accent px-2 size-12 " />
               </div>
-              <label className="label">
-                <a href="#" className="label-text-alt link link-hover">
-                  Password dimenticata?
-                </a>
-              </label>
+              <h1 className="text-accent text-3xl lg:text-5xl size-full text-center">
+                MaPiantala
+              </h1>
             </div>
-            <div>
+          </div>
+          <div className="divider divider-accent " />
+
+          <div className="sm:flex flex-row-reverse items-center">
+            <div className="mx-10">
+              <h1 className="text-2xl lg:text-5xl mb-2 font-bold ">
+                Accedi ora!
+              </h1>
+              <p className="py-2 mt-2 hidden sm:block text-sm text-left">
+                <li className="mt-8">
+                  Accedi per Trasformare il Tuo Pollice Verde! Benvenuti su
+                  MaPiantala, l'applicazione definitiva per gli amanti delle
+                  piante!
+                </li>
+                <li className="mt-2">
+                  {" "}
+                  Per iniziare a esplorare il nostro vasto database di piante,
+                  ottenere consigli personalizzati sulla cura delle tue piante e
+                  connetterti con una comunità di appassionati, effettua
+                  l'accesso al tuo account.
+                </li>
+                <li className="mt-2">
+                  {" "}
+                  Con MaPiantala, il tuo giardino è sempre a portata di mano.
+                  Accedi ora e inizia a far crescere il tuo pollice verde!
+                </li>
+              </p>
+            </div>
+            <div className="card shadow-2xl bg-base-100 p-4 size-full">
+              <form onSubmit={(e) => handleSubmit(e)}>
+                <div className="form-control ">
+                  <label className="label">
+                    <span className="label-text">Username</span>
+                  </label>
+                  <input
+                    type={"text"}
+                    placeholder="Username"
+                    name="username"
+                    value={username}
+                    className="input input-bordered input-accent"
+                    onChange={(e) => handleChange(e)}
+                    //required
+                  />
+                </div>
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Password</span>
+                  </label>
+                  <div className="relative">
+                    <input
+                      type={showPassword ? "text" : "password"}
+                      placeholder="Almeno 6 caratteri"
+                      name="password"
+                      value={password}
+                      className="input input-bordered input-accent w-full pr-10"
+                      onChange={(e) => handleChange(e)}
+                      //required
+                    />
+                    <button
+                      type="button"
+                      onClick={togglePasswordVisibility}
+                      className="absolute inset-y-0 right-0 pr-3 flex items-center"
+                    >
+                      {showPassword ? <FaEyeSlash /> : <FaEye />}
+                    </button>
+                  </div>
+                  <label className="label">
+                    <a href="#" className="label-text-alt link link-hover">
+                      Password dimenticata?
+                    </a>
+                  </label>
+                </div>
+                <div className="form-control">
+                  <button
+                    type="submit"
+                    className="btn btn-outline btn-accent  my-3"
+                  >
+                    Accedi
+                  </button>
+                </div>
+              </form>
+
               {errorMessage && (
-                <div className="alert alert-error">
+                <div role="alert" className="alert alert-error flex flex-row">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="stroke-current shrink-0 h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
                   <span>{errorMessage}</span>
                 </div>
               )}
+
+              <div className="form-control">
+                <div className="divider divider-accent">
+                  Sei nuovo su MaPiantala?
+                </div>
+              </div>
+              <div className="form-control">
+                <UserRegistration />
+              </div>
             </div>
-            <div className="form-control">
-              <button type="submit" className="btn btn-primary my-3">
-                Accedi
-              </button>
-            </div>
-          </form>
-          <div className="form-control">
-            <div className="divider divider-info">Sei nuovo su MaPiantala?</div>
-          </div>
-          <div className="form-control">
-            <UserRegistration />
           </div>
         </div>
-      </form>
+      </div>
     </div>
   );
 };

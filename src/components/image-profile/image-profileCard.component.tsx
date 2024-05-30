@@ -35,12 +35,12 @@ export const HeroImageAccount: React.FC<IHeroImage> = function ({
   };
 
   return (
-    <div className="card hero bg-base-100 size-auto ">
-      <div className="card flex flex-col w-full max-w-sm bg-base-100 p-5">
+    <div className="hero bg-base-300 size-auto items-center ">
+      <div className="card flex flex-col w-full max-w-sm p-5">
         <div className="flex flex-row">
           <div className="flex flex-row items-center">
-            <PiPlantLight className="fill-green-700 border size-10 rounded-full border-green-800 m-3" />
-            <h1 className="text-green-700 text-3xl m-2"> MaPiantala</h1>
+            <PiPlantLight className="fill-accent border size-10 rounded-full border-green-800 m-3" />
+            <h1 className="text-accent text-3xl m-2"> MaPiantala</h1>
           </div>
           {/* FIXME CHIUSURA SCHEDA NON FUNZIONA */}
           <button
@@ -50,8 +50,8 @@ export const HeroImageAccount: React.FC<IHeroImage> = function ({
           </button>
         </div>
         <h1 className="text-3xl m-2">Immagine account</h1>
-        <form>
-          <div className="mx-auto mt-2 ">
+        <form className="bg-base-100 p-4 rounded-lg">
+          <div className="mx-auto mt-2">
             <img
               alt="Immagine vuota"
               className="size-24 rounded-full mx-auto"
@@ -64,12 +64,12 @@ export const HeroImageAccount: React.FC<IHeroImage> = function ({
             onChange={handleChangeImage}
           />
           <div className="flex flex-row">
-            <p className=" text-info w-auto my-2">
+            <p className=" text-accent w-auto my-2">
               *L'immagine può anche non essere inserita
             </p>
           </div>
           <button
-            className="btn btn-primary w-auto ml-auto"
+            className="btn btn-accent btn-outline w-auto ml-auto"
             onClick={(e) => handleSubmit(e)}
           >
             Riepilogo

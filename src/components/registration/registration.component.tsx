@@ -10,13 +10,13 @@ export const UserRegistration = () => {
             document.getElementById("my_modal_4") as HTMLDialogElement
           ).showModal()
         }
-        className="btn btn-primary mx-2"
+        className="btn btn-outline btn-accent mx-2"
       >
         Crea un nuovo account MaPiantala
       </button>
 
-      <dialog id="my_modal_4" className=" modal size-auto mx-auto">
-        <div className="size-auto">
+      <dialog id="my_modal_4" className=" modal w-11/12 mx-auto">
+        <div className="w-full h-auto">
           <HeroRegister user={new User('','','','','',false)}
             onSubmission={(data: User) => {
               console.log("registration component", data);

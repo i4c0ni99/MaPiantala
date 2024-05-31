@@ -15,10 +15,14 @@ import { EventUpsert } from './pages/event-upser.tsx';
 import { PlantPage } from './pages/plant.tsx';
 import { PlantUpsert } from './pages/plant-upsert.tsx';
 import { TerrainPage } from './pages/terrain.tsx';
+
 import { TerrainAdminPage } from './pages/terrain-admin.tsx';
 import { TerrainDetailAdminPage } from './pages/terrain-detail-admin.tsx';
 import { EventAdminPage } from './pages/event-admin.tsx';
 import { EventDetailAdminPage } from './pages/event-deatil-admin.tsx';
+
+import { PlantPageDetail } from './pages/plant-detail.tsx';
+
 
 const router = createBrowserRouter([
     {
@@ -42,8 +46,12 @@ const router = createBrowserRouter([
         element: <EventPage />
     },
     {
-        path: "/plant",
-        element: <PlantPage />
+        path: "/plants",
+        element: <PlantPage/>
+    },
+    {
+        path: "/plants/:plantId",
+        element: <PlantPageDetail/>
     },
     {
         path: "/terrain",

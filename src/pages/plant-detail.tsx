@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { PlantCard } from "../components/plant-card/plant-card.component";
 import { Plant } from "../types/Plant.class";
 import { getPlantsMock } from "../mocks/getPlants.mock";
+import { PlantCardDetail } from "../components/plant-detail/plant-detail-card";
+import { useParams } from "react-router-dom";
 
+export function PlantPageDetail() {
 
-
-export function PlantPage() {
+    const { plantId } = useParams()
     const [plants, setPlants] = useState<Plant[]>([]);
 
     useEffect(() => {
@@ -20,18 +21,13 @@ export function PlantPage() {
 
         fetchData();
     }, []);
-
     return (
-        <>
-            <button className="btn btn-outline btn-circle btn-lg btn-accent z-50 fixed text-2xl bottom-8 right-36" ><a href="/create-plant">+</a></button>
-            <div className="flex flex-auto gap-4 flex-wrap place-content-center pt-32">
-                {plants.map((plant) =>
-                  
-                        <PlantCard plant={plant} />
-                   
-                )}
-            </div>
-        </>
+        <div className="mx-auto size-full">
 
+            <PlantCardDetail plant={plants.find(plant => plant.id.toString() === plantId)} />
+
+
+        </div>
     )
+
 }

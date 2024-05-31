@@ -14,12 +14,12 @@ export const CreateEditEvent = ({
 }: IEvent) => {
     // Initial state for the form
     const [event, setEvent] = useState<Event>(
-        new Event(eventCreated.title, eventCreated.description, eventCreated.imageUrl, eventCreated.date, eventCreated.user, eventCreated.comments,eventCreated.position,)
+        new Event(eventCreated.id,eventCreated.partecipantsNumer,eventCreated.title,eventCreated.description,eventCreated.imageUrl,eventCreated.date,eventCreated.user,eventCreated.comments,eventCreated.position,eventCreated.isPublic)
     );
 
     useEffect(() => {
         setEvent(
-            new Event(eventCreated.title, eventCreated.description, eventCreated.imageUrl, eventCreated.date, eventCreated.user, eventCreated.comments,eventCreated.position)
+            new Event(eventCreated.id,eventCreated.partecipantsNumer,eventCreated.title,eventCreated.description,eventCreated.imageUrl,eventCreated.date,eventCreated.user,eventCreated.comments,eventCreated.position,eventCreated.isPublic)
         )
     }, [eventCreated]);
 
@@ -48,15 +48,7 @@ export const CreateEditEvent = ({
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         // Create a new Terrain instance with the form data
-        const newEvent = new Event(
-            event.title,
-            event.description,
-            event.imageUrl,
-            event.date,
-            event.user,
-            event.comments,
-            event.position
-        );
+        const newEvent = new Event(event.id,event.partecipantsNumer,event.title,event.description,event.imageUrl,event.date,event.user,event.comments,event.position,event.isPublic)
         console.log('New Terrain Created:', newEvent);
 
         // Optional callback on submission

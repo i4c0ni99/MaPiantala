@@ -46,11 +46,13 @@ export function getTerrainsMock(): Promise<Terrain[]> {
 
     return new Promise((resolve) => {
         resolve([{
-            title: "Title 1",
+            id: 1,
+            title: "Terrenno caposaldo",
             description: "Description 1",
             imageUrl: "https://placeholder.com/500x500",
-            position: "Position 1",
+            position: "Via Giacomo caldora ,L'aquila",
             slot: 1,
+            terrainSize: 1000,
             isPublic: true,
             user: {
                 email: "user1@example.com",
@@ -66,11 +68,13 @@ export function getTerrainsMock(): Promise<Terrain[]> {
         },
 
         {
-            title: "Title 1",
-            description: "Description 1",
+            id : 2,
+            title: "Banane express",
+            description: "Terreno rigloglioso che ha dato sempre i suoi frutti dalle piccole dimensioni e dalla terra morbida,di conseguenza puo essere facilmente lavorato senza l'uso di macchinari agricoli  ",
             imageUrl: "https://placeholder.com/500x500",
-            position: "Position 1",
+            position: "Via Genova 48 Giulianova",
             slot: 1,
+            terrainSize: 2000,
             isPublic: true,
             user: {
                 email: "user1@example.com",

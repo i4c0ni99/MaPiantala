@@ -9,10 +9,12 @@ export function TerrainUpsert() {
             <CreateEditTerrain
                 terrainCreated={
                     new Terrain(
+                        0,
                         '',
                         '',
                         '',
                         '',
+                        0,
                         0,
                         false,
 

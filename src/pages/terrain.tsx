@@ -41,7 +41,6 @@ export function TerrainPage() {
                 {terrains.map(
                     (terrain) =>
                         <div className="mt-8">
-
                             <Card terrainCard={terrain} Button={button}                            ></Card>                                
                         </div>
                 )}

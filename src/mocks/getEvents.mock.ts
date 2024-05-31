@@ -35,6 +35,8 @@ export function getEventsMock(): Promise<Event[]> {
     return new Promise((resolve) => {
         resolve([
             {
+                id:1,
+                partecipantsNumer: 25,
                 title: "Lorem Ipsum",
                 description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
                 imageUrl: "https://placeholder.com/500x500",
@@ -50,7 +52,8 @@ export function getEventsMock(): Promise<Event[]> {
                     username: "johndoe",
                     password: "",
                     copertinePicture: ""
-                }
+                },
+                isPublic:false
 
                 },
                 
@@ -61,6 +64,8 @@ export function getEventsMock(): Promise<Event[]> {
 
 
             {
+                id:2,
+                partecipantsNumer : 10,
                 title: "Dolor Sit",
                 description: "Dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt",
                 imageUrl: "https://placeholder.com/600x400",
@@ -74,7 +79,8 @@ export function getEventsMock(): Promise<Event[]> {
                     password: '',
                     username: "janesmith",
                     copertinePicture: ""
-                }, comments: [mainComment]
+                }, comments: [mainComment],
+                isPublic:false
 
                 },
 

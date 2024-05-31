@@ -1,4 +1,4 @@
-import { Terrain } from "./terrain.class";
+
 
 export class User {
     constructor(
@@ -9,7 +9,7 @@ export class User {
         public username: string,
         public password: string,
         public copertinePicture: string
-        
+
 
     ) {
 
@@ -17,6 +17,6 @@ export class User {
 
 
 
-       
+
 
 }

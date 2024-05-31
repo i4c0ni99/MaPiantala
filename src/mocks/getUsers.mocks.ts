@@ -1,6 +1,6 @@
 import { User } from "../types/User.class";
 
-export function getUsers(): Promise<User[]> {
+export function getUsersMock(): Promise<User[]> {
   return new Promise((resolve) => {
     resolve([
       {

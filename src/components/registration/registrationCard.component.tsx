@@ -1,45 +1,61 @@
-import { ChangeEvent, MouseEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { PiPlantLight } from "react-icons/pi";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { User } from "../../types/User.class";
-import { UserImage } from "../image-profile/image-profile.component";
+import { getUsersMock } from "../../mocks/getUsers.mocks";
 
 export interface IHeroRegister {
-  onSubmission?: (data: User) => User;
+  onSubmission: (data: User) => User;
   user: User;
 }
 
 // Simulated database for registered users
-const registeredUsers: User[] = [];
-
-// Function to find a registered user by email
-const findRegisteredUser = (
-  email: string,
-  username: string
-): User | undefined => {
-  return registeredUsers.find(
-    (user) => user.email === email || user.username === username
-  );
-};
 
 export const HeroRegister: React.FC<IHeroRegister> = function ({
   onSubmission,
   user,
 }: IHeroRegister) {
+  const [registratedUsers, setUsers] = useState<User[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+     
+      try {
+      
+        const users: User[] = await getUsersMock();
+        setUsers(users);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  // Function to find a registered user by email
+  const findRegisteredUser = (
+    email: string,
+    username: string
+  ): User | undefined => {
+    return registratedUsers.find(
+      (user) => user.email === email || user.username === username
+    );
+  };
+
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
   const [username, setUsername] = useState<string>("");
   const [verifyPassword, setVerifyPassword] = useState<string>("");
   const [showVerifyPassword, setShowVerifyPassword] = useState<boolean>(false);
   const [showPassword, setShowPassword] = useState<boolean>(false);
-  const [isDialogVisible, setIsDialogVisible] = useState<boolean>(true);
+  /* const [isDialogVisible, setIsDialogVisible] = useState<boolean>(false); */
   const [errorMessage, setErrorMessage] = useState<string>("");
   /*  const [firstName, setFirstName] = useState<string>("");
   const [lastName, setLastName] = useState<string>(""); */
 
   const [newUser, setUser] = useState<User>(user);
 
-  const handleSubmit = (e: MouseEvent<HTMLButtonElement>) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log("Form submitted");
 
@@ -71,19 +87,24 @@ export const HeroRegister: React.FC<IHeroRegister> = function ({
       return;
     }
 
-    cleanError;
+    cleanError();
+
+    console.log(user);
 
     if (onSubmission) {
       onSubmission(user);
     }
 
-    setIsDialogVisible(true);
-    
+    registratedUsers.push(user);
+
+    console.log(registratedUsers);
+
+    /* setIsDialogVisible(true); */
   };
 
   const cleanError = () => {
     setErrorMessage("");
-  }
+  };
 
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -105,54 +126,10 @@ export const HeroRegister: React.FC<IHeroRegister> = function ({
   const toggleVerifyPasswordVisibility = () => {
     setShowVerifyPassword(!showVerifyPassword);
   };
-  /* const handleChangeUsername = (e: ChangeEvent<HTMLInputElement>) => {
-    setUsername(e.target.value);
-  };
-
-  const handleChangeEmail = (e: ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.target.value);
-  };
-
-  const handleChangePassword = (e: ChangeEvent<HTMLInputElement>) => {
-    setPassword(e.target.value);
-  };
-
-  const handleChangeVerifyPassword = (e: ChangeEvent<HTMLInputElement>) => {
-    setVerifyPassword(e.target.value);
-  };
-
-  const handleChangeFirstName = (e: ChangeEvent<HTMLInputElement>) => {
-    setFirstName(e.target.value);
-  };
-
-  const handleChangeLastName = (e: ChangeEvent<HTMLInputElement>) => {
-    setLastName(e.target.value);
-  };
-
- ; */
-
-  /* const handleReset = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-   
-    setUsername("");
-    setEmail("");
-    setPassword("");
-    setVerifyPassword("");
-    setErrorMessage("");
-  }; */
-
-  /* if (isDialogVisible) return <UserImage user={user} />;
-  else */
+  
   return (
     <div className="hero bg-base-300 size-full">
       <div className="hero-content flex-col">
-        <form method="dialog">
-          {/* if there is a button in form, it will close the modal */}
-          <button onClick={cleanError} className="btn btn-sm btn-circle btn-ghost absolute right-2 top-30 ">
-            ✕
-          </button>
-        </form>
-
         <div className="text-center mt-2 size-full">
           <div className="flex flex-row items-center size-full">
             <div className="flex w-full mb-2 items-center">
@@ -193,7 +170,7 @@ export const HeroRegister: React.FC<IHeroRegister> = function ({
 
             <div className="card shadow-2xl bg-base-100 p-4 size-full">
               <form
-                onSubmit={(e) => handleSubmit(e)}
+                onSubmit={handleSubmit}
                 className=" h-72 overflow-y-auto scrollbar-hide"
               >
                 <div className="form-control">
@@ -204,7 +181,7 @@ export const HeroRegister: React.FC<IHeroRegister> = function ({
                     type="text"
                     placeholder="Nome"
                     name="firstName"
-                    value={newUser.firstName}
+                    defaultValue={newUser.firstName}
                     className="input input-bordered"
                     onChange={(e) => handleChange(e)}
                     //required
@@ -218,7 +195,7 @@ export const HeroRegister: React.FC<IHeroRegister> = function ({
                     type="text"
                     placeholder="Cognome"
                     name="lastName"
-                    value={newUser.lastName}
+                    defaultValue={newUser.lastName}
                     className="input input-bordered"
                     onChange={(e) => handleChange(e)}
                     //required
@@ -233,7 +210,7 @@ export const HeroRegister: React.FC<IHeroRegister> = function ({
                     type="text"
                     placeholder="Username"
                     name="username"
-                    value={newUser.username}
+                    defaultValue={newUser.username}
                     className="input input-bordered"
                     onChange={(e) => handleChange(e)}
                     //required
@@ -248,7 +225,7 @@ export const HeroRegister: React.FC<IHeroRegister> = function ({
                     type="email"
                     placeholder="Email"
                     name="email"
-                    value={newUser.email}
+                    defaultValue={newUser.email}
                     className="input input-bordered"
                     onChange={(e) => handleChange(e)}
                     //required
@@ -264,7 +241,7 @@ export const HeroRegister: React.FC<IHeroRegister> = function ({
                       type={showPassword ? "text" : "password"}
                       placeholder="Almeno 6 caratteri"
                       name="password"
-                      value={newUser.password}
+                      defaultValue={newUser.password}
                       className="input input-bordered w-full pr-10"
                       onChange={(e) => handleChange(e)}
                       //required
@@ -289,7 +266,7 @@ export const HeroRegister: React.FC<IHeroRegister> = function ({
                       type={showVerifyPassword ? "text" : "password"}
                       placeholder="Riscrivi password"
                       name="verifyPassword"
-                      value={verifyPassword}
+                      defaultValue={verifyPassword}
                       className="input input-bordered w-full pr-10"
                       onChange={(e) => handleChange(e)}
                       //required
@@ -305,40 +282,32 @@ export const HeroRegister: React.FC<IHeroRegister> = function ({
                   </div>
                 </div>
 
-                <div className="form-control mt-2 flex flex-row ">
-                  {/* <input
-                            type="submit"
-                            name="cancella"
-                            value={"cancella"}
-                            className="btn btn-error items-center flex-col mt-2"
-                          /> */}
+                <div className="form-control mt-2 ">
                   <button
                     type="submit"
-                    className="btn btn-accent my-2 btn-outline w-24"
+                    className="btn btn-accent my-2 btn-outline size-full"
                   >
                     Save
                   </button>
                 </div>
               </form>
               {errorMessage && (
-                
-                  <div role="alert" className="alert alert-error flex felx-row">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="stroke-current shrink-0 h-6 w-6"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
-                    <span>{errorMessage}</span>
-                  </div>
-               
+                <div role="alert" className="alert alert-error flex felx-row">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="stroke-current shrink-0 h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                  <span>{errorMessage}</span>
+                </div>
               )}
               <p className="my-3 text-left">
                 Disponi già di un account MaPiantala?
@@ -356,7 +325,6 @@ export const HeroRegister: React.FC<IHeroRegister> = function ({
             </div>
           </div>
         </div>
-        
       </div>
       {/* {isDialogVisible && (
         <UserImage user={user}/>

@@ -11,6 +11,7 @@ import { TerrainUpsert } from './pages/terrain-upsert.tsx';
 import { Navbar } from './components/navbar/navbar.component.tsx';
 import { EventPage } from './pages/event.tsx';
 import { EventUpsert } from './pages/event-upser.tsx';
+import { RegistrationPage } from './pages/registration.tsx';
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
   {
     path: "/event-upsert",
     element: <EventUpsert />
+  },
+  {
+    path: "/registration",
+    element: <RegistrationPage/>
   }
 
 ]);

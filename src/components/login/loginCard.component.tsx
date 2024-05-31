@@ -1,31 +1,43 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import md5 from "md5";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { User } from "../../types/User.class";
-import { UserRegistration } from "../registration/registration.component";
 import { PiPlantLight } from "react-icons/pi";
+import { getUsersMock } from "../../mocks/getUsers.mocks";
 
 export interface IHeroLogin {
   onSubmission?: (data: string) => void;
 }
 
-// Simulated database for registered users
-const registeredUsers: User[] = [];
-
-// Function to find a user by email or username
-const findRegisteredUser = (username: string): User | undefined => {
-  return registeredUsers.find((user) => {
-    user.username === username ? verifyPassword(user, user.password) : "";
-  });
-};
-
-// Function to control if password is correct
-const verifyPassword = (user: User, password: string) =>
-  user.password === password;
-
 export const HeroLogin: React.FC<IHeroLogin> = function ({
   onSubmission,
 }: IHeroLogin) {
+  // Simulated database for registered users
+  const [registeredUsers, setUsers] = useState<User[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const users: User[] = await getUsersMock();
+        setUsers(users);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  // Function to find a user by email or username
+  const findRegisteredUser = (username: string): User | undefined => {
+    return registeredUsers.find((user) =>
+      user.username === username) 
+  };
+
+  // Function to control if password is correct
+  const verifyPassword = (user: User) =>
+    user.password === password ? user : null;
+
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
@@ -40,6 +52,8 @@ export const HeroLogin: React.FC<IHeroLogin> = function ({
     // Check if the user is registered
     const existingUser = findRegisteredUser(username);
 
+    console.log(existingUser);
+
     if (!existingUser) {
       setErrorMessage("L'utente non è registrato");
       console.log("User not registered:", existingUser);
@@ -52,6 +66,8 @@ export const HeroLogin: React.FC<IHeroLogin> = function ({
       return;
     }
 
+    verifyPassword(existingUser);
+
     cleanError;
 
     if (onSubmission) {
@@ -63,11 +79,11 @@ export const HeroLogin: React.FC<IHeroLogin> = function ({
 
   const cleanError = () => {
     setErrorMessage("");
-  }
+  };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { value, type } = e.target;
-    type == "password" ? setPassword(value) : setUsername(value);
+    const { value, name } = e.target;
+    name == "password" ? setPassword(value) : setUsername(value);
   };
 
   const togglePasswordVisibility = () => {
@@ -79,7 +95,10 @@ export const HeroLogin: React.FC<IHeroLogin> = function ({
       <div className="hero-content flex-col">
         <form method="dialog">
           {/* if there is a button in form, it will close the modal */}
-          <button onClick={cleanError}className="btn btn-sm btn-circle btn-ghost absolute right-2 top-30 ">
+          <button
+            onClick={cleanError}
+            className="btn btn-sm btn-circle btn-ghost absolute right-2 top-30 "
+          >
             ✕
           </button>
         </form>
@@ -200,7 +219,12 @@ export const HeroLogin: React.FC<IHeroLogin> = function ({
                 </div>
               </div>
               <div className="form-control">
-                <UserRegistration />
+                <a
+                  href="/registration"
+                  className="btn btn-outline btn-accent mx-2"
+                >
+                  Crea un nuovo account MaPiantala
+                </a>
               </div>
             </div>
           </div>

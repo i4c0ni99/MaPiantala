@@ -13,31 +13,35 @@ import { ChangeEvent, FormEvent, useState } from "react";
 
 
 interface ICardTErrainDetailAdmin {
-    terrain: Terrain
+    terrain ?: Terrain
 }
 
 export const TerrainDetailAdminCard: React.FC<ICardTErrainDetailAdmin> = function ({ terrain }) {
+   
     const [slots] = useState<number[]>([2, 4, 6, 8, 10, 12, 14, 16, 18, 20])
-    const [slot, setSlot] = useState<number>(terrain.slot)
+    
+    
 
-    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setSlot(parseInt(e.target.value))
+    const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
+        if(terrain)
+        terrain.slot =parseInt(e.target.value)
     };
 
     // Handle form submission
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         // Create a new Terrain instance with the form data
+        if (terrain){
         document.getElementsByName("select").values
-        terrain.slot = slot
         terrain.isPublic = true
         console.log('Terrain is published:', terrain);
-
+        }
 
 
         // Optional callback on submission
 
     };
+    if(terrain)
     return (
         <div className="card card-side bg-base-300 shadow-xl">
 
@@ -63,7 +67,7 @@ export const TerrainDetailAdminCard: React.FC<ICardTErrainDetailAdmin> = functio
                                 Terreno di {terrain.terrainSize} m² da dividere in slot 
                             </span>
                         </div>
-                        <select name="select" value={slot} className="select select-accent w-full max-w-xs" onChange={handleChange}>
+                        <select name="select" value={terrain.slot} className="select select-accent w-full max-w-xs" onChange={handleChange}>
                             {slots.map((s) =>
                                 <option key={s} value={s}>
                                     {s}
@@ -83,5 +87,5 @@ export const TerrainDetailAdminCard: React.FC<ICardTErrainDetailAdmin> = functio
             </div>
         </div>
     )
-
+    
 }

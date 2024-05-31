@@ -9,20 +9,13 @@ export function EventUpsert() {
             <CreateEditEvent
                 eventCreated={
                     new Event(
-                        '',
-                        '',
-                        '',
-                        new Date(),
-                        new User(
-                            'i4c0ni99@gmail.com',
-                            '',
-                            'Gigi',
-                            'Iaconi',
-                            'i4c0ni99',
-                            '',
-                            ''),
-                        [],
-                        ''
+                        0,0,'','','',new Date(),new User('i4c0ni99@gmail.com',
+                                '',
+                                'Gigi',
+                                'Iaconi',
+                                'i4c0ni99',
+                                '',
+                                ''),[],'',true
                     )
                 }
                 onSubmission={(data: Event) => console.log("AA", data)} />

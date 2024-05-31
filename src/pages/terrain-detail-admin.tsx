@@ -23,13 +23,8 @@ export function TerrainDetailAdminPage() {
     }, []);
     //terrains.filter((terrain) => terrain.id.toString() === terrainID)
     return (
-        <div className="size-3/4 mx-auto pt-32">{
-            terrains.map((terrain) => { if (terrain.id.toString() == terrainID) return( 
-               
-                <TerrainDetailAdminCard terrain={terrain} /> 
-                
-        )})
-        }
+        <div className="size-3/4 mx-auto pt-32">
+            <TerrainDetailAdminCard terrain={terrains.find(terrain => terrain.id.toString() === terrainID)} />
         </div>
     )
 

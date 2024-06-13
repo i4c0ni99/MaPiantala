@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 
 
-import { Terrain } from "../types/Terrain.class";
+import { Terrain } from "../types/terrain.class";
 import { getTerrainsMock } from "../mocks/getTerrains.mock";
 import { TerrainAdminCard } from "../components/terrain-card-admin/terrain-card-admin";
 import { Link } from "react-router-dom";

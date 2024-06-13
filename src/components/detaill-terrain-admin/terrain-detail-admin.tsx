@@ -5,7 +5,7 @@
 
 
 import { Link } from "react-router-dom";
-import { Terrain } from "../../types/Terrain.class"
+import { Terrain } from "../../types/terrain.class"
 
 import { MapCard } from "../map-for-card/map-card";
 import { ChangeEvent, FormEvent, useState } from "react";

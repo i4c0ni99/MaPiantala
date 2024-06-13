@@ -1,4 +1,4 @@
-import { Terrain } from "../../types/Terrain.class";
+import { Terrain } from "../../types/terrain.class";
 import { CommentCollaps } from "../Collaps/collapsComment.compone";
 import { IButton } from "../button/Button.component";
 

@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { Terrain } from "../types/Terrain.class";
+import { Terrain } from "../types/terrain.class";
 
 import { useEffect, useState } from "react";
 import { getTerrainsMock } from "../mocks/getTerrains.mock";

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Profile } from "../components/profile/profile.component";
 import { User } from "../types/User.class";
-import { Terrain } from "../types/Terrain.class";
+import { Terrain } from "../types/terrain.class";
 import { getTerrainsMock } from "../mocks/getTerrains.mock";
 import { MyTerrainCard } from "../components/myTerrain/myTerrainCard.component";
 
@@ -45,5 +45,5 @@ export function ProfilePage() {
       </main>
     </>
   );
-  
+
 }

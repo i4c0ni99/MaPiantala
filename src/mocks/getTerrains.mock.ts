@@ -1,4 +1,4 @@
-import { Terrain } from "../types/Terrain.class";
+import { Terrain } from "../types/terrain.class";
 
 export function getTerrainsMock(): Promise<Terrain[]> {
   const user1 = {

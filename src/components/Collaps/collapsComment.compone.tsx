@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { CommentIcon } from "../../assets/Icon/Iconi";
 import { Event } from "../../types/Event.class";
-import { Terrain } from "../../types/Terrain.class";
+import { Terrain } from "../../types/terrain.class";
 import { User } from "../../types/User.class";
 import { IButton } from "../button/Button.component";
 

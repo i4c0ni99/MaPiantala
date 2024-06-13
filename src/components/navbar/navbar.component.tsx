@@ -7,6 +7,7 @@ export interface INavBar {
     user?: User
 }
 export const Navbar: React.FC<INavBar> = function ({ user }: INavBar) {
+
     const [theme, setTheme] = useState('light');
 
     function toggleTheme() {
@@ -30,8 +31,10 @@ export const Navbar: React.FC<INavBar> = function ({ user }: INavBar) {
                             <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
                             <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
                                 {/* Sidebar content here */}
-                                <li><a href="">Terreni</a></li>
+                                <li><a href="/terrain">Terreni</a></li>
                                 <li ><a href="/event">Eventi</a></li>
+                                <li ><a href="/plant">Piante</a></li>
+
 
                             </ul>
                         </div>
@@ -61,9 +64,8 @@ export const Navbar: React.FC<INavBar> = function ({ user }: INavBar) {
                         </div>
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
                             <li>
-                                <a className="justify-between">
+                                <a href="/profile" className="justify-between">
                                     Profile
-                                    <span className="badge">New</span>
                                 </a>
                             </li>
                             <li><a>Settings</a></li>

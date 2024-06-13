@@ -3,7 +3,7 @@ import { ButtonType } from "./button-types";
 export interface IButton {
     style?: ButtonType;
     text: string;
-    onButtonClick: () => void;
+    onButtonClick?: () => void;
 }
 
 export const Button: React.FC<IButton> = ({

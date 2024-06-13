@@ -4,11 +4,13 @@ import { IButton } from "../button/Button.component";
 
 export interface ICard {
     terrainCard: Terrain
-    Button?: React.ReactElement<IButton>;
+    Button: React.ReactElement<IButton>;
 }
 
 export const Card: React.FC<ICard> = function ({
     terrainCard,
+
+
 }: ICard) {
     return (
         <div className="card size-full bg-base-300">
@@ -29,6 +31,7 @@ export const Card: React.FC<ICard> = function ({
                     <img src={terrainCard.imageUrl} alt={terrainCard.title} className="rounded-xl" />
                 </figure>
             )}
+
             <div className="mt-4 mb-4 mx-auto w-4/5">
             <CommentCollaps terrain={terrainCard}/>
             </div>

@@ -8,7 +8,9 @@ export function getTerrainsMock(): Promise<Terrain[]> {
         profilePicture: 'https://www.viaggioff.it/wp-content/uploads/2022/07/Agriexperience-2-770x513.jpg',
         firstName: 'John',
         lastName: 'Doe',
-        username: 'johndoe'
+        username: 'johndoe',
+        password: '',
+        copertinePicture: ''
     };
 
     const user2 = {
@@ -16,7 +18,9 @@ export function getTerrainsMock(): Promise<Terrain[]> {
         profilePicture: 'https://www.viaggioff.it/wp-content/uploads/2022/07/Agriexperience-2-770x513.jpg',
         firstName: 'Jane',
         lastName: 'Smith',
-        username: 'janesmith'
+        username: 'janesmith',
+        password: '',
+        copertinePicture: ''
     };
 
     // Definizione della struttura di una risposta (Answer)
@@ -42,11 +46,13 @@ export function getTerrainsMock(): Promise<Terrain[]> {
 
     return new Promise((resolve) => {
         resolve([{
-            title: "Title 1",
+            id: 1,
+            title: "Terrenno caposaldo",
             description: "Description 1",
             imageUrl: "https://placeholder.com/500x500",
-            position: "Position 1",
+            position: "Via Giacomo caldora ,L'aquila",
             slot: 1,
+            terrainSize: 1000,
             isPublic: true,
             user: {
                 email: "user1@example.com",
@@ -54,27 +60,31 @@ export function getTerrainsMock(): Promise<Terrain[]> {
                 firstName: "John",
                 lastName: "Doe",
                 password: " ",
-                username: "johndoe"
+                username: "johndoe",
+                copertinePicture: ""
+              
             }, comments: [mainComment]
         },
 
         {
-            title: "Title 1",
-            description: "Description 1",
+            id : 2,
+            title: "Banane express",
+            description: "Terreno rigloglioso che ha dato sempre i suoi frutti dalle piccole dimensioni e dalla terra morbida,di conseguenza puo essere facilmente lavorato senza l'uso di macchinari agricoli  ",
             imageUrl: "https://placeholder.com/500x500",
-            position: "Position 1",
+            position: "Via Genova 48 Giulianova",
             slot: 1,
+            terrainSize: 2000,
             isPublic: true,
             user: {
                 email: "user1@example.com",
                 profilePicture: "https://placeholder.com/200x200",
-
-                firstName: "John",
-                lastName: "Doe",
-                username: "johndoe",
-                password: " "
+                firstName: "Jane",
+                lastName: "Smith",
+                username: "janesmith",
+                copertinePicture: "",
             },
             comments: [mainComment]
+
 
         }
         ]);

@@ -6,7 +6,8 @@ import { useState, useEffect } from 'react';
 import { Button, IButton } from "../components/button/Button.component";
 import { ButtonType } from "../components/button/button-types";
 
-export function Home() {
+
+export function TerrainPage() {
     const [terrains, setTerrains] = useState<Terrain[]>([]);
 
     const reserve = () => console.log("Prenotazione");
@@ -40,7 +41,6 @@ export function Home() {
                 {terrains.map(
                     (terrain) =>
                         <div className="mt-8">
-
                             <Card terrainCard={terrain} Button={button}                            ></Card>                                
                         </div>
                 )}

@@ -17,7 +17,9 @@ export const CommentCollaps: React.FC<ICollapsComment> = function ({ terrain, Bu
         '',
         'Gigi',
         'Iaconi',
-        'i4c0ni99'))
+        'i4c0ni99',
+        '',
+        ''))
 
     return (
         <div className="collapse size-full bg-base-200">

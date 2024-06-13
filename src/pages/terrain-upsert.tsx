@@ -23,7 +23,7 @@ export function TerrainUpsert() {
                             'Gigi',
                             'Iaconi',
                             'i4c0ni99',
-                            undefined,
+                            '',
                             false,
                             'b1a1a87f5a7cbe62533df07e8df2fdee'),
                         []

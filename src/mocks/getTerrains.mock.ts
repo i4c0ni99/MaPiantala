@@ -86,6 +86,7 @@ export function getTerrainsMock(): Promise<Terrain[]> {
           firstName: "Jane",
           lastName: "Smith",
           username: "janesmith",
+          password: "jannie",
           isAdmin: false,
           copertinePicture: "",
         },

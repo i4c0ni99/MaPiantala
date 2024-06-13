@@ -10,6 +10,8 @@ export function getUsersMock(): Promise<User[]> {
         username: "marioR",
         password: "lolalala",
         isAdmin: true,
+        profilePicture: "",
+        copertinePicture: ""
       },
     ]);
   });

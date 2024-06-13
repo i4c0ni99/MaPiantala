@@ -83,7 +83,7 @@ const router = createBrowserRouter([
     {
         path : "/admin-events/:eventID",
         element : <EventDetailAdminPage/>
-    }
+    },
     {
         path: "/registration",
         element: <RegistrationPage/>

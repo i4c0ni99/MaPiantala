@@ -1,7 +1,7 @@
 import React from "react";
 import { Card } from "../card/Card.component";
 import { Button, IButton } from "../button/Button.component";
-import { Terrain } from "../../types/terrain.class";
+import { Terrain } from "../../types/Terrain.class";
 
 export interface IMyTerrainCard {
     terrain: Terrain

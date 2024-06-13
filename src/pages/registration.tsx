@@ -3,12 +3,9 @@ import { User } from "../types/User.class";
 
 export function RegistrationPage() {
   return (
-    
-        <HeroRegister
-            user={new User('','',
-                '','','',false,' '
-            )}
-            onSubmission={(data: User) => data}
-        />
-    );
+    <HeroRegister
+      user={new User("", "", "", "", "", "", false, "")}
+      onSubmission={(data: User) => data}
+    />
+  );
 }

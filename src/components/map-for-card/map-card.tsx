@@ -1,5 +1,5 @@
 import { APIProvider, AdvancedMarker, Map, useMapsLibrary } from "@vis.gl/react-google-maps"
-import { Terrain } from "../../types/terrain.class"
+import { Terrain } from "../../types/Terrain.class"
 import { Event } from "../../types/Event.class"
 import { useEffect, useState } from "react";
 

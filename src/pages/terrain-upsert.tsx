@@ -1,6 +1,6 @@
 import { CreateEditTerrain } from "../components/create-edit-terrain/create-edit-terrain.component";
 import { User } from "../types/User.class";
-import { Terrain } from "../types/terrain.class";
+import { Terrain } from "../types/Terrain.class";
 export function TerrainUpsert() {
 
     return (<>

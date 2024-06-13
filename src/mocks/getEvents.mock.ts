@@ -8,6 +8,7 @@ export function getEventsMock(): Promise<Event[]> {
         lastName: 'Doe',
         username: 'johndoe',
         password: '',
+        isAdmin: false,
         copertinePicture: ""
         
     };
@@ -48,6 +49,7 @@ export function getEventsMock(): Promise<Event[]> {
                     firstName: "John",
                     lastName: "Doe",
                     username: "johndoe",
+                    isAdmin: false,
                     copertinePicture: ""
                 },
                 isPublic:false
@@ -68,6 +70,7 @@ export function getEventsMock(): Promise<Event[]> {
                     firstName: "Jane",
                     lastName: "Smith",
                     username: "janesmith",
+                    isAdmin: false,
                     copertinePicture: ""
                 }, comments: [mainComment],
                 isPublic:false

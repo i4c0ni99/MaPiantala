@@ -61,11 +61,13 @@ export const HeroRegister: React.FC<IHeroRegister> = function ({
 
     user = new User(
       newUser.email,
+      newUser.profilePicture,
       newUser.firstName,
       newUser.lastName,
       newUser.username,
       newUser.password,
-      false
+      false,
+      newUser.copertinePicture
     );
 
     // Check if the user is already registered

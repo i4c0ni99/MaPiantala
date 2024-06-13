@@ -1,7 +1,7 @@
 
 import { Card } from "../components/card/Card.component";
 import { getTerrainsMock } from "../mocks/getTerrains.mock";
-import { Terrain } from "../types/terrain.class";
+import { Terrain } from "../types/Terrain.class";
 import { useState, useEffect } from 'react';
 import { Button, IButton } from "../components/button/Button.component";
 import { ButtonType } from "../components/button/button-types";

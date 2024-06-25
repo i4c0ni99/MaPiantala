@@ -1,6 +1,7 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { Terrain } from "../../types/terrain.class";
 
+
 export interface ITerrain {
     terrainCreated: Terrain
     onSubmission?: (data: Terrain) => void;
@@ -14,13 +15,13 @@ export const CreateEditTerrain = ({
 }: ITerrain) => {
     // Initial state for the form
     const [terrain, setTerrain] = useState<Terrain>(
-        new Terrain(0,terrainCreated.title,terrainCreated.description,terrainCreated.imageUrl,terrainCreated.position,terrainCreated.slot,terrainCreated.terrainSize,terrainCreated.isPublic,terrainCreated.user,terrainCreated.comments
-        ))
+        new Terrain(0,terrainCreated.title,terrainCreated.description,terrainCreated.imageUrl,terrainCreated.address,terrainCreated.slot,terrainCreated.terrainSize,terrainCreated.isPublic,terrainCreated.user,terrainCreated.comments,
+            0.0,0.0))
 
     useEffect(() => {
         setTerrain(
-            new Terrain(0,terrainCreated.title,terrainCreated.description,terrainCreated.imageUrl,terrainCreated.position,terrainCreated.slot,terrainCreated.terrainSize,terrainCreated.isPublic,terrainCreated.user,terrainCreated.comments
-            )
+            new Terrain(0,terrainCreated.title,terrainCreated.description,terrainCreated.imageUrl,terrainCreated.address,terrainCreated.slot,terrainCreated.terrainSize,terrainCreated.isPublic,terrainCreated.user,terrainCreated.comments,
+            0,0.0)
         )
     }, [terrainCreated]);
 
@@ -32,9 +33,10 @@ export const CreateEditTerrain = ({
             const { checked } = e.target;
             setTerrain(prev => ({
                 ...prev,
-                [name]: checked
+                [name]: checked,
             }));
         } else {
+           
             setTerrain(prev => ({
                 ...prev,
                 [name]: value
@@ -46,13 +48,14 @@ export const CreateEditTerrain = ({
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         // Create a new Terrain instance with the form data
-        const newTerrain = new Terrain(
-           0,terrain.title,terrain.description,terrain.imageUrl,terrain.position,terrain.slot,terrain.terrainSize,terrain.isPublic,terrain.user,terrain.comments
-        );
-        console.log('New Terrain Created:', newTerrain);
+        
+        const newTerrain =  new Terrain(0,terrain.title,terrain.description,terrain.imageUrl,terrain.address,terrain.slot,terrain.terrainSize,terrain.isPublic,terrain.user,terrain.comments,
+            0.0,0.0)
+       
 
         // Optional callback on submission
         if (onSubmission) {
+            console.log('New Terrain Created:', newTerrain);
             onSubmission(newTerrain);
         }
     };
@@ -87,8 +90,8 @@ export const CreateEditTerrain = ({
                                 <span className="label-text">Posizione</span>
                             </div>
                             <input
-                                name="position"
-                                defaultValue={terrain.position}
+                                name="address"
+                                defaultValue={terrain.address}
                                 onChange={handleChange}
                                 type="text"
                                 placeholder="Inserisci l'indirizzo del tuo campo"

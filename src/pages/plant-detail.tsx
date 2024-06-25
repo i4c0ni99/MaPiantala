@@ -23,10 +23,7 @@ export function PlantPageDetail() {
     }, []);
     return (
         <div className="mx-auto size-full">
-
             <PlantCardDetail plant={plants.find(plant => plant.id.toString() === plantId)} />
-
-
         </div>
     )
 

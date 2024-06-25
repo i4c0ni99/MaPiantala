@@ -8,7 +8,8 @@ export class User {
         public lastName: string,
         public username: string,
         public password: string,
-        public copertinePicture: string
+        public copertinePicture: string,
+        public id: number
 
 
     ) {

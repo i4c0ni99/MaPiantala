@@ -1,9 +1,13 @@
+import { useState } from "react";
 import { Terrain } from "../types/terrain.class";
+import ky from "ky";
 
-export function getTerrainsMock(): Promise<Terrain[]> {
+export function getTerrainsMock(location:{lat: number, lng : number}): Promise<Terrain[]> {
     
-
-    const user1 = {
+    
+      
+return new Promise((resolve) => resolve(ky.get(`http://localhost:3000/terrain/lat/${location.lat}/lon/${location.lng}/distance/88`).json())) 
+    /* const user1 = {
         email: 'john.doe@example.com',
         profilePicture: 'https://www.viaggioff.it/wp-content/uploads/2022/07/Agriexperience-2-770x513.jpg',
         firstName: 'John',
@@ -91,5 +95,5 @@ export function getTerrainsMock(): Promise<Terrain[]> {
 
         }
         ]);
-    });
+    }); */
 }

@@ -8,7 +8,26 @@ import { ButtonType } from "../components/button/button-types";
 
 export function Home() {
     const [terrains, setTerrains] = useState<Terrain[]>([]);
+    const [location, setLocation] = useState({ lat: 0, lng: 0 });
+    const [error, setError] = useState("");
+    useEffect(() => {
+        if(navigator.geolocation){
+    navigator.geolocation.getCurrentPosition(
+        (position) => {
+            setLocation({
+                lat: position.coords.latitude,
+                lng: position.coords.longitude,
+              });
+        },
+        (error) => {
+          setError(error.message);
+        }
+      )}
+      else console.log("not found")
+    }, []);
 
+    console.log(location)
+    console.log(error)
     const reserve = () => console.log("Prenotazione");
     const button: React.ReactElement<IButton> = (
         <Button
@@ -22,7 +41,7 @@ export function Home() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const terrains: Terrain[] = await getTerrainsMock();
+                const terrains: Terrain[] = await getTerrainsMock(location);
                 setTerrains(terrains);
             } catch (error) {
                 console.error('Error fetching data:', error);

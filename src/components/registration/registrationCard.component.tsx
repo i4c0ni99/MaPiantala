@@ -1,11 +1,11 @@
-import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { PiPlantLight } from "react-icons/pi";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { User } from "../../types/User.class";
-import { getUsersMock } from "../../mocks/getUsers.mocks";
+
 
 export interface IHeroRegister {
-  onSubmission: (data: User) => User;
+  onSubmission: (data: User) => void;
   user: User;
 }
 
@@ -15,37 +15,14 @@ export const HeroRegister: React.FC<IHeroRegister> = function ({
   onSubmission,
   user,
 }: IHeroRegister) {
-  const [registratedUsers, setUsers] = useState<User[]>([]);
+  
 
-  useEffect(() => {
-    const fetchData = async () => {
-     
-      try {
-      
-        const users: User[] = await getUsersMock();
-        setUsers(users);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
+  
 
-    fetchData();
-  }, []);
 
-  // Function to find a registered user by email
-  const findRegisteredUser = (
-    email: string,
-    username: string
-  ): User | undefined => {
-    return registratedUsers.find(
-      (user) => user.email === email || user.username === username
-    );
-  };
-
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [username, setUsername] = useState<string>("");
-  const [verifyPassword, setVerifyPassword] = useState<string>("");
+  
+  //const [password, setPassword] = useState<string>("");
+  //const [verifyPassword, setVerifyPassword] = useState<string>("");
   const [showVerifyPassword, setShowVerifyPassword] = useState<boolean>(false);
   const [showPassword, setShowPassword] = useState<boolean>(false);
   /* const [isDialogVisible, setIsDialogVisible] = useState<boolean>(false); */
@@ -67,27 +44,23 @@ export const HeroRegister: React.FC<IHeroRegister> = function ({
       newUser.username,
       newUser.password,
       false,
-      newUser.copertinePicture
+      newUser.copertinePicture,
+      newUser.passwordConfirm
     );
 
-    // Check if the user is already registered
-    const existingUser = findRegisteredUser(email, username);
-
-    if (existingUser) {
-      setErrorMessage("Utente è già registrato");
-      console.log("User is already registered:", existingUser);
-      return;
-    }
+    
+    
 
     // Validazione password
-    if (password.length < 6) {
+    if (newUser.password.length < 6) {
       setErrorMessage("La password deve contenere almeno 6 caratteri.");
       return;
     }
-    if (password !== verifyPassword) {
+    /*
+    if (newUser.password !== newUser.passwordConfirm) {
       setErrorMessage("Le password non coincidono.");
       return;
-    }
+    }*/
 
     cleanError();
 
@@ -97,11 +70,6 @@ export const HeroRegister: React.FC<IHeroRegister> = function ({
       onSubmission(user);
     }
 
-    registratedUsers.push(user);
-
-    console.log(registratedUsers);
-
-    /* setIsDialogVisible(true); */
   };
 
   const cleanError = () => {
@@ -112,10 +80,10 @@ export const HeroRegister: React.FC<IHeroRegister> = function ({
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    if (name == "email") setEmail(value);
-    if (name == "password") setPassword(value);
-    if (name == "username") setUsername(value);
-    if (name == "verifyPassword") setVerifyPassword(value);
+ 
+    //if (name == "password") setPassword(value);
+    
+    //if (name == "verifyPassword") setVerifyPassword(value);
     setUser((prev) => ({
       ...prev,
       [name]: value,
@@ -131,7 +99,7 @@ export const HeroRegister: React.FC<IHeroRegister> = function ({
   
   return (
     <div className="hero bg-base-300 size-full">
-      <div className="hero-content flex-col">
+      <div className="hero-content flex-col mt-20">
         <div className="text-center mt-2 size-full">
           <div className="flex flex-row items-center size-full">
             <div className="flex w-full mb-2 items-center">
@@ -267,8 +235,8 @@ export const HeroRegister: React.FC<IHeroRegister> = function ({
                     <input
                       type={showVerifyPassword ? "text" : "password"}
                       placeholder="Riscrivi password"
-                      name="verifyPassword"
-                      defaultValue={verifyPassword}
+                      name="passwordConfirm"
+                      defaultValue={newUser.passwordConfirm}
                       className="input input-bordered w-full pr-10"
                       onChange={(e) => handleChange(e)}
                       //required
@@ -328,9 +296,6 @@ export const HeroRegister: React.FC<IHeroRegister> = function ({
           </div>
         </div>
       </div>
-      {/* {isDialogVisible && (
-        <UserImage user={user}/>
-      )} */}
     </div>
   );
 };

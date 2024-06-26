@@ -15,7 +15,8 @@ export function ProfilePage() {
     "HoldHappy39",
     "",
     false,
-    "https://citynews-torinotoday.stgy.ovh/~media/horizontal-mid/19183715163212/campo-di-colza-collegno-campo-volo-foto-mario-alesina-2.jpg"
+    "https://citynews-torinotoday.stgy.ovh/~media/horizontal-mid/19183715163212/campo-di-colza-collegno-campo-volo-foto-mario-alesina-2.jpg",
+    " "
   );
 
   useEffect(() => {
@@ -36,7 +37,7 @@ export function ProfilePage() {
       <div className="h-96 w-full">
         <Profile user={user}></Profile>
       </div>
-      <main className="pt-32 w-6/12 mx-auto">
+      <main className="mx-auto size-2/3 pb-4">
         {terrains.map((terrain) =>
           terrain.user.email == user.email ? (
             <MyTerrainCard terrain={terrain}></MyTerrainCard>

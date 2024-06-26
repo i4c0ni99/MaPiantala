@@ -10,6 +10,7 @@ export class User {
         public username: string,
         public password: string,
         public isAdmin: boolean,
-        public copertinePicture: string
+        public copertinePicture: string,
+        public passwordConfirm : string
     ) { }
 }

@@ -26,13 +26,13 @@ export const Profile: React.FC<IHeroProfile> = function ({
                     <button className="btn btn-ghost size-full">cambia immagine di copertina</button>
                 </div>
             </div>
-            <div className="self-end w-full pb-4 pl-4 ">
-                <div className="avatar">
-                    <div className="size-28 rounded-full  ">
+            <div className="self-end h-32 w-full pb-2  ">
+                <div className="avatar size-full pl-2">
+                    <div className="size-28 rounded-full">
                         <img src={user.profilePicture} />
                     </div>
-                    <div className="self-end flex-col h-16 w-96 ml-4 mt-10">
-                        <h1 className="text-2xl font-bold">{user.firstName + " " + user.lastName}</h1>
+                    <div className="self-end flex-col size-3/4 pt-6 pl-2 ">
+                        <h1 className="text-2xl font-bold  ">{user.firstName + " " + user.lastName}</h1>
                         <h1 className="text-l font-bold ">{user.username}</h1>
                     </div>
                 </div>

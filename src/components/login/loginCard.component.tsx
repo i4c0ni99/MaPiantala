@@ -1,44 +1,22 @@
-import { ChangeEvent, FormEvent, useEffect, useState } from "react";
-import md5 from "md5";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { User } from "../../types/User.class";
 import { PiPlantLight } from "react-icons/pi";
-import { getUsersMock } from "../../mocks/getUsers.mocks";
 
 export interface IHeroLogin {
-  onSubmission?: (data: string) => void;
+  onSubmission?: (data :{}) => void;
 }
 
 export const HeroLogin: React.FC<IHeroLogin> = function ({
   onSubmission,
 }: IHeroLogin) {
   // Simulated database for registered users
-  const [registeredUsers, setUsers] = useState<User[]>([]);
+  
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const users: User[] = await getUsersMock();
-        setUsers(users);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
 
   // Function to find a user by email or username
-  const findRegisteredUser = (username: string): User | undefined => {
-    return registeredUsers.find((user) =>
-      user.username === username) 
-  };
 
   // Function to control if password is correct
-  const verifyPassword = (user: User) =>
-    user.password === password ? user : null;
-
-  const [username, setUsername] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
   const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -46,19 +24,13 @@ export const HeroLogin: React.FC<IHeroLogin> = function ({
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    username;
-    password;
 
     // Check if the user is registered
-    const existingUser = findRegisteredUser(username);
+    
 
-    console.log(existingUser);
+    
 
-    if (!existingUser) {
-      setErrorMessage("L'utente non è registrato");
-      console.log("User not registered:", existingUser);
-      return;
-    }
+   
 
     // Validazione password
     if (password.length < 6) {
@@ -66,14 +38,13 @@ export const HeroLogin: React.FC<IHeroLogin> = function ({
       return;
     }
 
-    verifyPassword(existingUser);
+    
 
     cleanError;
 
     if (onSubmission) {
-      onSubmission(username);
-
-      onSubmission(md5(password).toString());
+       
+      onSubmission({email : email ,password:password})
     }
   };
 
@@ -83,7 +54,7 @@ export const HeroLogin: React.FC<IHeroLogin> = function ({
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target;
-    name == "password" ? setPassword(value) : setUsername(value);
+    name == "password" ? setPassword(value) : setEmail(value);
   };
 
   const togglePasswordVisibility = () => {
@@ -115,7 +86,7 @@ export const HeroLogin: React.FC<IHeroLogin> = function ({
           </div>
           <div className="divider divider-accent " />
 
-          <div className="sm:flex flex-row-reverse items-center">
+<div className="sm:flex flex-row-reverse items-center">
             <div className="mx-10">
               <h1 className="text-2xl lg:text-5xl mb-2 font-bold ">
                 Accedi ora!
@@ -144,13 +115,13 @@ export const HeroLogin: React.FC<IHeroLogin> = function ({
               <form onSubmit={(e) => handleSubmit(e)}>
                 <div className="form-control ">
                   <label className="label">
-                    <span className="label-text">Username</span>
+                    <span className="label-text">email</span>
                   </label>
                   <input
-                    type={"text"}
-                    placeholder="Username"
+                    type="email"
+                    placeholder="Email"
                     name="username"
-                    value={username}
+                    value={email}
                     className="input input-bordered input-accent"
                     onChange={(e) => handleChange(e)}
                     //required
@@ -213,7 +184,7 @@ export const HeroLogin: React.FC<IHeroLogin> = function ({
                 </div>
               )}
 
-              <div className="form-control">
+<div className="form-control">
                 <div className="divider divider-accent">
                   Sei nuovo su MaPiantala?
                 </div>

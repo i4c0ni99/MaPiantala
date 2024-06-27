@@ -36,12 +36,12 @@ export function Home() {
         <>
             <button className="btn btn-outline btn-circle btn-lg btn-accent z-50 fixed text-2xl bottom-8 right-36" ><a href="/terrain-upsert">+</a></button>
 
-            <main className="pt-32 w-6/12 mx-auto">
+            <main className="pt-32 pl-2 pr-2 sm:size-11/12 lg:size-1/2 mx-auto">
                 {terrains.map(
                     (terrain) =>
                         <div className="mt-8">
 
-                            <Card terrainCard={terrain} Button={button}                            ></Card>                                
+                            <Card terrainCard={terrain} Button={button}></Card>                                
                         </div>
                 )}
             </main>

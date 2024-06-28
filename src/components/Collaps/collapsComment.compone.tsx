@@ -17,6 +17,7 @@ export const CommentCollaps: React.FC<ICollapsComment> = function ({
 }: ICollapsComment) {
   const [user] = useState(
     new User(
+      0,
       "i4c0ni99@gmail.com",
       "",
       "Gigi",
@@ -24,6 +25,7 @@ export const CommentCollaps: React.FC<ICollapsComment> = function ({
       "i4c0ni99",
       "",
       false,
+      "",
       ""
     )
   );

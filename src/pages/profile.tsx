@@ -8,6 +8,7 @@ import { MyTerrainCard } from "../components/myTerrain/myTerrainCard.component";
 export function ProfilePage() {
   const [terrains, setTerrains] = useState<Terrain[]>([]);
   const user: User = new User(
+    1,
     "user1@example.com",
     "https://staticfanpage.akamaized.net/wp-content/uploads/sites/6/2019/08/image16.jpg",
     "Lorenzo",

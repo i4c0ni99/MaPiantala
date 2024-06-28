@@ -16,6 +16,7 @@ export function EventUpsert() {
               "",
               new Date(),
               new User(
+                5,
                 "i4c0ni99@gmail.com",
                 "",
                 "Gigi",
@@ -23,6 +24,7 @@ export function EventUpsert() {
                 "i4c0ni99",
                 "",
                 false,
+                "",
                 ""
               ),
               [],

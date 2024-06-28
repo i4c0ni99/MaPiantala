@@ -37,6 +37,7 @@ export const HeroRegister: React.FC<IHeroRegister> = function ({
     console.log("Form submitted");
 
     user = new User(
+      0,
       newUser.email,
       newUser.profilePicture,
       newUser.firstName,

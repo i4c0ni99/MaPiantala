@@ -32,7 +32,7 @@ export const Card: React.FC<ICard> = function ({
                 </figure>
             )}
 
-            <div className="mt-4 mb-4 mx-auto w-4/5">
+            <div className="pl-2 pr-2">
             <CommentCollaps terrain={terrainCard}/>
             </div>
         </div>

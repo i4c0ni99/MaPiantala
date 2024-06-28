@@ -2,6 +2,7 @@ import { Terrain } from "../types/terrain.class";
 
 export function getTerrainsMock(): Promise<Terrain[]> {
   const user1 = {
+    id:1,
     email: "john.doe@example.com",
     profilePicture:
       "https://www.viaggioff.it/wp-content/uploads/2022/07/Agriexperience-2-770x513.jpg",
@@ -11,9 +12,11 @@ export function getTerrainsMock(): Promise<Terrain[]> {
     password: "",
     isAdmin: false,
     copertinePicture: "",
+    passwordConfirm: " "
   };
 
   const user2 = {
+    id:2,
     email: "jane.smith@example.com",
     profilePicture:
       "https://www.viaggioff.it/wp-content/uploads/2022/07/Agriexperience-2-770x513.jpg",
@@ -23,6 +26,7 @@ export function getTerrainsMock(): Promise<Terrain[]> {
     password: "",
     isAdmin: false,
     copertinePicture: "",
+    passwordConfirm: " "
   };
 
   // Definizione della struttura di una risposta (Answer)
@@ -58,6 +62,7 @@ export function getTerrainsMock(): Promise<Terrain[]> {
         terrainSize: 1000,
         isPublic: true,
         user: {
+            id:3,
           email: "user1@example.com",
           profilePicture: "https://placeholder.com/200x200",
           firstName: "John",
@@ -66,6 +71,7 @@ export function getTerrainsMock(): Promise<Terrain[]> {
           username: "johndoe",
           isAdmin: false,
           copertinePicture: "",
+          passwordConfirm: " "
         },
         comments: [mainComment],
       },
@@ -81,6 +87,7 @@ export function getTerrainsMock(): Promise<Terrain[]> {
         terrainSize: 2000,
         isPublic: true,
         user: {
+            id:4,
           email: "user1@example.com",
           profilePicture: "https://placeholder.com/200x200",
           firstName: "Jane",
@@ -89,6 +96,7 @@ export function getTerrainsMock(): Promise<Terrain[]> {
           password: "jannie",
           isAdmin: false,
           copertinePicture: "",
+          passwordConfirm: " "
         },
         comments: [mainComment],
       },

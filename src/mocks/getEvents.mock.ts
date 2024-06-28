@@ -2,6 +2,7 @@ import { Event } from "../types/Event.class";
 
 export function getEventsMock(): Promise<Event[]> {
     const user1 = {
+        id:0,
         email: 'john.doe@example.com',
         profilePicture: 'https://www.viaggioff.it/wp-content/uploads/2022/07/Agriexperience-2-770x513.jpg',
         firstName: 'John',
@@ -9,7 +10,10 @@ export function getEventsMock(): Promise<Event[]> {
         username: 'johndoe',
         password: '',
         isAdmin: false,
-        copertinePicture: ""
+        copertinePicture: "",
+        passwordConfirm: " "
+        
+        
         
     };
 
@@ -44,6 +48,7 @@ export function getEventsMock(): Promise<Event[]> {
                 position :" Via Corrado IV",
                 comments: [mainComment],
                 user: {
+                    id:1,
                     email: "john.doe@example.com",
                     profilePicture: "https://placeholder.com/200x200",
                     firstName: "John",
@@ -51,7 +56,8 @@ export function getEventsMock(): Promise<Event[]> {
                     username: "johndoe",
                     password: "johnnie",
                     isAdmin: false,
-                    copertinePicture: ""
+                    copertinePicture: "",
+                    passwordConfirm: " "
                 },
                 isPublic:false
               
@@ -66,6 +72,7 @@ export function getEventsMock(): Promise<Event[]> {
                 date: new Date(),
                 position :" Via Corrado IV",
                 user: {
+                    id: 2,
                     email: "jane.smith@example.com",
                     profilePicture: "https://placeholder.com/250x250",
                     firstName: "Jane",
@@ -73,7 +80,8 @@ export function getEventsMock(): Promise<Event[]> {
                     username: "janesmith",
                     password: "jackie",
                     isAdmin: false,
-                    copertinePicture: ""
+                    copertinePicture: " ",
+                    passwordConfirm: " "
                 }, comments: [mainComment],
                 isPublic:false
 

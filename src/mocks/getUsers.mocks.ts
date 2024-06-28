@@ -4,6 +4,7 @@ export function getUsersMock(): Promise<User[]> {
   return new Promise((resolve) => {
     resolve([
       {
+        id:1,
         email: "mario.rossi@gmail.com",
         firstName: "Mario",
         lastName: "Rossi",
@@ -11,7 +12,8 @@ export function getUsersMock(): Promise<User[]> {
         password: "lolalala",
         isAdmin: true,
         profilePicture: "",
-        copertinePicture: ""
+        copertinePicture: "",
+        passwordConfirm: " "
       },
     ]);
   });

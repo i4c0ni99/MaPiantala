@@ -18,6 +18,7 @@ export function TerrainUpsert() {
                         false,
 
                         new User(
+                            5,
                             'i4c0ni99@gmail.com',
                             '',
                             'Gigi',
@@ -25,7 +26,8 @@ export function TerrainUpsert() {
                             'i4c0ni99',
                             '',
                             false,
-                            'b1a1a87f5a7cbe62533df07e8df2fdee'),
+                            'b1a1a87f5a7cbe62533df07e8df2fdee',
+                            ''),
                         []
 
                     )

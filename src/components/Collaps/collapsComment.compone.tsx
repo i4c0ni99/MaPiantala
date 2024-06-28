@@ -6,6 +6,7 @@ import { User } from "../../types/User.class";
 import { IButton } from "../button/Button.component";
 
 export interface ICollapsComment {
+
   terrain: Terrain;
   event?: Event;
   Button?: React.ReactElement<IButton>;
@@ -92,4 +93,5 @@ export const CommentCollaps: React.FC<ICollapsComment> = function ({
       </div>
     </div>
   );
+
 };

@@ -2,13 +2,18 @@ import { Event } from "../types/Event.class";
 
 export function getEventsMock(): Promise<Event[]> {
     const user1 = {
+        id:0,
         email: 'john.doe@example.com',
         profilePicture: 'https://www.viaggioff.it/wp-content/uploads/2022/07/Agriexperience-2-770x513.jpg',
         firstName: 'John',
         lastName: 'Doe',
         username: 'johndoe',
         password: '',
-        copertinePicture: ""
+        isAdmin: false,
+        copertinePicture: "",
+        passwordConfirm: " "
+        
+        
         
     };
 
@@ -31,7 +36,6 @@ export function getEventsMock(): Promise<Event[]> {
     };
 
   
-
     return new Promise((resolve) => {
         resolve([
             {
@@ -44,25 +48,21 @@ export function getEventsMock(): Promise<Event[]> {
                 position :" Via Corrado IV",
                 comments: [mainComment],
                 user: {
+                    id:1,
                     email: "john.doe@example.com",
                     profilePicture: "https://placeholder.com/200x200",
                     firstName: "John",
                     lastName: "Doe",
-
                     username: "johndoe",
-                    password: "",
-                    copertinePicture: ""
+                    password: "johnnie",
+                    isAdmin: false,
+                    copertinePicture: "",
+                    passwordConfirm: " "
                 },
                 isPublic:false
-
+              
                 },
-                
-
-
-
-            
-
-
+               
             {
                 id:2,
                 partecipantsNumer : 10,
@@ -72,13 +72,16 @@ export function getEventsMock(): Promise<Event[]> {
                 date: new Date(),
                 position :" Via Corrado IV",
                 user: {
+                    id: 2,
                     email: "jane.smith@example.com",
                     profilePicture: "https://placeholder.com/250x250",
                     firstName: "Jane",
                     lastName: "Smith",
-                    password: '',
                     username: "janesmith",
-                    copertinePicture: ""
+                    password: "jackie",
+                    isAdmin: false,
+                    copertinePicture: " ",
+                    passwordConfirm: " "
                 }, comments: [mainComment],
                 isPublic:false
 

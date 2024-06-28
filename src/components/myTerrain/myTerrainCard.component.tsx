@@ -14,7 +14,9 @@ export const MyTerrainCard: React.FC<IMyTerrainCard> = function ({ terrain }: IM
     return (
 
         <>
+        <div className="pt-4">
             <Card terrainCard={terrain} Button={button}></Card>
+            </div>
         </>
     )
 

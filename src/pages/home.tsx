@@ -5,7 +5,6 @@ import { Terrain } from "../types/terrain.class";
 import { useState, useEffect } from 'react';
 import { Button, IButton } from "../components/button/Button.component";
 import { ButtonType } from "../components/button/button-types";
-import location from "../utils/location";
 
 
 export function Home() {
@@ -24,7 +23,7 @@ export function Home() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const terrains: Terrain[] = await getTerrainsMockByDistance(location);
+                const terrains: Terrain[] = await getTerrainsMockByDistance();
                 console.log(terrains)
                 setTerrains(terrains);
                 
@@ -42,13 +41,13 @@ export function Home() {
 
 
             <main className="pt-32 pl-2 pr-2 sm:size-11/12 lg:size-1/2 mx-auto">
-                {terrains.map(
+                {terrains?.map(
                     (terrain) =>
                         <div className="mt-8">
                             <Card terrainCard={terrain} Button={button}></Card>                                
                         </div>
                 )
-            )}
+            }
             </main>
         </>
     );

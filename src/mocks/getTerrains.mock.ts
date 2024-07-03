@@ -1,12 +1,13 @@
 
 import { Terrain } from "../types/terrain.class";
 import { axiosInstance } from "../utils/axiosInstance";
+import location from "../utils/location";
 
 
 
 
 
-export async function getTerrainsMockByDistance(location: { lat: number, lng: number }): Promise<Terrain[]> {
+export async function getTerrainsMockByDistance(): Promise<Terrain[]> {
 
 
 

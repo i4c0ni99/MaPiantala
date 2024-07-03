@@ -21,7 +21,6 @@ export const Card: React.FC<ICard> = function ({
                             <img src={terrainCard.user.profilePicture} />
                         </div>
                     </div>
-
                     <div className="badge badge-default mx-1 badge-lg ">{terrainCard.user.username}</div>
                 </div>
             )}

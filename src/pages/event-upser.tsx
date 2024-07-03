@@ -12,14 +12,14 @@ export function EventUpsert() {
             <CreateEditEvent
                 eventCreated={
                     new Event(
-                        0, 0, '', '', '', new Date(), new User('i4c0ni99@gmail.com',
+                        0, 0, '', '', '', new Date(), new User(0,'i4c0ni99@gmail.com',
                             '',
                             'Gigi',
                             'Iaconi',
                             'i4c0ni99',
                             '',
-                            '',
-                            1), [], '', true, 0.0, 0.0, EventCategory.FOOD
+                            true,
+                            '',''), [], '', true, 0.0, 0.0, EventCategory.FOOD
                     )
                 }
                 onSubmission={async (data: Event) => {
@@ -32,5 +32,5 @@ export function EventUpsert() {
         </div>
 
     </>
-  );
+  
 }

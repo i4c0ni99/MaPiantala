@@ -25,7 +25,7 @@ export function TerrainPage() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const terrains: Terrain[] = await getTerrainsMockByDistance(location    );
+                const terrains: Terrain[] = await getTerrainsMockByDistance();
                 setTerrains(terrains);
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -39,7 +39,7 @@ export function TerrainPage() {
         <>
             <button className="btn btn-outline btn-circle btn-lg btn-accent z-50 fixed text-2xl bottom-8 right-36" ><a href="/terrain-upsert">+</a></button>
 
-            <main className="pt-32 w-6/12 mx-auto">
+            <main className="pt-32 pl-2 pr-2 sm:size-11/12 lg:size-1/2 mx-auto">
                 {terrains.map(
                     (terrain) =>
                         <div className="mt-8">

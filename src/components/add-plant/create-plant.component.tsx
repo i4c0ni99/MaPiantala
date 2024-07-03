@@ -14,7 +14,7 @@ export const CreateEditPlant = ({
 }: IPlant) => {
     // Initial state for the form
     const [plant, setPlant] = useState<Plant>(
-        new Plant(0, '', '', '', '', '', '', '', '', '', '', '', '', '')
+        new Plant(0,'', '', '', '', '', '', '', '', '', '', '', '', '')
     );
     
     useEffect(() => {

@@ -13,8 +13,8 @@ export class Terrain {
         public isPublic: boolean,
         public user: User,
         public comments:Comment[],
-        public lat: number,
-        public lng: number
+        public latitude: number,
+        public longitude: number
     ) {
 
     }

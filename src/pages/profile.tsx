@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Profile } from "../components/profile/profile.component";
 import { User } from "../types/User.class";
 import { Terrain } from "../types/terrain.class";
-import { getTerrainsMock } from "../mocks/getTerrains.mock";
+//import { getTerrainsMock } from "../mocks/getTerrains.mock";
 import { MyTerrainCard } from "../components/myTerrain/myTerrainCard.component";
 
 export function ProfilePage() {
@@ -15,8 +15,9 @@ export function ProfilePage() {
         'Lamonaca',
         'HoldHappy39',
         '',
-        'https://citynews-torinotoday.stgy.ovh/~media/horizontal-mid/19183715163212/campo-di-colza-collegno-campo-volo-foto-mario-alesina-2.jpg')
-    useEffect(() => {
+        'https://citynews-torinotoday.stgy.ovh/~media/horizontal-mid/19183715163212/campo-di-colza-collegno-campo-volo-foto-mario-alesina-2.jpg',
+    0)
+    /* useEffect(() => {
         const fetchData = async () => {
             try {
                 const terrains: Terrain[] = await getTerrainsMock();
@@ -27,7 +28,7 @@ export function ProfilePage() {
         };
 
         fetchData();
-    }, []);
+    }, []); */
     return (
         <>
             <div className="h-96 w-full">

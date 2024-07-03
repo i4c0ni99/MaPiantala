@@ -1,5 +1,6 @@
 import { User } from "./User.class";
 import { Comment } from "./Comment.class";
+import { EventCategory } from "./EventCategory.enum";
 export class Event {
 
 
@@ -10,11 +11,14 @@ export class Event {
         public title: string,
         public description: string,
         public imageUrl: string,
-        public date: Date,
+        public scheduledDate: Date,
         public user: User,
         public comments: Comment[],
-        public position: string,
-        public isPublic: boolean
+        public address: string,
+        public isPublic: boolean,
+        public latitude:number,
+        public longitude:number,
+        public category: EventCategory
 
     ) {
 

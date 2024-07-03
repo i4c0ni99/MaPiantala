@@ -33,7 +33,7 @@ export const Card: React.FC<ICard> = function ({
             )}
 
             <div className="mt-4 mb-4 mx-auto w-4/5">
-            <CommentCollaps terrain={terrainCard}/>
+            <CommentCollaps obj={terrainCard}/>
             </div>
         </div>
     );

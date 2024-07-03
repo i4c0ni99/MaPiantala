@@ -2,12 +2,11 @@
 import { CreateEditTerrain } from "../components/create-edit-terrain/create-edit-terrain.component";
 import { User } from "../types/User.class";
 import { Terrain } from "../types/terrain.class";
-import { APIProvider } from "@vis.gl/react-google-maps";
-import { GeocodingService } from "../services/geocoding.service";
-import { useEffect, useState } from "react";
+import { postTerrain } from "../mocks/getTerrains.mock";
+import GeocodingService from "../services/geocoding.service";
 
 export function TerrainUpsert() {
-    const [terrain, setTerrain] = useState<Terrain>(new Terrain(
+    const terrain = new Terrain(
         0,
         '',
         '',
@@ -26,15 +25,15 @@ export function TerrainUpsert() {
 
             '',
 
-            'b1a1a87f5a7cbe62533df07e8df2fdee',1),
+            'b1a1a87f5a7cbe62533df07e8df2fdee', 1),
         [],
         0.0,
         0.0,
-        
-    )
+
     )
 
-  
+
+
     return (<>
         <div className="size-3/4 mx-auto pt-32">
 
@@ -43,23 +42,20 @@ export function TerrainUpsert() {
                     terrain
                 }
                 //JSON.stringify(data)
-                onSubmission={(data: Terrain) => {
-                    setTerrain(data)
-                }}>
+                onSubmission={async (data: Terrain) => {
+                    console.log(data.address)
+                    const address = await GeocodingService.getCoordinates(data.address)
+                    data.latitude = address.location.lat
+                    data.longitude = address.location.lng
+                    console.log(data)
+                postTerrain(data)
+                }
+
+                }>
 
             </CreateEditTerrain>
-            {terrain.address &&
-                (
-                <APIProvider apiKey={"AIzaSyDmRC46vKa33hycgqlvbMMzZifuvohGgj4"} onLoad={() => console.log('Maps API has loaded.')}>
-                    <GeocodingService obj={terrain} ></GeocodingService>
-                </APIProvider>
-                )
-
-            }
-            
-
         </div >
     </>
     )
-    
+
 }   

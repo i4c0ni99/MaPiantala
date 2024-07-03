@@ -2,29 +2,48 @@ import { useParams } from "react-router-dom";
 import { Terrain } from "../types/terrain.class";
 
 import { useEffect, useState } from "react";
-import { getTerrainsMock } from "../mocks/getTerrains.mock";
+import {  getTerrainById } from "../mocks/getTerrains.mock";
 import { TerrainDetailAdminCard } from "../components/detaill-terrain-admin/terrain-detail-admin";
 
 export function TerrainDetailAdminPage() {
     const { terrainID } = useParams()
-    const [terrains, setTerrains] = useState<Terrain[]>([]);
 
+    const [terrain, setTerrain] = useState<Terrain>();
+    const [location, setLocation] = useState({ lat: 0, lng: 0 });
+    const [error, setError] = useState("");
+    useEffect(() => {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    setLocation({
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude,
+                    });
+                },
+                (error) => {
+                    setError(error.message);
+                }
+            )
+        }
+        else console.log(error)
+    }, []);
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const terrains: Terrain[] = await getTerrainsMock();
-                setTerrains(terrains);
+                const terrain: Terrain = await getTerrainById(terrainID);
+                setTerrain(terrain)
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
         };
 
         fetchData();
-    }, []);
-    //terrains.filter((terrain) => terrain.id.toString() === terrainID)
+    }, [terrain]);
+    
+
     return (
         <div className="size-3/4 mx-auto pt-32">
-            <TerrainDetailAdminCard terrain={terrains.find(terrain => terrain.id.toString() === terrainID)} />
+            <TerrainDetailAdminCard terrain={terrain} />
         </div>
     )
 

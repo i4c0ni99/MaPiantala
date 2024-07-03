@@ -1,10 +1,12 @@
 
 import { Card } from "../components/card/Card.component";
-import { getTerrainsMock } from "../mocks/getTerrains.mock";
+import { getTerrainsMockByDistance } from "../mocks/getTerrains.mock";
 import { Terrain } from "../types/terrain.class";
 import { useState, useEffect } from 'react';
 import { Button, IButton } from "../components/button/Button.component";
 import { ButtonType } from "../components/button/button-types";
+import location from "../utils/location";
+
 
 
 export function TerrainPage() {
@@ -23,7 +25,7 @@ export function TerrainPage() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const terrains: Terrain[] = await getTerrainsMock();
+                const terrains: Terrain[] = await getTerrainsMockByDistance(location    );
                 setTerrains(terrains);
             } catch (error) {
                 console.error('Error fetching data:', error);

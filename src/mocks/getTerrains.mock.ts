@@ -1,12 +1,18 @@
-import { useState } from "react";
-import { Terrain } from "../types/terrain.class";
-import ky from "ky";
 
-export function getTerrainsMock(location:{lat: number, lng : number}): Promise<Terrain[]> {
-    
-    
-      
-return new Promise((resolve) => resolve(ky.get(`http://localhost:3000/terrain/lat/${location.lat}/lon/${location.lng}/distance/88`).json())) 
+import { Terrain } from "../types/terrain.class";
+import { axiosInstance } from "../utils/axiosInstance";
+
+
+
+
+
+export async function getTerrainsMockByDistance(location: { lat: number, lng: number }): Promise<Terrain[]> {
+
+
+
+    const result = await axiosInstance.get(`terrain/lat/${location.lat}/lon/${location.lng}/distance/10000`)
+
+    return result.data
     /* const user1 = {
         email: 'john.doe@example.com',
         profilePicture: 'https://www.viaggioff.it/wp-content/uploads/2022/07/Agriexperience-2-770x513.jpg',
@@ -96,4 +102,23 @@ return new Promise((resolve) => resolve(ky.get(`http://localhost:3000/terrain/la
         }
         ]);
     }); */
+}
+export async function getTerrainById(id?: string): Promise<Terrain> {
+    const result = await axiosInstance.get(`terrain/${id}`)
+    return result.data
+
+
+
+}
+export async function postTerrain(terrain: Terrain) {
+    console.log(terrain)
+    await axiosInstance.post('/terrain', {
+        "title": terrain.title,
+        "description": terrain.description,
+        "latitude": terrain.latitude,
+        "longitude": terrain.longitude,
+        "address": terrain.address,
+        "imageUrl": terrain.imageUrl,
+        "userId": terrain.user.id
+    })
 }

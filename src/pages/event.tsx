@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { EventCard } from "../components/event/event.component";
-import { getEventsMock } from "../mocks/getEvents.mock";
+import { getEventsByDistance} from "../mocks/getEvents.mock";
 import { Event } from "../types/Event.class";
 
 export function EventPage() {
@@ -9,7 +9,7 @@ export function EventPage() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const events: Event[] = await getEventsMock();
+                const events: Event[] = await getEventsByDistance();
                 setEvents(events);
             } catch (error) {
                 console.error('Error fetching data:', error);

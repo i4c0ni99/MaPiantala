@@ -46,7 +46,8 @@ export const TerrainDetailAdminCard: React.FC<ICardTErrainDetailAdmin> = functio
         <div className="card card-side bg-base-300 shadow-xl">
 
             <figure className="size-96 mt-8 ml-12 mb-12">
-                <MapCard obj={terrain}></MapCard>
+                <MapCard obj={terrain as Terrain}>
+                </MapCard>
             </figure>
             <div className="card-body size-1/2">
                 <div className="avatar">
@@ -58,7 +59,7 @@ export const TerrainDetailAdminCard: React.FC<ICardTErrainDetailAdmin> = functio
 
 
                 <h1 className="card-title">{terrain.title}</h1>
-                <h4>{terrain.position}</h4>
+                <h4>{terrain.address}</h4>
                 <p>{terrain.description}</p>
                 <form className="w-full" onSubmit={handleSubmit} >
                     <label className="form-control w-full max-w-xs">

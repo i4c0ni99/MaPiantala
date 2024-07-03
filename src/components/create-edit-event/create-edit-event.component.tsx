@@ -1,5 +1,6 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { Event } from "../../types/Event.class";
+import { EventCategory } from "../../types/EventCategory.enum";
 
 export interface IEvent {
     eventCreated: Event
@@ -14,41 +15,42 @@ export const CreateEditEvent = ({
 }: IEvent) => {
     // Initial state for the form
     const [event, setEvent] = useState<Event>(
-        new Event(eventCreated.id,eventCreated.partecipantsNumer,eventCreated.title,eventCreated.description,eventCreated.imageUrl,eventCreated.date,eventCreated.user,eventCreated.comments,eventCreated.position,eventCreated.isPublic)
+        new Event(eventCreated.id, eventCreated.partecipantsNumer, eventCreated.title, eventCreated.description, eventCreated.imageUrl, eventCreated.scheduledDate, eventCreated.user, eventCreated.comments, eventCreated.address, eventCreated.isPublic, eventCreated.latitude, eventCreated.longitude,eventCreated.category)
     );
 
     useEffect(() => {
         setEvent(
-            new Event(eventCreated.id,eventCreated.partecipantsNumer,eventCreated.title,eventCreated.description,eventCreated.imageUrl,eventCreated.date,eventCreated.user,eventCreated.comments,eventCreated.position,eventCreated.isPublic)
+            new Event(eventCreated.id, eventCreated.partecipantsNumer, eventCreated.title, eventCreated.description, eventCreated.imageUrl, eventCreated.scheduledDate, eventCreated.user, eventCreated.comments, eventCreated.address, eventCreated.isPublic, eventCreated.latitude, eventCreated.longitude,eventCreated.category)
         )
     }, [eventCreated]);
 
     // Handle input changes
-    const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value, type } = e.target;
 
-        if (type == "file" && e.target instanceof HTMLInputElement) {
-            if (!e.target.files) return;
-            const file = e.target.files[0]
+
+        if (type== "date" && e.target instanceof HTMLInputElement) {
+            // Safe to access `checked` because it's confirmed as an HTMLInputElement of type checkbox
             setEvent(prev => ({
                 ...prev,
-                [name]: file.text
+                [name]: new Date(value),
             }));
-            console.log(file.text)
-
         } else {
+
             setEvent(prev => ({
                 ...prev,
                 [name]: value
             }));
         }
+
+       
     };
 
     // Handle form submission
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         // Create a new Terrain instance with the form data
-        const newEvent = new Event(event.id,event.partecipantsNumer,event.title,event.description,event.imageUrl,event.date,event.user,event.comments,event.position,event.isPublic)
+        const newEvent = new Event(event.id, event.partecipantsNumer, event.title, event.description, event.imageUrl, event.scheduledDate, event.user, event.comments, event.address, event.isPublic, event.latitude, event.longitude,event.category)
         console.log('New Terrain Created:', newEvent);
 
         // Optional callback on submission
@@ -60,8 +62,8 @@ export const CreateEditEvent = ({
     return (
         <>
             <div className="card lg:card-side bg-base-300 shadow-xl">
-                <figure className="w-full p-24">
-                    <img className="mask mask-squircle" src="https://daisyui.com/images/stock/photo-1494232410401-ad00d5433cfa.jpg" alt="Album" />
+                <figure className="w-full">
+                    <img className="size-full" src={event.imageUrl} alt="Album" />
                 </figure>
 
                 <form className="w-full" onSubmit={handleSubmit}>
@@ -87,8 +89,8 @@ export const CreateEditEvent = ({
                                 <span className="label-text">Posizione</span>
                             </div>
                             <input
-                                name="position"
-                                defaultValue={event.position}
+                                name="address"
+                                defaultValue={event.address}
                                 onChange={handleChange}
                                 type="text"
                                 placeholder="Inserisci l'indirizzo del tuo campo"
@@ -113,13 +115,46 @@ export const CreateEditEvent = ({
 
                         <label className="form-control w-full max-w-xs">
                             <div className="label">
-                                <span className="label-text">Scegli L'immagine</span>
+                                <span className="label-text">Scegli una data per il tuo evento </span>
                             </div>
-                            <input name="imageUrl" type="file" onChange={handleChange}
-                                accept="immage/*" className="file-input file-input-bordered file-input-accent w-full max-w-xs" required />
+                            <input
+                                name="scheduledDate"
+                                defaultValue={`${event.scheduledDate?.getDate}`}
+                                onChange={handleChange}
+                                type="date"
+                                className="input input-accent w-full max-w-xs"
+                            />
                         </label>
 
+                        <label className="form-control w-full max-w-xs">
+                            <div className="label">
+                                <span className="label-text">Scgli un immagine dal web per il tuo evento</span>
+                            </div>
+                            <input
+                                name="imageUrl"
+                                defaultValue={event.imageUrl}
+                                onChange={handleChange}
+                                type="text"
+                                placeholder="URL"
+                                className="input input-accent w-full max-w-xs"
+                            />
+                        </label>
 
+                        <label className="form-control w-full max-w-xs">
+                            <div className="label w-full">
+                                <span className=" font-bold w-full">
+                                    Evento {event.category}
+                                </span>
+                            </div>
+                            <select name="category" value={event.category} className="select select-accent w-full max-w-xs" onChange={handleChange}>
+                                {Object.values(EventCategory).map((s) =>
+                                    <option key={s} value={s}>
+                                        {s}
+                                    </option>)
+
+                                }
+                            </select>
+                        </label>
                         <div className="card-actions mt-10">
                             <button type="submit" className="btn btn-accent w-24">Save</button>
                         </div>

@@ -33,7 +33,6 @@ export function TerrainUpsert() {
     )
 
 
-
     return (<>
         <div className="size-3/4 mx-auto pt-32">
 
@@ -49,6 +48,7 @@ export function TerrainUpsert() {
                     data.longitude = address.location.lng
                     console.log(data)
                 postTerrain(data)
+
                 }
 
                 }>
@@ -59,3 +59,4 @@ export function TerrainUpsert() {
     )
 
 }   
+

@@ -1,4 +1,3 @@
-
 import { CreateEditEvent } from "../components/create-edit-event/create-edit-event.component";
 import { User } from "../types/User.class";
 import { Event } from "../types/Event.class";
@@ -7,6 +6,7 @@ import { postEvent } from "../mocks/getEvents.mock";
 import { EventCategory } from "../types/EventCategory.enum";
 
 export function EventUpsert() {
+
     return <>
         <div className="size-3/4 mx-auto pt-32">
             <CreateEditEvent
@@ -30,5 +30,7 @@ export function EventUpsert() {
                 }} />
 
         </div>
+
     </>
-}   
+  );
+}

@@ -12,6 +12,7 @@ export interface IHeroRegister {
 
 export const HeroRegister: React.FC<IHeroRegister> = function ({
   onSubmission,
+
 }: IHeroRegister) {
   
   const [showVerifyPassword, setShowVerifyPassword] = useState<boolean>(false);
@@ -19,6 +20,7 @@ export const HeroRegister: React.FC<IHeroRegister> = function ({
   const [errorMessage, setErrorMessage] = useState<string>("");
 
   const [newUser, setUser] = useState<User>(new User("", "", "", "", "", "", "", false, ""));
+
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -32,10 +34,12 @@ export const HeroRegister: React.FC<IHeroRegister> = function ({
       newUser.lastName,
       newUser.username,
       newUser.password,
+
       newUser.passwordConfirm,
       false,
       newUser.copertinePicture,
     );
+
 
     // Validazione password
     if (newUser.password.length < 6) {
@@ -132,7 +136,9 @@ export const HeroRegister: React.FC<IHeroRegister> = function ({
                     defaultValue={newUser.firstName}
                     className="input input-bordered"
                     onChange={(e) => handleChange(e)}
+
                     required
+
                   />
                 </div>
                 <div className="form-control">
@@ -146,7 +152,9 @@ export const HeroRegister: React.FC<IHeroRegister> = function ({
                     defaultValue={newUser.lastName}
                     className="input input-bordered"
                     onChange={(e) => handleChange(e)}
+
                     required
+
                   />
                 </div>
 
@@ -161,7 +169,9 @@ export const HeroRegister: React.FC<IHeroRegister> = function ({
                     defaultValue={newUser.username}
                     className="input input-bordered"
                     onChange={(e) => handleChange(e)}
+
                     required
+
                   />
                 </div>
 
@@ -176,7 +186,9 @@ export const HeroRegister: React.FC<IHeroRegister> = function ({
                     defaultValue={newUser.email}
                     className="input input-bordered"
                     onChange={(e) => handleChange(e)}
+
                     required
+
                   />
                 </div>
 
@@ -193,6 +205,8 @@ export const HeroRegister: React.FC<IHeroRegister> = function ({
                       className="input input-bordered w-full pr-10"
                       onChange={(e) => handleChange(e)}
                       required
+
+
                     />
 
                     <button
@@ -214,9 +228,11 @@ export const HeroRegister: React.FC<IHeroRegister> = function ({
                       type={showVerifyPassword ? "text" : "password"}
                       placeholder="Riscrivi password"
                       name="passwordConfirm"
+
                       className="input input-bordered w-full pr-10"
                       onChange={(e) => handleChange(e)}
                       required
+
                     />
 
                     <button

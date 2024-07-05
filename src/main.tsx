@@ -24,6 +24,7 @@ import { EventDetailAdminPage } from './pages/event-deatil-admin.tsx';
 import { PlantPageDetail } from './pages/plant-detail.tsx';
 import { MyProvider } from './services/MyContext.tsx';
 
+
 const router = createBrowserRouter([
     {
         path: "/app",
@@ -88,6 +89,7 @@ const router = createBrowserRouter([
     {
         path: "/registration",
         element: <RegistrationPage />
+
     }
 ]);
 

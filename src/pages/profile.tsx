@@ -38,7 +38,8 @@ export function ProfilePage() {
       <div className="h-96 w-full">
         <Profile user={user}></Profile>
       </div>
-      <main className="mx-auto size-2/3 pb-4">
+
+      <main className="mx-auto pb-4 pl-2 pr-2 sm:size-11/12 lg:size-1/2 ">
         {terrains.map((terrain) =>
           terrain.user.email == user.email ? (
             <MyTerrainCard terrain={terrain}></MyTerrainCard>

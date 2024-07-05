@@ -1,4 +1,5 @@
 
+
 import { HeroLogin } from "./loginCard.component";
 import { axiosInstance, setAuthToken } from "../../utils/axiosInstance";
 import { useContext } from "react";
@@ -40,4 +41,3 @@ const {data,setData} = useContext(MyContext)
             </dialog>
         </>
     );
-};

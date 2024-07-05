@@ -14,6 +14,7 @@ export class User {
         public passwordConfirm: string,
         public isAdmin: boolean,
         public copertinePicture: string,
+
     ) { }
 
 }

@@ -15,9 +15,9 @@ export function ProfilePage() {
     "Lamonaca",
     "HoldHappy39",
     "",
+    "",
     false,
     "https://citynews-torinotoday.stgy.ovh/~media/horizontal-mid/19183715163212/campo-di-colza-collegno-campo-volo-foto-mario-alesina-2.jpg",
-    " "
   );
 
   useEffect(() => {

@@ -23,9 +23,9 @@ export function EventUpsert() {
                 "Iaconi",
                 "i4c0ni99",
                 "",
+                "",
                 false,
                 "",
-                ""
               ),
               [],
               "",

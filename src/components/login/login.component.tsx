@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+
 import { HeroLogin } from "./loginCard.component";
-import ky from 'ky';
-import { axiosInstance } from "../../utils/axiosInstance";
+import { axiosInstance, setAuthToken } from "../../utils/axiosInstance";
+import { useContext } from "react";
+import { MyContext } from "../../services/MyContext";
+
 
 export const LoginModal = function () {
-
+const {data,setData} = useContext(MyContext)
     return (
         <>
             <li>
@@ -22,9 +24,15 @@ export const LoginModal = function () {
             <dialog id="my_modal_3" className=" modal w-3/4 h-full mx-auto">
                 <div className="w-full h-auto ">
                     <HeroLogin
-                        onSubmission={async (data) => {
-                            const respone = await axiosInstance.post('http://localhost:3000/user/signin', data)
-                            console.log(respone)
+                        onSubmission={async (submitted) => {
+                            const respone = await axiosInstance.post('http://localhost:3000/user/signin', submitted)
+                            setAuthToken(respone.data['token'])
+                            const user = await axiosInstance.get("/user/me")
+                            setData({
+                              token: respone.data['token'],
+                              user:user.data
+                            })
+                            console.log(data)
                         }
                         }
                     />

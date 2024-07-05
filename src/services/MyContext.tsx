@@ -1,20 +1,33 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, ReactNode, useEffect, useState } from "react";
 import { User } from "../types/User.class";
 
-const defaultValue = {
-    data: {token: " ",user: User},
-    setData: () => { },
+
+
+interface Data{
+    token: " ",
+    user: User  
+}
+
+interface ContextProps{
+    data:Data,
+    setData: (data:Data)=> void
+}
+const defaultValue : ContextProps = {
+    data: {token: " ",user: new User(0,"","","","","","","",false,"")},
+    setData: () => {}
 };
 
-export const MyContext = createContext(defaultValue);
+export const MyContext = createContext<ContextProps>(defaultValue);
+interface ProviderProps{
+    children : ReactNode;
+}
+export const MyProvider = ({ children }:ProviderProps) => {
+    const initialData: Data = JSON.parse(localStorage.getItem('myContextData')?.toString() || 'null') || {token: " ",user: User}
 
-export const MyProvider = ({ children }) => {
-    const initialData = localStorage.getItem('myContextData') || 'InitialData'
-
-    const [data, setData] = useState(initialData)
+    const [data, setData] = useState<Data>(initialData)
 
     useEffect(() => {
-        localStorage.setItem('myContextData', data);
+        localStorage.setItem('myContextData', JSON.stringify(data));
     }, [data]);
 
 

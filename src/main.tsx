@@ -22,6 +22,7 @@ import { TerrainDetailAdminPage } from './pages/terrain-detail-admin.tsx';
 import { EventAdminPage } from './pages/event-admin.tsx';
 import { EventDetailAdminPage } from './pages/event-deatil-admin.tsx';
 import { PlantPageDetail } from './pages/plant-detail.tsx';
+import { MyProvider } from './services/MyContext.tsx';
 
 const router = createBrowserRouter([
     {
@@ -46,11 +47,11 @@ const router = createBrowserRouter([
     },
     {
         path: "/plants",
-        element: <PlantPage/>
+        element: <PlantPage />
     },
     {
         path: "/plants/:plantId",
-        element: <PlantPageDetail/>
+        element: <PlantPageDetail />
     },
     {
         path: "/terrain",
@@ -69,39 +70,39 @@ const router = createBrowserRouter([
         element: <ProfilePage />
     },
     {
-        path : "/admin-terrains",
-        element : <TerrainAdminPage/>
-    },  
-    {
-        path : "/admin-terrains/:terrainID",
-        element : <TerrainDetailAdminPage/>
+        path: "/admin-terrains",
+        element: <TerrainAdminPage />
     },
     {
-        path : "/admin-events",
-        element : <EventAdminPage/>
-    },  
+        path: "/admin-terrains/:terrainID",
+        element: <TerrainDetailAdminPage />
+    },
     {
-        path : "/admin-events/:eventID",
-        element : <EventDetailAdminPage/>
+        path: "/admin-events",
+        element: <EventAdminPage />
+    },
+    {
+        path: "/admin-events/:eventID",
+        element: <EventDetailAdminPage />
     },
     {
         path: "/registration",
-        element: <RegistrationPage/>
+        element: <RegistrationPage />
     }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
+    <MyProvider>
+        <React.StrictMode>
+            <div className="fixed w-full z-50">
+                <nav className="px-12 mt-8">
+                    <Navbar></Navbar>
+                </nav>
+            </div>
 
-    <React.StrictMode>
-        <div className="fixed w-full z-50">
-            <nav className="px-12 mt-8">
-                <Navbar></Navbar>
-            </nav>
-        </div>
-
-        <main >
-            <RouterProvider router={router} />
-        </main>
-    </React.StrictMode>
-
+            <main >
+                <RouterProvider router={router} />
+            </main>
+        </React.StrictMode>
+    </MyProvider>
 )

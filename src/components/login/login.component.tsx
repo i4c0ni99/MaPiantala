@@ -1,7 +1,7 @@
 
 
 import { HeroLogin } from "./loginCard.component";
-import { axiosInstance, setAuthToken } from "../../utils/axiosInstance";
+import {axiosInstance ,setAuthToken } from "../../utils/axiosInstance";
 import { useContext } from "react";
 import { MyContext } from "../../services/MyContext";
 
@@ -30,13 +30,13 @@ const {data,setData} = useContext(MyContext)
                             setAuthToken(respone.data['token'])
                             const user = await axiosInstance.get("/user/me")
                             setData({
-                              token: respone.data['token'],
-                              user:user.data
-                            })
-                            console.log(data)
+                                token: respone.data['token'],
+                                user:user.data
+                              })
                         }
                         }
                     />
+                    
                 </div>
             </dialog>
         </>

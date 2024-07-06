@@ -15,7 +15,7 @@ export class User {
         public isAdmin: boolean,
         public copertinePicture: string,
 
-    ) { }
+    ) { username = firstName + lastName}
 
 
 }

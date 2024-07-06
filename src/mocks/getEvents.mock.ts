@@ -1,5 +1,6 @@
-import { axiosInstance } from "../utils/axiosInstance";
+
 import { Event } from "../types/Event.class";
+import { axiosInstance} from "../utils/axiosInstance";
 import location from "../utils/location";
 
 

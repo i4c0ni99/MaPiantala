@@ -1,6 +1,7 @@
 
 import { Terrain } from "../types/terrain.class";
-import { axiosInstance } from "../utils/axiosInstance";
+import {  axiosInstance} from "../utils/axiosInstance";
+
 import location from "../utils/location";
 
 
@@ -9,6 +10,7 @@ import location from "../utils/location";
 
 export async function getTerrainsMockByDistance(): Promise<Terrain[]> {
     const result = await axiosInstance.get(`terrain/lat/${location.lat}/lon/${location.lng}/distance/10000`)
+    console.log(result.data)
     return result.data
 }
 

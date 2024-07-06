@@ -2,9 +2,11 @@
 import { Card } from "../components/card/Card.component";
 import { getTerrainsMockByDistance } from "../mocks/getTerrains.mock";
 import { Terrain } from "../types/terrain.class";
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Button, IButton } from "../components/button/Button.component";
 import { ButtonType } from "../components/button/button-types";
+import { setAuthToken } from "../utils/axiosInstance";
+import { MyContext } from "../services/MyContext";
 
 
 export function Home() {
@@ -23,6 +25,7 @@ export function Home() {
     useEffect(() => {
         const fetchData = async () => {
             try {
+                setAuthToken(useContext(MyContext).data.token)
                 const terrains: Terrain[] = await getTerrainsMockByDistance();
                 console.log(terrains)
                 setTerrains(terrains);
@@ -41,7 +44,7 @@ export function Home() {
 
 
             <main className="pt-32 pl-2 pr-2 sm:size-11/12 lg:size-1/2 mx-auto">
-                {terrains?.map(
+                {terrains.map(
                     (terrain) =>
                         <div className="mt-8">
                             <Card terrainCard={terrain} Button={button}></Card>                                

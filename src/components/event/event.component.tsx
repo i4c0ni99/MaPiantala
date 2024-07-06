@@ -1,14 +1,14 @@
 import { Event } from "../../types/Event.class";
-import { IButton } from "../button/Button.component";
+import { CommentCollaps } from "../Collaps/collapsComment.compone";
+
 
 export interface ICardEvent {
     eventInCard: Event
-    Button?: React.ReactElement<IButton>;
 }
 
 export const EventCard: React.FC<ICardEvent> = function ({
     eventInCard,
-    Button,
+
 }: ICardEvent) {
     return (
         <div className="card size-full bg-base-300">
@@ -19,7 +19,6 @@ export const EventCard: React.FC<ICardEvent> = function ({
                             <img src={eventInCard.user.profilePicture} />
                         </div>
                     </div>
-
                     <div className="badge badge-default mx-1 badge-lg ">{eventInCard.user.username}</div>
                 </div>
             )}
@@ -29,12 +28,14 @@ export const EventCard: React.FC<ICardEvent> = function ({
                     <img src={eventInCard.imageUrl} alt={eventInCard.title} className="rounded-xl" />
                 </figure>
             )}
-            <div className="card-body">
-                <h2 className="card-title">{eventInCard.title}</h2>
-                <p>{eventInCard.description}</p>
-                <div className="w-32">
-                    {Button}
-                </div>
+            <div className=" card  bg-base-200 mr-4 ml-4 mt-4 mb-4 ">
+                <details className="collapse bg-base-200">
+                    <summary className="collapse-title text-xl font-medium">{eventInCard.title}</summary>
+                    <div className="collapse-content">
+                        <p>{eventInCard.description}</p>
+                    </div>
+                </details>
+                <CommentCollaps event={eventInCard} />
             </div>
         </div>
     );

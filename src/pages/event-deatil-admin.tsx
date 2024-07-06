@@ -4,8 +4,9 @@ import { Event } from "../types/Event.class";
 import { useEffect, useState } from "react";
 
 
-import { getEventsMock } from "../mocks/getEvents.mock";
+
 import { EventDetailAdminCard } from "../components/event-detail-admin/event-detail-admin";
+import { getEventsByDistance } from "../mocks/getEvents.mock";
 
 export function EventDetailAdminPage() {
     const { eventID } = useParams()
@@ -14,8 +15,8 @@ export function EventDetailAdminPage() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const events: Event[] = await getEventsMock();
-                setEvents(events);
+               const events: Event[] = await getEventsByDistance();
+               setEvents(events);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -23,7 +24,6 @@ export function EventDetailAdminPage() {
 
         fetchData();
     }, []);
-    //terrains.filter((terrain) => terrain.id.toString() === terrainID)
     return (
         <div className="size-3/4 mx-auto pt-32">{
             events.map((event) => { if (event.id.toString() == eventID) return( 

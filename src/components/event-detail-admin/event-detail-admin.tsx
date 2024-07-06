@@ -51,7 +51,7 @@ export const EventDetailAdminCard: React.FC<ICardEventDetailAdmin> = function ({
 
 
                 <h1 className="card-title">{event.title}</h1>
-                <h4>{event.position}</h4>
+                <h4>{event.address}</h4>
                 <p>{event.description}</p>
                 <h1>numero di persone totali {event.partecipantsNumer}</h1>
                 <form className="w-full" onSubmit={handleSubmit} >

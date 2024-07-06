@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 import { Event} from "../types/Event.class";
 import { Link } from "react-router-dom";
-import { getEventsMock } from "../mocks/getEvents.mock";
+import { getEventsByDistance } from "../mocks/getEvents.mock";
 import { EventAdminCard } from "../components/event-card-admin/event-card-admin";
 
 
@@ -14,7 +14,7 @@ export function EventAdminPage() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const events: Event[] = await getEventsMock();
+                const events: Event[] = await getEventsByDistance();
                 setEvents(events);
             } catch (error) {
                 console.error('Error fetching data:', error);

@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+
 export const axiosInstance = axios.create({
   baseURL: 'http://localhost:3000/'
 });
@@ -12,6 +13,7 @@ export const setAuthToken = (token:string) => {
     delete axiosInstance.defaults.headers.common['Authorization'];
   }
 };
+
 
 
 

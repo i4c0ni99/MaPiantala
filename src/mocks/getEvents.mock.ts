@@ -1,4 +1,33 @@
+import { axiosInstance } from "../utils/axiosInstance";
 import { Event } from "../types/Event.class";
+import location from "../utils/location";
+
+
+
+
+export async function getEventsByDistance(): Promise<Event[]> {
+   const result = await axiosInstance.get(`/event/lat/${location.lat}/lon/${location.lng}/distance/1000`)
+   return result.data
+}
+
+export async function postEvent(event :Event) {
+    console.log("event post",event)
+    await axiosInstance.post('/event', {
+        "title": event.title,
+        "description": event.description,
+        "scheduledDate" : event.scheduledDate,
+        "address": event.address,
+        "latitude": event.latitude,
+        "longitude": event.longitude,
+        "imageUrl": event.imageUrl,
+        "isPublic": false,
+        "category": event.category,
+        "userId": event.user.id
+
+    })
+}
+
+/* import { Event } from "../types/Event.class";
 
 export function getEventsMock(): Promise<Event[]> {
     const user1 = {
@@ -90,4 +119,4 @@ export function getEventsMock(): Promise<Event[]> {
 
         ]);
     });
-}
+} */

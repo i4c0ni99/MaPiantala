@@ -1,6 +1,5 @@
 
 import { CreateEditTerrain } from "../components/create-edit-terrain/create-edit-terrain.component";
-import { User } from "../types/User.class";
 import { Terrain } from "../types/terrain.class";
 import { postTerrain } from "../mocks/getTerrains.mock";
 import GeocodingService from "../services/geocoding.service";

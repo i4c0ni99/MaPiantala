@@ -1,5 +1,4 @@
 import { CreateEditEvent } from "../components/create-edit-event/create-edit-event.component";
-import { User } from "../types/User.class";
 import { Event } from "../types/Event.class";
 import GeocodingService from "../services/geocoding.service";
 import { postEvent } from "../mocks/getEvents.mock";

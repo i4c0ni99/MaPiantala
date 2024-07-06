@@ -11,26 +11,7 @@ import { Link } from "react-router-dom";
 export function TerrainAdminPage() {
 
     const [terrains, setTerrains] = useState<Terrain[]>([]);
-
-
-    const [location, setLocation] = useState({ lat: 0, lng: 0 });
-    const [error, setError] = useState("");
-    useEffect(() => {
-        if(navigator.geolocation){
-    navigator.geolocation.getCurrentPosition(
-        (position) => {
-            setLocation({
-                lat: position.coords.latitude,
-                lng: position.coords.longitude,
-              });
-        },
-        (error) => {
-          setError(error.message);
-        }
-      )}
-      else console.log(error)
-    }, []);
-
+    
     useEffect(() => {
         const fetchData = async () => {
             try {

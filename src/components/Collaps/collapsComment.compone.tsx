@@ -7,15 +7,18 @@ import { IButton } from "../button/Button.component";
 
 export interface ICollapsComment {
 
-    terrain: Terrain;
-    event?: Event;
-    Button?: React.ReactElement<IButton>;
+
+  terrain: Terrain;
+  event?: Event;
+  Button?: React.ReactElement<IButton>;
+
 }
 
 export const CommentCollaps: React.FC<ICollapsComment> = function ({
-    terrain,
-    Button,
+  terrain,
+  Button,
 }: ICollapsComment) {
+
     const [user] = useState(
         new User(
             0,
@@ -25,8 +28,8 @@ export const CommentCollaps: React.FC<ICollapsComment> = function ({
             "Iaconi",
             "i4c0ni99",
             "",
-            false,
             "",
+            false,
             ""
         )
     );

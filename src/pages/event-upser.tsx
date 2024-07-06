@@ -4,22 +4,17 @@ import { Event } from "../types/Event.class";
 import GeocodingService from "../services/geocoding.service";
 import { postEvent } from "../mocks/getEvents.mock";
 import { EventCategory } from "../types/EventCategory.enum";
+import { useContext } from "react";
+import { MyContext } from "../services/MyContext";
 
 export function EventUpsert() {
-
+    const userContext= useContext(MyContext)
     return <>
         <div className="size-3/4 mx-auto pt-32">
             <CreateEditEvent
                 eventCreated={
                     new Event(
-                        0, 0, '', '', '', new Date(), new User(0,'i4c0ni99@gmail.com',
-                            '',
-                            'Gigi',
-                            'Iaconi',
-                            'i4c0ni99',
-                            '',
-                            true,
-                            '',''), [], '', true, 0.0, 0.0, EventCategory.FOOD
+                        0, 0, '', '', '', new Date(),userContext.data.user, [], '', true, 0.0, 0.0, EventCategory.FOOD
                     )
                 }
                 onSubmission={async (data: Event) => {

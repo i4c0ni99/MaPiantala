@@ -1,6 +1,6 @@
-import { APIProvider, AdvancedMarker, Map, useMapsLibrary } from "@vis.gl/react-google-maps"
+import { APIProvider, AdvancedMarker, Map } from "@vis.gl/react-google-maps"
 import { Terrain } from "../../types/terrain.class"
-import { Event } from "../../types/Event.class"
+
 
 
 

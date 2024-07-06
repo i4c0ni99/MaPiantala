@@ -5,7 +5,6 @@ import { Terrain } from "../types/terrain.class";
 import { useState, useEffect } from 'react';
 import { Button, IButton } from "../components/button/Button.component";
 import { ButtonType } from "../components/button/button-types";
-import location from "../utils/location";
 
 
 

@@ -1,15 +1,14 @@
 import { Event } from "../../types/Event.class";
 import { CommentCollaps } from "../Collaps/collapsComment.compone";
-import { IButton } from "../button/Button.component";
+
 
 export interface ICardEvent {
     eventInCard: Event
-    Button?: React.ReactElement<IButton>;
 }
 
 export const EventCard: React.FC<ICardEvent> = function ({
     eventInCard,
-    Button,
+
 }: ICardEvent) {
     return (
         <div className="card size-full bg-base-300">

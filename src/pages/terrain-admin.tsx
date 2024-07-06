@@ -34,7 +34,7 @@ export function TerrainAdminPage() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const terrains: Terrain[] = await getTerrainsMockByDistance(location);
+                const terrains: Terrain[] = await getTerrainsMockByDistance( );
                 setTerrains(terrains);
             } catch (error) {
                 console.error('Error fetching data:', error);

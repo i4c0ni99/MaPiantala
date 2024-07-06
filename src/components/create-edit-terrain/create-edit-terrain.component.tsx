@@ -27,7 +27,7 @@ export const CreateEditTerrain = ({
 
     // Handle input changes
     const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const { name, value, type } = e.target;
+        const { name, value} = e.target;
         if (e.target instanceof HTMLInputElement) {
             // Safe to access `checked` because it's confirmed as an HTMLInputElement of type checkbox
            

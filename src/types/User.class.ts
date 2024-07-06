@@ -11,9 +11,10 @@ export class User {
         public lastName: string,
         public username: string,
         public password: string,
+        public passwordConfirm: string,
         public isAdmin: boolean,
         public copertinePicture: string,
-        public passwordConfirm : string
+
     ) { }
 
 

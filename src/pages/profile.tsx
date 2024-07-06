@@ -15,9 +15,9 @@ export function ProfilePage() {
     "Lamonaca",
     "HoldHappy39",
     "",
+    "",
     false,
     "https://citynews-torinotoday.stgy.ovh/~media/horizontal-mid/19183715163212/campo-di-colza-collegno-campo-volo-foto-mario-alesina-2.jpg",
-    " "
   );
 
 
@@ -39,6 +39,7 @@ export function ProfilePage() {
       <div className="h-96 w-full">
         <Profile user={user}></Profile>
       </div>
+
       <main className="mx-auto pb-4 pl-2 pr-2 sm:size-11/12 lg:size-1/2 ">
         {terrains.map((terrain) =>
           terrain.user.email == user.email ? (

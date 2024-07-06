@@ -7,6 +7,7 @@ import { Event } from "../../types/Event.class";
 
 export interface ICollapsComment {
 
+
     terrain?: Terrain;
     event?: Event;
     Button?: React.ReactElement<IButton>;
@@ -16,7 +17,9 @@ export const CommentCollaps: React.FC<ICollapsComment> = function ({
     terrain,
     event,
     Button,
+
 }: ICollapsComment) {
+
     const [user] = useState(
         new User(
             0,
@@ -26,8 +29,8 @@ export const CommentCollaps: React.FC<ICollapsComment> = function ({
             "Iaconi",
             "i4c0ni99",
             "",
-            false,
             "",
+            false,
             ""
         )
     );

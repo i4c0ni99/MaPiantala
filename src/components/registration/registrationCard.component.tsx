@@ -6,62 +6,46 @@ import { User } from "../../types/User.class";
 
 export interface IHeroRegister {
   onSubmission: (data: User) => void;
-  user: User;
 }
 
 // Simulated database for registered users
 
 export const HeroRegister: React.FC<IHeroRegister> = function ({
   onSubmission,
-  user,
+
 }: IHeroRegister) {
   
-
-  
-
-
-  
-  //const [password, setPassword] = useState<string>("");
-  //const [verifyPassword, setVerifyPassword] = useState<string>("");
   const [showVerifyPassword, setShowVerifyPassword] = useState<boolean>(false);
   const [showPassword, setShowPassword] = useState<boolean>(false);
-  /* const [isDialogVisible, setIsDialogVisible] = useState<boolean>(false); */
   const [errorMessage, setErrorMessage] = useState<string>("");
-  /*  const [firstName, setFirstName] = useState<string>("");
-  const [lastName, setLastName] = useState<string>(""); */
 
-  const [newUser, setUser] = useState<User>(user);
+  const [newUser, setUser] = useState<User>(new User(0,"", "", "", "", "", "", "", false, ""));
+
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log("Form submitted");
 
-    user = new User(
-      0,
+    const user = new User(
+      newUser.id,
       newUser.email,
       newUser.profilePicture,
       newUser.firstName,
       newUser.lastName,
       newUser.username,
       newUser.password,
+
+      newUser.passwordConfirm,
       false,
       newUser.copertinePicture,
-      newUser.passwordConfirm
     );
 
-    
-    
 
     // Validazione password
     if (newUser.password.length < 6) {
       setErrorMessage("La password deve contenere almeno 6 caratteri.");
       return;
     }
-    /*
-    if (newUser.password !== newUser.passwordConfirm) {
-      setErrorMessage("Le password non coincidono.");
-      return;
-    }*/
 
     cleanError();
 
@@ -81,10 +65,7 @@ export const HeroRegister: React.FC<IHeroRegister> = function ({
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
- 
-    //if (name == "password") setPassword(value);
-    
-    //if (name == "verifyPassword") setVerifyPassword(value);
+
     setUser((prev) => ({
       ...prev,
       [name]: value,
@@ -155,7 +136,9 @@ export const HeroRegister: React.FC<IHeroRegister> = function ({
                     defaultValue={newUser.firstName}
                     className="input input-bordered"
                     onChange={(e) => handleChange(e)}
-                    //required
+
+                    required
+
                   />
                 </div>
                 <div className="form-control">
@@ -169,7 +152,9 @@ export const HeroRegister: React.FC<IHeroRegister> = function ({
                     defaultValue={newUser.lastName}
                     className="input input-bordered"
                     onChange={(e) => handleChange(e)}
-                    //required
+
+                    required
+
                   />
                 </div>
 
@@ -184,7 +169,9 @@ export const HeroRegister: React.FC<IHeroRegister> = function ({
                     defaultValue={newUser.username}
                     className="input input-bordered"
                     onChange={(e) => handleChange(e)}
-                    //required
+
+                    required
+
                   />
                 </div>
 
@@ -199,7 +186,9 @@ export const HeroRegister: React.FC<IHeroRegister> = function ({
                     defaultValue={newUser.email}
                     className="input input-bordered"
                     onChange={(e) => handleChange(e)}
-                    //required
+
+                    required
+
                   />
                 </div>
 
@@ -215,7 +204,9 @@ export const HeroRegister: React.FC<IHeroRegister> = function ({
                       defaultValue={newUser.password}
                       className="input input-bordered w-full pr-10"
                       onChange={(e) => handleChange(e)}
-                      //required
+                      required
+
+
                     />
 
                     <button
@@ -237,10 +228,11 @@ export const HeroRegister: React.FC<IHeroRegister> = function ({
                       type={showVerifyPassword ? "text" : "password"}
                       placeholder="Riscrivi password"
                       name="passwordConfirm"
-                      defaultValue={newUser.passwordConfirm}
+
                       className="input input-bordered w-full pr-10"
                       onChange={(e) => handleChange(e)}
-                      //required
+                      required
+
                     />
 
                     <button

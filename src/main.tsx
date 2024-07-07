@@ -23,6 +23,7 @@ import { EventAdminPage } from './pages/event-admin.tsx';
 import { EventDetailAdminPage } from './pages/event-deatil-admin.tsx';
 import { PlantPageDetail } from './pages/plant-detail.tsx';
 import { MyProvider } from './services/MyContext.tsx';
+import { SettingsPage } from './pages/settings.tsx';
 
 
 const router = createBrowserRouter([
@@ -90,6 +91,10 @@ const router = createBrowserRouter([
         path: "/registration",
         element: <RegistrationPage />
 
+    },
+    {
+        path: "/settings",
+        element: <SettingsPage />
     }
 ]);
 

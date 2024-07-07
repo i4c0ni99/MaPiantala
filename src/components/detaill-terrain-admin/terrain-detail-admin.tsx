@@ -54,7 +54,7 @@ export const TerrainDetailAdminCard: React.FC<ICardTErrainDetailAdmin> = functio
                     <div className="w-14 rounded-full">
                         <img src={terrain.user.profilePicture} />
                     </div>
-                    <h1 className="mt-12 ml-4">{terrain.user.username}</h1>
+                    <h1 className="mt-12 ml-4">{terrain.user.email}</h1>
                 </div>
 
 

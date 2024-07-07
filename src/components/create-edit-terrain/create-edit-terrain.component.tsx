@@ -15,12 +15,12 @@ export const CreateEditTerrain = ({
 }: ITerrain) => {
     // Initial state for the form
     const [terrain, setTerrain] = useState<Terrain>(
-        new Terrain(0,terrainCreated.title,terrainCreated.description,terrainCreated.imageUrl,terrainCreated.address,terrainCreated.slot,terrainCreated.terrainSize,terrainCreated.isPublic,terrainCreated.user,terrainCreated.comments,
+        new Terrain(terrainCreated.id,terrainCreated.title,terrainCreated.description,terrainCreated.imageUrl,terrainCreated.address,terrainCreated.slot,terrainCreated.terrainSize,terrainCreated.isPublic,terrainCreated.user,terrainCreated.comments,
             0.0,0.0))
 
     useEffect(() => {
         setTerrain(
-            new Terrain(0,terrainCreated.title,terrainCreated.description,terrainCreated.imageUrl,terrainCreated.address,terrainCreated.slot,terrainCreated.terrainSize,terrainCreated.isPublic,terrainCreated.user,terrainCreated.comments,
+            new Terrain(terrainCreated.id,terrainCreated.title,terrainCreated.description,terrainCreated.imageUrl,terrainCreated.address,terrainCreated.slot,terrainCreated.terrainSize,terrainCreated.isPublic,terrainCreated.user,terrainCreated.comments,
             0,0.0)
         )
     }, [terrainCreated]);
@@ -50,7 +50,7 @@ export const CreateEditTerrain = ({
         e.preventDefault();
         // Create a new Terrain instance with the form data
         
-        const newTerrain =  new Terrain(0,terrain.title,terrain.description,terrain.imageUrl,terrain.address,terrain.slot,terrain.terrainSize,terrain.isPublic,terrain.user,terrain.comments,
+        const newTerrain =  new Terrain(terrainCreated.id,terrain.title,terrain.description,terrain.imageUrl,terrain.address,terrain.slot,terrain.terrainSize,terrain.isPublic,terrain.user,terrain.comments,
             0.0,0.0)
        
 

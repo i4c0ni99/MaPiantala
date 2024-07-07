@@ -5,8 +5,6 @@ import { Terrain } from "../types/terrain.class";
 import { useState, useEffect, useContext } from 'react';
 import { Button, IButton } from "../components/button/Button.component";
 import { ButtonType } from "../components/button/button-types";
-import { setAuthToken } from "../utils/axiosInstance";
-import { MyContext } from "../services/MyContext";
 
 
 export function Home() {
@@ -21,11 +19,11 @@ export function Home() {
         >
         </Button>
     );
+    
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                setAuthToken(useContext(MyContext).data.token)
                 const terrains: Terrain[] = await getTerrainsMockByDistance();
                 console.log(terrains)
                 setTerrains(terrains);

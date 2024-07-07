@@ -1,13 +1,23 @@
 
 
 import { HeroLogin } from "./loginCard.component";
-import {axiosInstance ,setAuthToken } from "../../utils/axiosInstance";
-import { useContext } from "react";
-import { MyContext } from "../../services/MyContext";
+import {axiosInstance } from "../../utils/axiosInstance";
+import {  getCookie, setToken, setUserCookie} from "../../services/MaPiantalaCookies.service";
+import { useEffect } from "react";
+
 
 
 export const LoginModal = function () {
-const {data,setData} = useContext(MyContext)
+    useEffect(() => {
+        const fetchData = async () => {
+        const user = await axiosInstance.get('user/me/')
+        setUserCookie(user.data)
+        console.log(getCookie('user'))
+        };
+
+        fetchData();
+
+    }, [axiosInstance]);
     return (
         <>
             <li>
@@ -26,13 +36,8 @@ const {data,setData} = useContext(MyContext)
                 <div className="w-full h-auto ">
                     <HeroLogin
                         onSubmission={async (submitted) => {
-                            const respone = await axiosInstance.post('http://localhost:3000/user/signin', submitted)
-                            setAuthToken(respone.data['token'])
-                            const user = await axiosInstance.get("/user/me")
-                            setData({
-                                token: respone.data['token'],
-                                user:user.data
-                              })
+                            const response = await axiosInstance.post('user/signin', submitted)
+                            setToken(response.data['token'])
                         }
                         }
                     />

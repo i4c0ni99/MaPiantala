@@ -1,4 +1,5 @@
 
+import { Comment } from "../types/Comment.class";
 import { Event } from "../types/Event.class";
 import { axiosInstance} from "../utils/axiosInstance";
 import location from "../utils/location";
@@ -6,9 +7,15 @@ import location from "../utils/location";
 
 
 
+
 export async function getEventsByDistance(): Promise<Event[]> {
+    console.log(location)
    const result = await axiosInstance.get(`/event/lat/${location.lat}/lon/${location.lng}/distance/1000`)
    return result.data
+}
+export async function getCommentsbyEvent(id:number):Promise<Comment[]> {
+    const result = await axiosInstance.get(`comment/event/${id}`)
+    return result.data
 }
 
 export async function postEvent(event :Event) {

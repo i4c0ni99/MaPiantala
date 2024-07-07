@@ -12,14 +12,14 @@ export const EventCard: React.FC<ICardEvent> = function ({
 }: ICardEvent) {
     return (
         <div className="card size-full bg-base-300">
-            {eventInCard.user.profilePicture && eventInCard.user.username && (
+            {eventInCard.user.profilePicture && eventInCard.user.email && (
                 <div className="mx-4 my-4">
                     <div className="avatar">
                         <div className="w-10 rounded-full ">
                             <img src={eventInCard.user.profilePicture} />
                         </div>
                     </div>
-                    <div className="badge badge-default mx-1 badge-lg ">{eventInCard.user.username}</div>
+                    <div className="badge badge-default mx-1 badge-lg ">{eventInCard.user.email}</div>
                 </div>
             )}
 

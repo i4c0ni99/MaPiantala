@@ -9,7 +9,7 @@ export const EventAdminCard: React.FC<IEventCardAdmin> = function ({ event }) {
         <figure ><img className=" w-96 h-44" src={event.imageUrl} /></figure>
         <div className="card-body">
             <h2 className="card-title">
-                {event.user.username}
+                {event.user.firstName + event.user.lastName}
             </h2>
             <p>{event.title}</p>
             <div className="card-actions justify-end w-80 h-32">

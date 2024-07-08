@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { EventCard } from "../components/event/event.component";
 import { getEventsByDistance } from "../mocks/getEvents.mock";
 import { Event } from "../types/Event.class";
+import { Link } from "react-router-dom";
 
 export function EventPage() {
     const [events, setEvents] = useState<Event[]>([]);
@@ -11,6 +12,7 @@ export function EventPage() {
             try {
                 const events: Event[] = await getEventsByDistance();
                 setEvents(events);
+                
                 console.log(events)
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -24,10 +26,11 @@ export function EventPage() {
 
     return (
         <>
-            <button className="btn btn-outline btn-circle btn-lg btn-accent z-50 fixed text-2xl bottom-8 right-36"><a href="/event-upsert">+</a></button>
-
+            <Link rel="stylesheet" to="/event-upsert">
+                <button className="btn btn-outline btn-circle btn-lg btn-accent z-50 fixed text-2xl bottom-8 right-36">+</button>
+            </Link>
             <main className="pt-32 pl-2 pr-2 sm:size-11/12 lg:size-1/2 mx-auto">
-                {events.map((event) =>
+                {events.filter((event)=>event.isPublic).map((event) =>
                     <div className="mt-8">
                         <EventCard eventInCard={event} />
                     </div>

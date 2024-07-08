@@ -67,6 +67,10 @@ const router = createBrowserRouter([
         element: <PlantUpsert />
     },
     {
+        path: "/event-upsert/:eventId",
+        element: <TerrainUpsert />
+    },
+    {
         path: "/event-upsert",
         element: <EventUpsert />
     },

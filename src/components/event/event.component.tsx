@@ -1,6 +1,7 @@
+import { getCookie } from "../../services/MaPiantalaCookies.service";
 import { Event } from "../../types/Event.class";
 import { CommentCollaps } from "../Collaps/collapsComment.compone";
-
+import { Link } from "react-router-dom";
 
 export interface ICardEvent {
     eventInCard: Event
@@ -10,6 +11,7 @@ export const EventCard: React.FC<ICardEvent> = function ({
     eventInCard,
 
 }: ICardEvent) {
+    const user = getCookie('user')
     return (
         <div className="card size-full bg-base-300">
             {eventInCard.user.profilePicture && eventInCard.user.email && (
@@ -37,6 +39,19 @@ export const EventCard: React.FC<ICardEvent> = function ({
                 </details>
                 <CommentCollaps event={eventInCard} />
             </div>
+            {user && user.id != eventInCard.user.id ?
+                <div className="size-full grid justify-items-end py-2 px-8">
+                    <Link rel="stylesheet" to={`/terrain-upsert/${eventInCard.id}`} key={eventInCard.id}>
+                        <button className="btn btn-accent h-4 w-32  ">
+                            Modifica
+                        </button>
+                    </Link>
+                </div> :
+                <div className="size-full grid justify-items-end py-2 px-8">
+                    <button className="btn btn-accent h-4 w-32 ">
+                        prenota
+                    </button>
+                </div>}
         </div>
     );
 };

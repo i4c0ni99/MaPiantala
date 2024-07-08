@@ -42,7 +42,7 @@ export function TerrainPage() {
 
 
             <main className="pt-32 pl-2 pr-2 sm:size-11/12 lg:size-1/2 mx-auto">
-                {terrains.map(
+                {terrains.filter((terrain)=>terrain.isPublic).map(
                     (terrain) =>
                         <div className="mt-8">
                             <Card terrainCard={terrain} Button={button}></Card>

@@ -35,6 +35,24 @@ export async function postEvent(event :Event) {
     })
 }
 
+export async function getEventById(id?:string) : Promise<Event>{
+   return await axiosInstance.get(`/event/${id}`)
+}
+export async function updateEvent(event:Event){
+    await axiosInstance.patch('/event', {
+        "title": event.title,
+        "description": event.description,
+        "scheduledDate" : event.scheduledDate,
+        "address": event.address,
+        "latitude": event.latitude,
+        "longitude": event.longitude,
+        "imageUrl": event.imageUrl,
+        "isPublic": false,
+        "category": event.category,
+        "userId": event.user.id
+
+    })
+}
 /* import { Event } from "../types/Event.class";
 
 export function getEventsMock(): Promise<Event[]> {

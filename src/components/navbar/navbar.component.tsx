@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react";
+import { useState } from "react";
 import { Moon, Sunny } from "../../assets/Icon/Iconi";
 import { User } from "../../types/User.class";
 import { LoginModal } from "../login/login.component";
@@ -113,7 +113,7 @@ export const Navbar: React.FC<INavBar> = function ({ user }: INavBar) {
                 </a>
               </li>
               {user ? (
-                <li>
+                <li onClick={logOut}>
                   <a>Logout</a>
                 </li>
               ) : (

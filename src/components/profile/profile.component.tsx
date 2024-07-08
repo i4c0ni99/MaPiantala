@@ -26,7 +26,7 @@ export const Profile: React.FC<IHeroProfile> = function ({
                     <button className="btn btn-ghost size-full">cambia immagine di copertina</button>
                 </div>
             </div>
-            <div className="self-end h-32 w-full pb-2  ">
+            <div className="self-end h-32 w-full pb-2">
                 <div className="avatar size-full pl-2">
                     <div className="size-28 rounded-full">
                         <img src={user.profilePicture? user.profilePicture :"https://cdn-icons-png.flaticon.com/512/3237/3237472.png"} />

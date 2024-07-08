@@ -21,8 +21,10 @@ import { TerrainDetailAdminPage } from './pages/terrain-detail-admin.tsx';
 import { EventAdminPage } from './pages/event-admin.tsx';
 import { EventDetailAdminPage } from './pages/event-deatil-admin.tsx';
 import { PlantPageDetail } from './pages/plant-detail.tsx';
+import { SettingsPage } from './pages/settings.tsx';
 import { getCookie } from './services/MaPiantalaCookies.service.ts';
 import React from 'react';
+
 
 
 const router = createBrowserRouter([
@@ -98,6 +100,10 @@ const router = createBrowserRouter([
         path: "/registration",
         element: <RegistrationPage />
 
+    },
+    {
+        path: "/settings",
+        element: <SettingsPage />
     }
 ]);
 

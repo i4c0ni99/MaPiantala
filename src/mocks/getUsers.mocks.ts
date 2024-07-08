@@ -8,7 +8,6 @@ export function getUsersMock(): Promise<User[]> {
         email: "mario.rossi@gmail.com",
         firstName: "Mario",
         lastName: "Rossi",
-        username: "marioR",
         password: "lolalala",
         isAdmin: true,
         profilePicture: "",

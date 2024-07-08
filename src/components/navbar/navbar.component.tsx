@@ -1,22 +1,25 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { Moon, Sunny } from "../../assets/Icon/Iconi";
 import { User } from "../../types/User.class";
 import { LoginModal } from "../login/login.component";
+import { logOut} from "../../services/MaPiantalaCookies.service";
 
 export interface INavBar {
     user?: User
 }
 export const Navbar: React.FC<INavBar> = function ({ user }: INavBar) {
 
-    const [theme, setTheme] = useState('light');
-
-    function toggleTheme() {
-        setTheme(theme === 'dark' ? 'light' : 'dark');
+    const [theme, setTheme] = useState('dark');
+    
+    function toggleTheme(e: ChangeEvent<HTMLInputElement>) {
+        console.log(e.target.checked)
+        setTheme(e.target.checked ? 'dark':'light');
+        console.log(theme)
+        document.documentElement.setAttribute('data-theme', theme);
     }
 
     return (
         <>
-
             <div className="navbar bg-base-300 rounded-3xl  ">
                 <div className="navbar-start">
                     <div className="drawer ">
@@ -47,7 +50,7 @@ export const Navbar: React.FC<INavBar> = function ({ user }: INavBar) {
                     <label className="swap swap-rotate">
 
                         {/* this hidden checkbox controls the state */}
-                        <input type="checkbox" className="theme-controller" value="synthwave" onClick={toggleTheme} />
+                        <input type="checkbox" className="theme-controller"  onChange={toggleTheme}  />
 
                         {/* sun icon */}
                         <Sunny></Sunny>
@@ -59,21 +62,19 @@ export const Navbar: React.FC<INavBar> = function ({ user }: INavBar) {
                     <div className="dropdown dropdown-end">
                         <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
-                                <img alt="Tailwind CSS Navbar component" src="https://cdn-icons-png.flaticon.com/512/3237/3237472.png" />
+                                <img alt="Tailwind CSS Navbar component" src={user?.profilePicture? user.profilePicture :"https://cdn-icons-png.flaticon.com/512/3237/3237472.png"}  />
                             </div>
                         </div>
-                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                        <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-300 rounded-box w-52">
                             <li>
                                 <a href="/profile" className="justify-between">
                                     Profile
                                 </a>
                             </li>
                             <li><a>Settings</a></li>
-                            {user ? <li><a>Logout</a></li> :
+                            {user ? <li onClick={logOut} ><a>Logout</a></li> :<LoginModal />
 
-                                <LoginModal />
-
-                            }
+}
                         </ul>
                     </div>
                 </div>

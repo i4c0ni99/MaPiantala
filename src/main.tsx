@@ -1,4 +1,3 @@
-import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
@@ -22,7 +21,8 @@ import { TerrainDetailAdminPage } from './pages/terrain-detail-admin.tsx';
 import { EventAdminPage } from './pages/event-admin.tsx';
 import { EventDetailAdminPage } from './pages/event-deatil-admin.tsx';
 import { PlantPageDetail } from './pages/plant-detail.tsx';
-import { MyProvider } from './services/MyContext.tsx';
+import { getCookie } from './services/MaPiantalaCookies.service.ts';
+import React from 'react';
 
 
 const router = createBrowserRouter([
@@ -35,7 +35,11 @@ const router = createBrowserRouter([
         element: <Home />,
     },
     {
-        path: "/terrain-upsert",
+        path: "/terrain-upsert/:terrainId",
+        element: <TerrainUpsert />
+    },
+    {
+        path: "/terrain-upsert/",
         element: <TerrainUpsert />
     },
     {
@@ -61,6 +65,10 @@ const router = createBrowserRouter([
     {
         path: "/create-plant",
         element: <PlantUpsert />
+    },
+    {
+        path: "/event-upsert/:eventId",
+        element: <TerrainUpsert />
     },
     {
         path: "/event-upsert",
@@ -93,12 +101,12 @@ const router = createBrowserRouter([
     }
 ]);
 
+console.log(getCookie('user'))
 ReactDOM.createRoot(document.getElementById('root')!).render(
-    <MyProvider>
         <React.StrictMode>
             <div className="fixed w-full z-50">
                 <nav className="px-12 mt-8">
-                    <Navbar></Navbar>
+                    <Navbar user={getCookie('user')}></Navbar>
                 </nav>
             </div>
 
@@ -106,5 +114,4 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
                 <RouterProvider router={router} />
             </main>
         </React.StrictMode>
-    </MyProvider>
 )

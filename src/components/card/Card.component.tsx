@@ -1,9 +1,7 @@
-import { key } from "localforage";
 import { getCookie } from "../../services/MaPiantalaCookies.service";
 import { Terrain } from "../../types/terrain.class";
 import { CommentCollaps } from "../Collaps/collapsComment.compone";
 import { IButton } from "../button/Button.component";
-import { CreateEditTerrain } from "../create-edit-terrain/create-edit-terrain.component";
 import { Link } from "react-router-dom";
 
 export interface ICard {
@@ -11,11 +9,6 @@ export interface ICard {
     Button: React.ReactElement<IButton>;
 }
 
-const onAction = (terrain: Terrain) => {
-    return (
-        <CreateEditTerrain terrainCreated={terrain}></CreateEditTerrain>
-    )
-}
 export const Card: React.FC<ICard> = function ({
     terrainCard,
 
@@ -57,7 +50,7 @@ export const Card: React.FC<ICard> = function ({
             </div>
             {user && user.id == terrainCard.user.id ?
                 <div className="size-full grid justify-items-end py-2 px-8">
-                    <Link rel="stylesheet" to={`/terrain-upsert/${terrainCard.id}`} key={terrainCard.id}>
+                    <Link rel="stylesheet" to={`/terrain-upsert/${terrainCard.id}`} >
                         <button className="btn btn-accent h-4 w-32  ">
                             Modifica
                         </button>

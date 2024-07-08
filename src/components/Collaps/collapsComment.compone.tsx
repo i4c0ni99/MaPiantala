@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
 import { CommentIcon } from "../../assets/Icon/Iconi";
 import { Terrain } from "../../types/terrain.class";
-import { User } from "../../types/User.class";
 import { IButton } from "../button/Button.component";
 import { Event } from "../../types/Event.class";
 import { getCookie } from "../../services/MaPiantalaCookies.service";
-import { axiosInstance } from "../../utils/axiosInstance";
 import { getCommentsbyEvent } from "../../mocks/getEvents.mock";
 import { Comment } from "../../types/Comment.class";
 
@@ -31,9 +29,10 @@ export const CommentCollaps: React.FC<ICollapsComment> = function ({
         const fetchData = async () => {
             try {
                 if (event) {
-                    const comments: Comment[] = await getCommentsbyEvent(event?.id);
-                    setComments(comments)
+                    const commentsInEvent: Comment[] = await getCommentsbyEvent(event?.id);
+                    setComments(commentsInEvent)
                     event.comments=comments
+                    console.log(comments)
                 }
             } catch (error) {
                 console.error('Error fetching data:', error);

@@ -19,14 +19,14 @@ interface ICardEventDetailAdmin {
 export const EventDetailAdminCard: React.FC<ICardEventDetailAdmin> = function ({ event }) {
 
 
-   
+
 
     // Handle form submission
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         // Create a new Terrain instance with the form data
         document.getElementsByName("select").values
-        
+
         event.isPublic = true
         console.log('Terrain is published:', event);
 
@@ -46,7 +46,7 @@ export const EventDetailAdminCard: React.FC<ICardEventDetailAdmin> = function ({
                     <div className="w-14 rounded-full">
                         <img src={event.user.profilePicture} />
                     </div>
-                    <h1 className="mt-12 ml-4">{event.user.username}</h1>
+                    <h1 className="mt-12 ml-4">{event.user.email}</h1>
                 </div>
 
 

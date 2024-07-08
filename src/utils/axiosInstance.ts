@@ -1,19 +1,13 @@
 import axios from 'axios';
+import { getCookie } from '../services/MaPiantalaCookies.service';
 
 
 export const axiosInstance = axios.create({
-  baseURL: 'http://localhost:3000/'
+    baseURL: 'http://localhost:3000/',
+    headers: {
+        'Authorization': `Bearer ${getCookie('token')}`
+    }
 });
-
-export const setAuthToken = (token:string) => {
-  if (token) {
-    console.log(token)
-    axiosInstance.defaults.headers.common['Authorization'] = ` Bearer ${token}` ;
-  } else {
-    delete axiosInstance.defaults.headers.common['Authorization'];
-  }
-};
-
 
 
 

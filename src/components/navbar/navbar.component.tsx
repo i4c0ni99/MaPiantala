@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { Moon, Sunny } from "../../assets/Icon/Iconi";
 import { User } from "../../types/User.class";
 import { LoginModal } from "../login/login.component";
+import { logOut} from "../../services/MaPiantalaCookies.service";
 
 export interface INavBar {
   user?: User;
 }
 export const Navbar: React.FC<INavBar> = function ({ user }: INavBar) {
   const [theme, setTheme] = useState("light");
+
 
   function toggleTheme() {
     setTheme(theme === "dark" ? "light" : "dark");
@@ -94,6 +96,7 @@ export const Navbar: React.FC<INavBar> = function ({ user }: INavBar) {
                   src="https://cdn-icons-png.flaticon.com/512/3237/3237472.png"
                 />
               </div>
+
             </div>
             <ul
               tabIndex={0}

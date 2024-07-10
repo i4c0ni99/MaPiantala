@@ -57,14 +57,16 @@ export function TerrainUpsert() {
                         data.user = terrain.user
                         updateTerrain(data)
                         console.log('update', data)
-                        //window.location.href = '/terrain'
-                    }
+                        window.location.href = '/terrain'
+                    }else{
                     const address = await GeocodingService.getCoordinates(data.address)
                     data.latitude = address.location.lat
                     data.longitude = address.location.lng
                     data.user = terrain.user
+                    console.log('bellissimoooo')
                     postTerrain(data)
-                    //window.location.href = '/terrain'
+                    window.location.href = '/terrain'
+                    }
                 }
 
                 }>

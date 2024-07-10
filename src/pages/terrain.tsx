@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react';
 import { Button, IButton } from "../components/button/Button.component";
 import { ButtonType } from "../components/button/button-types";
 import { Link } from "react-router-dom";
+import { getCookie } from "../services/MaPiantalaCookies.service";
 
 
 export function TerrainPage() {
@@ -25,7 +26,8 @@ export function TerrainPage() {
         const fetchData = async () => {
             try {
                 const terrains: Terrain[] = await getTerrainsMockByDistance();
-                setTerrains(terrains);
+                if(await getCookie('user'))
+                setTerrains(terrains.filter((terrain)=>terrain.isPublic));
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -42,7 +44,7 @@ export function TerrainPage() {
 
 
             <main className="pt-32 pl-2 pr-2 sm:size-11/12 lg:size-1/2 mx-auto">
-                {terrains.filter((terrain)=>terrain.isPublic).map(
+                {terrains.map(
                     (terrain) =>
                         <div className="mt-8">
                             <Card terrainCard={terrain} Button={button}></Card>

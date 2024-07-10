@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { Terrain } from "../types/terrain.class";
 
 import { useEffect, useState } from "react";
-import {  getTerrainById } from "../mocks/getTerrains.mock";
+import {  getTerrainById, updateTerrain } from "../mocks/getTerrains.mock";
 import { TerrainDetailAdminCard } from "../components/detaill-terrain-admin/terrain-detail-admin";
 
 export function TerrainDetailAdminPage() {
@@ -26,7 +26,11 @@ export function TerrainDetailAdminPage() {
 
     return (
         <div className="size-3/4 mx-auto pt-32">
-            <TerrainDetailAdminCard terrain={terrain} />
+            <TerrainDetailAdminCard terrain={terrain} onSubmission={async(terrain:Terrain)=>{
+                console.log('Terrain:',terrain)
+                updateTerrain(terrain)
+                //window.location.href='/terrain'
+            }} />
         </div>
     )
 

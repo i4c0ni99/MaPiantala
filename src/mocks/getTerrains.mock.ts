@@ -26,6 +26,7 @@ export async function updateTerrain(terrain:Terrain){
         "longitude": terrain.longitude,
         "address": terrain.address,
         "imageUrl": terrain.imageUrl,
+        "isPublic" : terrain.isPublic,
         "userId": terrain.user.id
     })
 

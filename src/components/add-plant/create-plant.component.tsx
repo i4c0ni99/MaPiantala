@@ -13,14 +13,8 @@ export const CreateEditPlant = ({
     onSubmission = undefined
 }: IPlant) => {
     // Initial state for the form
-    const [plant, setPlant] = useState<Plant>(
-        new Plant(0,'', '', '', '', '', '', '', '', '', '', '', '', '')
-    );
-    
-    useEffect(() => {
-        setPlant(plant)
-        
-    }, [plant]);
+    const [plant, setPlant] = useState<Plant>(() => new Plant(0,'', '', '', '', '', '', '', '', '', '', '', '', ''));
+  
 
 
 
@@ -29,9 +23,6 @@ export const CreateEditPlant = ({
         const { name, value } = e.target;
 
         if (e.target instanceof HTMLInputElement) {
-
-
-
             setPlant(prev => ({
                 ...prev,
                 [name]: value

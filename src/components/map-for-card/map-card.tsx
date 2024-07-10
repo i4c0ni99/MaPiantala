@@ -10,7 +10,19 @@ export interface IMapCard {
 
 }
 
+/* type Props = {
+    type: "map"
+    data: string
+} | {
+    type: "event"
+    data: number
+}
 
+const a = {} as any as Props
+
+if(a.type === "event"){
+    const b = a.data
+} */
 export const MapCard: React.FC<IMapCard> = function ({ obj }) {
 
    
@@ -31,7 +43,5 @@ export const MapCard: React.FC<IMapCard> = function ({ obj }) {
         )
     
 }
-
-
 
 

@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import { getCookie } from '../services/MaPiantalaCookies.service';
 
 
@@ -9,5 +9,13 @@ export const axiosInstance = axios.create({
     }
 });
 
+export const loggedIn = async () => {
+    try {
+        const result = (await axiosInstance.get('user/me'));
+        return result.status !== 401;
+    } catch (error) {
+        return false;
+    }
+}
 
 

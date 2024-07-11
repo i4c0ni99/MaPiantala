@@ -14,6 +14,7 @@ export const Navbar: React.FC<INavBar> = function ({ user }: INavBar) {
   function toggleTheme() {
     setTheme(theme === "dark" ? "light" : "dark");
   }
+
  if(user?.role=='ADMIN')
     return (
         <>

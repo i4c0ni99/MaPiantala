@@ -1,13 +1,20 @@
 import { ChangeEvent, FormEvent, useState } from "react";
+
+
+import { PiPlantLight } from "react-icons/pi";
+
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { User } from "../../types/User.class";
 
 export interface IHeroSettings {
+
     onSubmission: (data: User) => void;
     oldUser: User;
+
 }
 
 // Simulated database for registered users
+
 
 export const CardSettings: React.FC<IHeroSettings> = function ({
     onSubmission,
@@ -231,5 +238,5 @@ export const CardSettings: React.FC<IHeroSettings> = function ({
                 </div>
             </div>
         </div>
-    );
+    );c
 };

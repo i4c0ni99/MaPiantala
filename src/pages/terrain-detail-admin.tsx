@@ -29,7 +29,7 @@ export function TerrainDetailAdminPage() {
             <TerrainDetailAdminCard terrain={terrain} onSubmission={async(terrain:Terrain)=>{
                 console.log('Terrain:',terrain)
                 updateTerrain(terrain)
-                //window.location.href='/terrain'
+                window.location.href='/terrain'
             }} />
         </div>
     )

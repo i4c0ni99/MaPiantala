@@ -54,7 +54,7 @@ export function TerrainUpsert() {
                         const address = await GeocodingService.getCoordinates(data.address)
                         data.latitude = address.location.lat
                         data.longitude = address.location.lng
-                        data.user = terrain.user
+                        data.isPublic=false
                         updateTerrain(data)
                         console.log('update', data)
                         window.location.href = '/terrain'
@@ -63,7 +63,6 @@ export function TerrainUpsert() {
                     data.latitude = address.location.lat
                     data.longitude = address.location.lng
                     data.user = terrain.user
-                    console.log('bellissimoooo')
                     postTerrain(data)
                     window.location.href = '/terrain'
                     }

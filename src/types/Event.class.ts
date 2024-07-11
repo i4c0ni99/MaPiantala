@@ -12,7 +12,7 @@ export class Event {
         public description: string,
         public imageUrl: string,
         public scheduledDate: Date,
-        public user: User,
+        public owner: User,
         public comments: Comment[],
         public address: string,
         public isPublic: boolean,

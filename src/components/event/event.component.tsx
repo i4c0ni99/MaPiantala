@@ -14,14 +14,14 @@ export const EventCard: React.FC<ICardEvent> = function ({
     const user = getCookie('user')
     return (
         <div className="card size-full bg-base-300">
-            {eventInCard.user.profilePicture && eventInCard.user.email && (
+            {eventInCard.owner.profilePicture && eventInCard.owner.email && (
                 <div className="mx-4 my-4">
                     <div className="avatar">
                         <div className="w-10 rounded-full ">
-                            <img src={eventInCard.user.profilePicture} />
+                            <img src={eventInCard.owner.profilePicture} />
                         </div>
                     </div>
-                    <div className="badge badge-default mx-1 badge-lg ">{eventInCard.user.email}</div>
+                    <div className="badge badge-default mx-1 badge-lg ">{eventInCard.owner.email}</div>
                 </div>
             )}
 
@@ -39,9 +39,9 @@ export const EventCard: React.FC<ICardEvent> = function ({
                 </details>
                 <CommentCollaps event={eventInCard} />
             </div>
-            {user && user.id != eventInCard.user.id ?
+            {user && user.id == eventInCard.owner.id ?
                 <div className="size-full grid justify-items-end py-2 px-8">
-                    <Link rel="stylesheet" to={`/terrain-upsert/${eventInCard.id}`} key={eventInCard.id}>
+                    <Link rel="stylesheet" to={`/event-upsert/${eventInCard.id}`} key={eventInCard.id}>
                         <button className="btn btn-accent h-4 w-32  ">
                             Modifica
                         </button>

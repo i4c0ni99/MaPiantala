@@ -37,15 +37,19 @@ export function EventUpsert() {
                         const address = await GeocodingService.getCoordinates(data.address)
                         data.latitude = address.location.lat
                         data.longitude = address.location.lng
-                        data.user=event.user
+                        data.isPublic=false
+                        console.log(data)
                         updateEvent(data)
-                        window.location.href = '/terrain'
-                    }
+
+                        //window.location.href = '/event'
+                    }else{
                     const address = await GeocodingService.getCoordinates(data.address)
                     data.latitude = address.location.lat
                     data.longitude = address.location.lng
+                    data.owner=getCookie('user')
                     await postEvent(data)
-                    window.location.href='/event'
+                    //window.location.href='/event'
+                    }
                 }} />
 
         </div>

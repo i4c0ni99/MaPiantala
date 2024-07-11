@@ -70,7 +70,7 @@ const router = createBrowserRouter([
     },
     {
         path: "/event-upsert/:eventId",
-        element: <TerrainUpsert />
+        element: <EventUpsert />
     },
     {
         path: "/event-upsert",

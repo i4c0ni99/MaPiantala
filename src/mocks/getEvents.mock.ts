@@ -9,7 +9,6 @@ import location from "../utils/location";
 
 
 export async function getEventsByDistance(): Promise<Event[]> {
-    console.log(location)
    const result = await axiosInstance.get(`/event/lat/${location.lat}/lon/${location.lng}/distance/1000`)
    return result.data
 }
@@ -30,16 +29,17 @@ export async function postEvent(event :Event) {
         "imageUrl": event.imageUrl,
         "isPublic": false,
         "category": event.category,
-        "userId": event.user.id
+        "userId": event.owner.id
 
     })
 }
 
 export async function getEventById(id?:string) : Promise<Event>{
-   return await axiosInstance.get(`/event/${id}`)
+    const result = await axiosInstance.get(`/event/${id}`)
+   return result.data
 }
 export async function updateEvent(event:Event){
-    await axiosInstance.patch('/event', {
+    await axiosInstance.patch(`/event/${event.id}`, {
         "title": event.title,
         "description": event.description,
         "scheduledDate" : event.scheduledDate,
@@ -47,9 +47,9 @@ export async function updateEvent(event:Event){
         "latitude": event.latitude,
         "longitude": event.longitude,
         "imageUrl": event.imageUrl,
-        "isPublic": false,
+        "isPublic": event.isPublic,
         "category": event.category,
-        "userId": event.user.id
+        "userId": event.owner.id
 
     })
 }

@@ -15,12 +15,12 @@ export const CreateEditEvent = ({
 }: IEvent) => {
     // Initial state for the form
     const [event, setEvent] = useState<Event>(
-        new Event(eventCreated.id, eventCreated.partecipantsNumer, eventCreated.title, eventCreated.description, eventCreated.imageUrl, eventCreated.scheduledDate, eventCreated.user, eventCreated.comments, eventCreated.address, eventCreated.isPublic, eventCreated.latitude, eventCreated.longitude,eventCreated.category)
+        new Event(eventCreated.id, eventCreated.partecipantsNumer, eventCreated.title, eventCreated.description, eventCreated.imageUrl, eventCreated.scheduledDate, eventCreated.owner, eventCreated.comments, eventCreated.address, eventCreated.isPublic, eventCreated.latitude, eventCreated.longitude,eventCreated.category)
     );
 
     useEffect(() => {
         setEvent(
-            new Event(eventCreated.id, eventCreated.partecipantsNumer, eventCreated.title, eventCreated.description, eventCreated.imageUrl, eventCreated.scheduledDate, eventCreated.user, eventCreated.comments, eventCreated.address, eventCreated.isPublic, eventCreated.latitude, eventCreated.longitude,eventCreated.category)
+            new Event(eventCreated.id, eventCreated.partecipantsNumer, eventCreated.title, eventCreated.description, eventCreated.imageUrl, eventCreated.scheduledDate, eventCreated.owner, eventCreated.comments, eventCreated.address, eventCreated.isPublic, eventCreated.latitude, eventCreated.longitude,eventCreated.category)
         )
     }, [eventCreated]);
 
@@ -50,8 +50,7 @@ export const CreateEditEvent = ({
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         // Create a new Terrain instance with the form data
-        const newEvent = new Event(event.id, event.partecipantsNumer, event.title, event.description, event.imageUrl, event.scheduledDate, event.user, event.comments, event.address, event.isPublic, event.latitude, event.longitude,event.category)
-        console.log('New Terrain Created:', newEvent);
+        const newEvent = new Event(event.id, event.partecipantsNumer, event.title, event.description, event.imageUrl, event.scheduledDate, event.owner, event.comments, event.address, event.isPublic, event.latitude, event.longitude,event.category)
 
         // Optional callback on submission
         if (onSubmission) {
@@ -119,7 +118,7 @@ export const CreateEditEvent = ({
                             </div>
                             <input
                                 name="scheduledDate"
-                                defaultValue={`${event.scheduledDate?.getDate}`}
+                                defaultValue={`${event.scheduledDate.getDate}`}
                                 onChange={handleChange}
                                 type="date"
                                 className="input input-accent w-full max-w-xs"

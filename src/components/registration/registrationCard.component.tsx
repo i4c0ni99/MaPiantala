@@ -19,7 +19,7 @@ export const HeroRegister: React.FC<IHeroRegister> = function ({
     const [showPassword, setShowPassword] = useState<boolean>(false);
     const [errorMessage, setErrorMessage] = useState<string>("");
 
-    const [newUser, setUser] = useState<User>(new User(0,'','','','','','',false,''));
+    const [newUser, setUser] = useState<User>(new User(0,'','','','','','','UNVERIFIED',''));
 
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -34,7 +34,7 @@ export const HeroRegister: React.FC<IHeroRegister> = function ({
             newUser.lastName,
             newUser.password,
             newUser.passwordConfirm,
-            false,
+            newUser.role,
             newUser.copertinePicture,
         );
 

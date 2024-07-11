@@ -11,7 +11,7 @@ export class User {
         public lastName: string,
         public password: string,
         public passwordConfirm: string,
-        public isAdmin: boolean,
+        public role: string,
         public copertinePicture: string,
 
     ) { }

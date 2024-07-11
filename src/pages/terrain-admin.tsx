@@ -16,7 +16,7 @@ export function TerrainAdminPage() {
         const fetchData = async () => {
             try {
                 const terrains: Terrain[] = await getTerrainsMockByDistance( );
-                setTerrains(terrains);
+                setTerrains(terrains.filter((terrain)=> !terrain.isPublic));
             } catch (error) {
                 console.error('Error fetching data:', error);
             }

@@ -15,7 +15,7 @@ export function EventAdminPage() {
         const fetchData = async () => {
             try {
                 const events: Event[] = await getEventsByDistance();
-                setEvents(events);
+                setEvents(events.filter((event)=>!event.isPublic));
             } catch (error) {
                 console.error('Error fetching data:', error);
             }

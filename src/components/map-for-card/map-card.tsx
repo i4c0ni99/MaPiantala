@@ -10,13 +10,24 @@ export interface IMapCard {
 
 }
 
+/* type Props = {
+    type: "map"
+    data: string
+} | {
+    type: "event"
+    data: number
+}
 
+const a = {} as any as Props
+
+if(a.type === "event"){
+    const b = a.data
+} */
 export const MapCard: React.FC<IMapCard> = function ({ obj }) {
 
    
    
         const terrain = obj as Terrain
-        console.log(terrain)
         return (
             <>
                 <APIProvider apiKey={"AIzaSyDmRC46vKa33hycgqlvbMMzZifuvohGgj4"} onLoad={() => console.log('Maps API has loaded.')}>
@@ -31,7 +42,5 @@ export const MapCard: React.FC<IMapCard> = function ({ obj }) {
         )
     
 }
-
-
 
 

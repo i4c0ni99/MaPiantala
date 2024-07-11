@@ -9,7 +9,7 @@ import { useParams } from "react-router-dom";
 
 export function TerrainUpsert() {
     const { terrainId } = useParams()
-    const [terrain,setTerrain] = useState<Terrain>(new Terrain(
+    const [terrain, setTerrain] = useState<Terrain>(new Terrain(
         0,
         '',
         '',
@@ -38,36 +38,35 @@ export function TerrainUpsert() {
         };
 
         fetchData();
-    },[])
-  
+    }, [])
+
 
 
     return (<>
         <div className="size-3/4 mx-auto pt-32">
-
             <CreateEditTerrain
                 terrainCreated={
                     terrain
                 }
-                //JSON.stringify(data)
                 onSubmission={async (data: Terrain) => {
-                    console.log(data.address)
-                    if(data.id != 0 ){
+                    console.log(data.id)
+                    if (data.id !== 0) {
                         const address = await GeocodingService.getCoordinates(data.address)
                         data.latitude = address.location.lat
                         data.longitude = address.location.lng
-                        data.user=terrain.user
+                        data.user = terrain.user
                         updateTerrain(data)
+                        console.log('update', data)
                         window.location.href = '/terrain'
-                    }
+                    }else{
                     const address = await GeocodingService.getCoordinates(data.address)
                     data.latitude = address.location.lat
                     data.longitude = address.location.lng
-                    data.user=terrain.user
-                    console.log(data)
+                    data.user = terrain.user
+                    console.log('bellissimoooo')
                     postTerrain(data)
                     window.location.href = '/terrain'
-
+                    }
                 }
 
                 }>
@@ -77,5 +76,5 @@ export function TerrainUpsert() {
     </>
     )
 
-}   
+}
 

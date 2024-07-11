@@ -48,7 +48,7 @@ export const Card: React.FC<ICard> = function ({
                 </details>
                 <CommentCollaps terrain={terrainCard} />
             </div>
-            {user && user.id == terrainCard.user.id ?
+            {user && user.id === terrainCard.user.id ?
                 <div className="size-full grid justify-items-end py-2 px-8">
                     <Link rel="stylesheet" to={`/terrain-upsert/${terrainCard.id}`} >
                         <button className="btn btn-accent h-4 w-32  ">

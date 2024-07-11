@@ -1,8 +1,4 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-
-
-import { PiPlantLight } from "react-icons/pi";
-
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { User } from "../../types/User.class";
 
@@ -238,5 +234,5 @@ export const CardSettings: React.FC<IHeroSettings> = function ({
                 </div>
             </div>
         </div>
-    );c
+    );
 };

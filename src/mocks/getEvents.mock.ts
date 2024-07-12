@@ -12,8 +12,8 @@ export async function getEventsByDistance(): Promise<Event[]> {
    const result = await axiosInstance.get(`/event/lat/${location.lat}/lon/${location.lng}/distance/1000`)
    return result.data
 }
-export async function getCommentsbyEvent(id:number):Promise<Comment[]> {
-    const result = await axiosInstance.get(`comment/event/${id}`)
+export async function getCommentsbyEvent(id:string):Promise<Comment[]> {
+    const result = await axiosInstance.get(`/comment/event/${id}`)
     return result.data
 }
 
@@ -53,6 +53,7 @@ export async function updateEvent(event:Event){
 
     })
 }
+
 /* import { Event } from "../types/Event.class";
 
 export function getEventsMock(): Promise<Event[]> {

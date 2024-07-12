@@ -48,4 +48,10 @@ export async function postTerrain(terrain: Terrain) {
         "userId": terrain.user.id
     })
 }
+export async function getCommentsbyTerrain(id:string){
+    const result= await axiosInstance.get(`/comment/terrain/${id}`)
+    return result.data
+
+}
+
 

@@ -100,7 +100,7 @@ export const Navbar: React.FC<INavBar> = function ({ user }: INavBar) {
                   <div className="w-10 rounded-full">
                     <img
                       alt="Tailwind CSS Navbar component"
-                      src="https://cdn-icons-png.flaticon.com/512/3237/3237472.png"
+                      src={user.profilePicture? user.profilePicture :"https://cdn-icons-png.flaticon.com/512/3237/3237472.png"}
                     />
                   </div>
     
@@ -211,7 +211,7 @@ export const Navbar: React.FC<INavBar> = function ({ user }: INavBar) {
               <div className="w-10 rounded-full">
                 <img
                   alt="Tailwind CSS Navbar component"
-                  src="https://cdn-icons-png.flaticon.com/512/3237/3237472.png"
+                  src={user?.profilePicture? user.profilePicture :"https://cdn-icons-png.flaticon.com/512/3237/3237472.png"}
                 />
               </div>
 

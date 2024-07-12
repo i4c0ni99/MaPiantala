@@ -11,6 +11,7 @@ export const EventCard: React.FC<ICardEvent> = function ({
     eventInCard,
 
 }: ICardEvent) {
+    const date= new Date(eventInCard.scheduledDate)
     const user = getCookie('user')
     return (
         <div className="card size-full bg-base-300">
@@ -34,7 +35,11 @@ export const EventCard: React.FC<ICardEvent> = function ({
                 <details className="collapse bg-base-200">
                     <summary className="collapse-title text-xl font-medium">{eventInCard.title}</summary>
                     <div className="collapse-content">
-                        <p>{eventInCard.description}</p>
+                        <h1>{eventInCard.description}</h1>
+                        <h4 className="text-xl font-medium">l'evento si terra il giorno </h4>
+                        <h5 className="text-xl font-medium">{date.getDay() + "/" + date.getMonth() + "/" + date.getFullYear()}</h5>
+                        <h4 className="text-xl font-medium">in {eventInCard.address}</h4>
+                        <h5 className="text-xl font-medium">{eventInCard.partecipantsNumer}</h5>
                     </div>
                 </details>
                 <CommentCollaps event={eventInCard} />

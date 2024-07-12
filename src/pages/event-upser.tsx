@@ -48,7 +48,8 @@ export function EventUpsert() {
                     data.longitude = address.location.lng
                     data.owner=getCookie('user')
                     await postEvent(data)
-                    //window.location.href='/event'
+                    console.log("entro")
+                    window.location.href='/event'
                     }
                 }} />
 

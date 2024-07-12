@@ -43,7 +43,10 @@ export const Card: React.FC<ICard> = function ({
                 <details className="collapse bg-base-200 flex">
                     <summary className="collapse-title text-xl font-medium basis-3/4">{terrainCard.title}</summary>
                     <div className="collapse-content">
-                        <p>{terrainCard.description}</p>
+                        <h1>{terrainCard.description}</h1>
+                        <h1 className="text-l font-medium basis-3/4">il terreno si trova in </h1>
+                        <h2 className="text-l font-medium basis-3/4">{terrainCard.address}</h2>
+                            
                     </div>
                 </details>
                 <CommentCollaps terrain={terrainCard} />

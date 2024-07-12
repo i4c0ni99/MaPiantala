@@ -12,8 +12,6 @@ export function EventPage() {
             try {
                 const events: Event[] = await getEventsByDistance();
                 setEvents(events.filter((event)=> event.isPublic));
-                
-                console.log(events)
             } catch (error) {
                 console.error('Error fetching data:', error);
             }

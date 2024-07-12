@@ -1,7 +1,7 @@
 
 import { CreateEditTerrain } from "../components/create-edit-terrain/create-edit-terrain.component";
 import { Terrain } from "../types/terrain.class";
-import { getTerrainById, postTerrain, updateTerrain } from "../mocks/getTerrains.mock";
+import { getTerrainById, postTerrain, updateTerrain } from "../services/terrains.service";
 import GeocodingService from "../services/geocoding.service";
 import { getCookie } from "../services/MaPiantalaCookies.service";
 import { useEffect, useState } from "react";
@@ -54,17 +54,17 @@ export function TerrainUpsert() {
                         const address = await GeocodingService.getCoordinates(data.address)
                         data.latitude = address.location.lat
                         data.longitude = address.location.lng
-                        data.isPublic=false
+                        data.isPublic = false
                         updateTerrain(data)
                         console.log('update', data)
                         window.location.href = '/terrain'
-                    }else{
-                    const address = await GeocodingService.getCoordinates(data.address)
-                    data.latitude = address.location.lat
-                    data.longitude = address.location.lng
-                    data.user = terrain.user
-                    postTerrain(data)
-                    window.location.href = '/terrain'
+                    } else {
+                        const address = await GeocodingService.getCoordinates(data.address)
+                        data.latitude = address.location.lat
+                        data.longitude = address.location.lng
+                        data.user = terrain.user
+                        postTerrain(data)
+                        window.location.href = '/terrain'
                     }
                 }
 

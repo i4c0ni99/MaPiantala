@@ -1,6 +1,6 @@
 
 import { Card } from "../components/card/Card.component";
-import { getTerrainsMockByDistance } from "../mocks/getTerrains.mock";
+import { getTerrainsMockByDistance } from "../services/terrains.service";
 import { Terrain } from "../types/terrain.class";
 import { useState, useEffect } from 'react';
 import { Button, IButton } from "../components/button/Button.component";
@@ -26,8 +26,8 @@ export function TerrainPage() {
         const fetchData = async () => {
             try {
                 const terrains: Terrain[] = await getTerrainsMockByDistance();
-                if(await getCookie('user'))
-                setTerrains(terrains.filter((terrain)=>terrain.isPublic));
+                if (await getCookie('user'))
+                    setTerrains(terrains.filter((terrain) => terrain.isPublic));
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -39,7 +39,7 @@ export function TerrainPage() {
     return (
         <>
             <Link rel="stylesheet" to={`/terrain-upsert/`}  >
-                <button className="btn btn-outline btn-circle btn-lg btn-accent z-50 fixed text-2xl bottom-8 right-36" ></button>
+                <button className="btn btn-outline btn-circle btn-lg btn-accent z-50 fixed text-2xl bottom-8 right-36" >+</button>
             </Link>
 
 

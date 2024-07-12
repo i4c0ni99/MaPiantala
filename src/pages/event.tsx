@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { EventCard } from "../components/event/event.component";
-import { getEventsByDistance } from "../mocks/getEvents.mock";
+import { getEventsByDistance } from "../services/events.service";
 import { Event } from "../types/Event.class";
 import { Link } from "react-router-dom";
 
@@ -11,7 +11,7 @@ export function EventPage() {
         const fetchData = async () => {
             try {
                 const events: Event[] = await getEventsByDistance();
-                setEvents(events.filter((event)=> event.isPublic));
+                setEvents(events.filter((event) => event.isPublic));
             } catch (error) {
                 console.error('Error fetching data:', error);
             }

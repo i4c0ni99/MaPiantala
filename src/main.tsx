@@ -65,7 +65,7 @@ const router = createBrowserRouter([
         element: <TerrainPage />
     },
     {
-        path: "/create-plant",
+        path: "/plant-upsert",
         element: <PlantUpsert />
     },
     {

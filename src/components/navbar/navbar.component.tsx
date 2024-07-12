@@ -155,7 +155,7 @@ export const Navbar: React.FC<INavBar> = function ({ user }: INavBar) {
                   <a href="/event">Eventi</a>
                 </li>
                 <li>
-                  <a href="/plant">Piante</a>
+                  <a href="/plants">Piante</a>
                 </li>
               </ul>
             </div>

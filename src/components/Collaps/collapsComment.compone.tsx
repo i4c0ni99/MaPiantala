@@ -1,13 +1,12 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
-import { CommentIcon } from "../../assets/Icon/Iconi";
 import { Terrain } from "../../types/terrain.class";
 import { Event } from "../../types/Event.class";
 import { getCookie } from "../../services/MaPiantalaCookies.service";
-import { getCommentsbyEvent } from "../../mocks/getEvents.mock";
+import { getCommentsbyEvent } from "../../services/events.service";
 import { Comment } from "../../types/Comment.class";
 import { axiosInstance } from "../../utils/axiosInstance";
 import { User } from "../../types/User.class";
-import { getCommentsbyTerrain } from "../../mocks/getTerrains.mock";
+import { getCommentsbyTerrain } from "../../services/terrains.service";
 
 export interface ICollapsComment {
 
@@ -80,7 +79,7 @@ export const CommentCollaps: React.FC<ICollapsComment> = function ({
         return (
             <>
                 <div role="tablist" className="tabs tabs-lifted">
-                    <input type="radio" name="my_tabs_1" role="tab" className="tab" aria-label="Dettagli" defaultChecked/>
+                    <input type="radio" name="my_tabs_1" role="tab" className="tab" aria-label="Dettagli" defaultChecked />
                     <div role="tabpanel" className="tab-content bg-base-200 border-base-200 rounded-box p-6">
                         <h1 className="text-xl font-medium">{terrain.description}</h1>
                         <h4 className="text-xl font-medium">Il terreno si trova in {terrain.address}</h4>
@@ -91,7 +90,7 @@ export const CommentCollaps: React.FC<ICollapsComment> = function ({
                         role="tab"
                         className="tab"
                         aria-label="commenti"
-                        />
+                    />
 
                     <div role="tabpanel" className="tab-content bg-base-200 border-base-200 rounded-box p-6">
                         <div className="h-52 overflow-y-auto scrollbar-hide">
@@ -121,7 +120,7 @@ export const CommentCollaps: React.FC<ICollapsComment> = function ({
                                                 <div className="w-10 rounded-full">
                                                     <img
                                                         alt="Tailwind CSS chat bubble component"
-                                                        src={user.profilePicture ? user.profilePicture : "https://cdn-icons-png.flaticon.com/512/3237/3237472.png"}
+                                                        src={comment.user.profilePicture ? comment.user.profilePicture : "https://cdn-icons-png.flaticon.com/512/3237/3237472.png"}
                                                     />
                                                 </div>
                                             </div>
@@ -173,7 +172,7 @@ export const CommentCollaps: React.FC<ICollapsComment> = function ({
                         role="tab"
                         className="tab"
                         aria-label="commenti"
-                         />
+                    />
 
                     <div role="tabpanel" className="tab-content bg-base-200 border-base-200 rounded-box p-6">
                         <div className="h-52 overflow-y-auto scrollbar-hide">
@@ -203,7 +202,7 @@ export const CommentCollaps: React.FC<ICollapsComment> = function ({
                                                 <div className="w-10 rounded-full">
                                                     <img
                                                         alt="Tailwind CSS chat bubble component"
-                                                        src={user.profilePicture ? user.profilePicture : "https://cdn-icons-png.flaticon.com/512/3237/3237472.png"}
+                                                        src={comment.user.profilePicture ? comment.user.profilePicture : "https://cdn-icons-png.flaticon.com/512/3237/3237472.png"}
                                                     />
                                                 </div>
                                             </div>

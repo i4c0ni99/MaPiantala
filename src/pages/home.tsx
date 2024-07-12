@@ -1,6 +1,6 @@
 
 import { Card } from "../components/card/Card.component";
-import { getTerrainsMockByDistance } from "../mocks/getTerrains.mock";
+import { getTerrainsMockByDistance } from "../services/terrains.service";
 import { Terrain } from "../types/terrain.class";
 import { useState, useEffect } from 'react';
 import { Button, IButton } from "../components/button/Button.component";
@@ -9,9 +9,9 @@ import { loggedIn } from "../utils/axiosInstance";
 import { Copertine } from "./copertine";
 
 
-export  function Home() {
+export function Home() {
     const [terrains, setTerrains] = useState<Terrain[]>([]);
-    const [logged,setLoggedIn] =useState<boolean>()
+    const [logged, setLoggedIn] = useState<boolean>()
     const reserve = () => console.log("Prenotazione");
     const button: React.ReactElement<IButton> = (
         <Button
@@ -21,7 +21,7 @@ export  function Home() {
         >
         </Button>
     );
-    
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -29,7 +29,7 @@ export  function Home() {
                 const terrains: Terrain[] = await getTerrainsMockByDistance();
                 console.log(terrains)
                 setTerrains(terrains);
-                
+
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -38,13 +38,13 @@ export  function Home() {
         fetchData();
     }, []);
 
-    useEffect(()=>{
-        const fetchData = async () =>{
+    useEffect(() => {
+        const fetchData = async () => {
             setLoggedIn(await loggedIn())
         }
         fetchData();
-    },[])
-    if(logged) return (
+    }, [])
+    if (logged) return (
         <>
             <button className="btn btn-outline btn-circle btn-lg btn-accent z-50 fixed text-2xl bottom-8 right-36" ><a href="/terrain-upsert">+</a></button>
 
@@ -52,10 +52,10 @@ export  function Home() {
                 {terrains.map(
                     (terrain) =>
                         <div className="mt-8">
-                            <Card terrainCard={terrain} Button={button}></Card>                                
+                            <Card terrainCard={terrain} Button={button}></Card>
                         </div>
                 )
-            }
+                }
             </main>
         </>
     );

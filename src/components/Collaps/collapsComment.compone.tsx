@@ -1,7 +1,6 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { CommentIcon } from "../../assets/Icon/Iconi";
 import { Terrain } from "../../types/terrain.class";
-import { IButton } from "../button/Button.component";
 import { Event } from "../../types/Event.class";
 import { getCookie } from "../../services/MaPiantalaCookies.service";
 import { getCommentsbyEvent } from "../../mocks/getEvents.mock";
@@ -15,19 +14,20 @@ export interface ICollapsComment {
 
     terrain?: Terrain;
     event?: Event;
-    
+
 }
 
 export const CommentCollaps: React.FC<ICollapsComment> = function ({
     terrain,
     event,
-    
+
 
 }: ICollapsComment) {
 
     const user: User = getCookie('user')
     const [comments, setComments] = useState<Comment[]>([]);
-    const [comment, setComment] = useState<Comment>(new Comment(new Date(), getCookie('user'), ""))
+    const [commentCreate, setCommentCreate] = useState(" ")
+    const [comment, setComment] = useState<string>('')
 
     useEffect(() => {
 
@@ -36,7 +36,6 @@ export const CommentCollaps: React.FC<ICollapsComment> = function ({
                 if (terrain) {
                     const commentsInTerrain: Comment[] = await getCommentsbyTerrain(terrain.id.toString());
                     setComments(commentsInTerrain)
-                    
                 }
                 if (event) {
                     const commentsInEvent: Comment[] = await getCommentsbyEvent(event.id.toString());
@@ -48,16 +47,12 @@ export const CommentCollaps: React.FC<ICollapsComment> = function ({
         };
 
         fetchData();
-    }, [comments]);
+    }, [commentCreate]);
 
     function handleChange(e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
-        const { name, value } = e.target;
-        console.log(value)
-        setComment(prev => ({
-            ...prev,
-            [name]: value
-        })
-        );
+
+
+        setComment(e.target.value)
 
     };
     // Handle form submission
@@ -67,157 +62,182 @@ export const CommentCollaps: React.FC<ICollapsComment> = function ({
          setComment(newComment) */
         if (terrain)
             await axiosInstance.post('/comment', {
-                text: comment.text,
+                text: comment,
                 terrainId: terrain.id,
                 userId: user.id
             })
         if (event)
             await axiosInstance.post('/comment', {
-                text: comment.text,
+                text: comment,
                 eventId: event.id,
                 userId: user.id
             })
-        
+
+        setCommentCreate(comment)
+        setComment("")
     }
     if (terrain)
         return (
+            <>
+                <div role="tablist" className="tabs tabs-lifted">
+                    <input type="radio" name="my_tabs_1" role="tab" className="tab" aria-label="Dettagli" defaultChecked/>
+                    <div role="tabpanel" className="tab-content bg-base-200 border-base-200 rounded-box p-6">
+                        <h1 className="text-xl font-medium">{terrain.description}</h1>
+                        <h4 className="text-xl font-medium">Il terreno si trova in {terrain.address}</h4>
+                    </div>
+                    <input
+                        type="radio"
+                        name="my_tabs_1"
+                        role="tab"
+                        className="tab"
+                        aria-label="commenti"
+                        />
 
-            <div className="collapse size-full bg-base-200">
-                <input type="checkbox" />
-                <div className="collapse-title text-xl font-medium h-3">
-                    <CommentIcon></CommentIcon>
-                </div>
-                <div className="collapse-content">
-                    {comments?.map((comment) => (
-                        <p>
-                            {user.id == comment.user.id ? (
-                                <div className="chat chat-end">
-                                    <div className="chat-image avatar">
-                                        <div className="w-10 rounded-full">
-                                            <img
-                                                alt="Tailwind CSS chat bubble component"
-                                                src={user.profilePicture ? user.profilePicture : "https://cdn-icons-png.flaticon.com/512/3237/3237472.png"}
-                                            />
+                    <div role="tabpanel" className="tab-content bg-base-200 border-base-200 rounded-box p-6">
+                        <div className="h-52 overflow-y-auto scrollbar-hide">
+                            {comments?.map((comment) => (
+                                <p>
+                                    {user.id == comment.user.id ? (
+                                        <div className="chat chat-end">
+                                            <div className="chat-image avatar">
+                                                <div className="w-10 rounded-full">
+                                                    <img
+                                                        alt="Tailwind CSS chat bubble component"
+                                                        src={user.profilePicture ? user.profilePicture : "https://cdn-icons-png.flaticon.com/512/3237/3237472.png"}
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div className="chat-header">
+                                                {comment.user.email}
+                                                <time className="text-xs opacity-50">
+                                                    {comment.createdAt.toString()}
+                                                </time>
+                                            </div>
+                                            <div className="chat-bubble lg:w-96  sm:w-10 break-words">{comment.text}</div>
                                         </div>
-                                    </div>
-                                    <div className="chat-header">
-                                        {comment.user.email}
-                                        <time className="text-xs opacity-50">
-                                            {comment.createdAt.toString()}
-                                        </time>
-                                    </div>
-                                    <div className="chat-bubble">{comment.text}</div>
-                                </div>
-                            ) : (
-                                <div className="chat chat-start">
-                                    <div className="chat-image avatar">
-                                        <div className="w-10 rounded-full">
-                                            <img
-                                                alt="Tailwind CSS chat bubble component"
-                                                src={user.profilePicture ? user.profilePicture : "https://cdn-icons-png.flaticon.com/512/3237/3237472.png"}
-                                            />
+                                    ) : (
+                                        <div className="chat chat-start">
+                                            <div className="chat-image avatar">
+                                                <div className="w-10 rounded-full">
+                                                    <img
+                                                        alt="Tailwind CSS chat bubble component"
+                                                        src={user.profilePicture ? user.profilePicture : "https://cdn-icons-png.flaticon.com/512/3237/3237472.png"}
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div className="chat-header">
+                                                {comment.user.email}
+                                                <time className="text-xs opacity-50">
+                                                    {comment.createdAt.toString()}
+                                                </time>
+                                            </div>
+                                            <div className="chat-bubble lg:w-96  sm:w-10 break-words">{comment.text}</div>
                                         </div>
-                                    </div>
-                                    <div className="chat-header">
-                                        {comment.user.email}
-                                        <time className="text-xs opacity-50">
-                                            {comment.createdAt.toString()}
-                                        </time>
-                                    </div>
-                                    <div className="chat-bubble">{comment.text}</div>
-                                </div>
 
-                            )}
-                        </p>
-                    ))}
-                    <form className="flex flex-row pt-2" onSubmit={handleSubmit} >
-                        <input
-                            type="text"
-                            name="text"
-                            defaultValue={comment.text}
-                            onChange={handleChange}
-                            className="textarea textarea-accent basis-3/4 h-3 mr-2"
-                            placeholder="Bio"
-                        ></input>
-                        <button type="submit" className="btn btn-active btn-accent basis-1/4 mr-2">
-                            Send
-                        </button>
-                    </form>
+                                    )}
+                                </p>
+                            ))}
+                        </div>
+                        <form className="flex flex-row pt-2" onSubmit={handleSubmit} >
+                            <input
+                                type="text"
+                                name="text"
+                                value={comment}
+                                onChange={handleChange}
+                                className="textarea textarea-accent basis-3/4 h-3 mr-2"
+                                placeholder="Bio"
+                            ></input>
+                            <button type="submit" className="btn btn-active btn-accent basis-1/4 mr-2">
+                                Send
+                            </button>
+                        </form>
+                    </div>
+
                 </div>
-            </div>
-
+            </>
         );
-    if (event)
+    if (event) {
+        const date = new Date(event.scheduledDate)
         return (
+            <>
+                <div role="tablist" className="tabs tabs-lifted">
+                    <input type="radio" name="my_tabs_1" role="tab" className="tab" aria-label="Dettagli" defaultChecked />
+                    <div role="tabpanel" className="tab-content bg-base-200 border-base-200 rounded-box p-6">
+                        <h1 className="lg:text-xl sm:text-sm font-medium">{event.description}</h1>
+                        <h4 className="lg:text-xl sm:text-sm font-medium">l'evento si terra il giorno {date.getDay()}/{date.getMonth()}/{date.getFullYear()} in {event.address}
+                        </h4>
+                    </div>
+                    <input
+                        type="radio"
+                        name="my_tabs_1"
+                        role="tab"
+                        className="tab"
+                        aria-label="commenti"
+                         />
 
-            <div className="collapse size-full bg-base-200">
-                <input type="checkbox" />
-
-                <div className="collapse-title text-xl font-medium h-3">
-                    <CommentIcon></CommentIcon>
-                </div>
-                <div className="collapse-content">
-                    {
-                        comments?.map((comment) => (
-                            <p>
-                                {user.id == comment.user.id ? (
-                                    <div className="chat chat-end">
-                                        <div className="chat-image avatar">
-                                            <div className="w-10 rounded-full">
-                                                <img
-                                                    alt="Tailwind CSS chat bubble component"
-                                                    src={user.profilePicture ? user.profilePicture : "https://cdn-icons-png.flaticon.com/512/3237/3237472.png"}
-                                                />
+                    <div role="tabpanel" className="tab-content bg-base-200 border-base-200 rounded-box p-6">
+                        <div className="h-52 overflow-y-auto scrollbar-hide">
+                            {comments?.map((comment) => (
+                                <p>
+                                    {user.id == comment.user.id ? (
+                                        <div className="chat chat-end">
+                                            <div className="chat-image avatar">
+                                                <div className="w-10 rounded-full">
+                                                    <img
+                                                        alt="Tailwind CSS chat bubble component"
+                                                        src={user.profilePicture ? user.profilePicture : "https://cdn-icons-png.flaticon.com/512/3237/3237472.png"}
+                                                    />
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div className="chat-header">
-                                            {comment.user?.email}
-                                            <time className="text-xs opacity-50">
-                                                {comment.createdAt.toString()}
-                                            </time>
-                                        </div>
-                                        <div className="chat-bubble">{comment.text}</div>
-                                    </div>
-                                ) : (
-                                    <div className="chat chat-start">
-                                        <div className="chat-image avatar">
-                                            <div className="w-10 rounded-full">
-                                                <img
-                                                    alt="Tailwind CSS chat bubble component"
-                                                    src={user.profilePicture ? user.profilePicture : "https://cdn-icons-png.flaticon.com/512/3237/3237472.png"}
-                                                />
+                                            <div className="chat-header">
+                                                {comment.user.email}
+                                                <time className="text-xs opacity-50">
+                                                    {comment.createdAt.toString()}
+                                                </time>
                                             </div>
+                                            <div className="chat-bubble lg:w-96  sm:w-10 break-words">{comment.text}</div>
                                         </div>
-                                        <div className="chat-header">
-                                            {comment.user?.email}
-                                            <time className="text-xs opacity-50">
-                                                {comment.createdAt.toString()}
-                                            </time>
+                                    ) : (
+                                        <div className="chat chat-start">
+                                            <div className="chat-image avatar">
+                                                <div className="w-10 rounded-full">
+                                                    <img
+                                                        alt="Tailwind CSS chat bubble component"
+                                                        src={user.profilePicture ? user.profilePicture : "https://cdn-icons-png.flaticon.com/512/3237/3237472.png"}
+                                                    />
+                                                </div>
+                                            </div>
+                                            <div className="chat-header">
+                                                {comment.user.email}
+                                                <time className="text-xs opacity-50">
+                                                    {comment.createdAt.toString()}
+                                                </time>
+                                            </div>
+                                            <div className="chat-bubble lg:w-96  sm:w-10 break-words">{comment.text}</div>
                                         </div>
-                                        <div className="chat-bubble">{comment.text}</div>
-                                    </div>
 
-                                )}
-                            </p>
-                        ))}
-                    <form className="flex flex-row pt-2" onSubmit={handleSubmit} >
-                        <input
-                            type="text"
-                            name="text"
-                            defaultValue={comment.text}
-                            onChange={handleChange}
-                            className="textarea textarea-accent basis-3/4 h-3 mr-2"
-                            placeholder="Bio"
-                        ></input>
-                        <button type="submit" className="btn btn-active btn-accent basis-1/4 mr-2">
-                            Send
-                        </button>
-                    </form>
+                                    )}
+                                </p>
+                            ))}
+                        </div>
+                        <form className="flex flex-row pt-2" onSubmit={handleSubmit} >
+                            <input
+                                type="text"
+                                name="text"
+                                value={comment}
+                                onChange={handleChange}
+                                className="textarea textarea-accent basis-3/4 h-3 mr-2"
+                                placeholder="Bio"
+                            ></input>
+                            <button type="submit" className="btn btn-active btn-accent basis-1/4 mr-2">
+                                Send
+                            </button>
+                        </form>
+                    </div>
 
                 </div>
-            </div>
-
+            </>
         );
 
-
+    }
 };

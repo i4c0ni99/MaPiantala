@@ -1,4 +1,4 @@
-import { useState } from "react";
+
 import { Moon, Sunny } from "../../assets/Icon/Iconi";
 import { User } from "../../types/User.class";
 import { LoginModal } from "../login/login.component";
@@ -8,12 +8,7 @@ export interface INavBar {
   user?: User;
 }
 export const Navbar: React.FC<INavBar> = function ({ user }: INavBar) {
-  const [theme, setTheme] = useState("light");
-
-
-  function toggleTheme() {
-    setTheme(theme === "dark" ? "light" : "dark");
-  }
+ 
 
  if(user?.role=='ADMIN')
     return (
@@ -76,21 +71,6 @@ export const Navbar: React.FC<INavBar> = function ({ user }: INavBar) {
               </a>
             </div>
             <div className="navbar-end">
-              <label className="swap swap-rotate">
-                {/* this hidden checkbox controls the state */}
-                <input
-                  type="checkbox"
-                  className="theme-controller"
-                  value="synthwave"
-                  onClick={toggleTheme}
-                />
-    
-                {/* sun icon */}
-                <Sunny></Sunny>
-    
-                {/* moon icon */}
-                <Moon></Moon>
-              </label>
               <div className="dropdown dropdown-end">
                 <div
                   tabIndex={0}
@@ -107,7 +87,7 @@ export const Navbar: React.FC<INavBar> = function ({ user }: INavBar) {
                 </div>
                 <ul
                   tabIndex={0}
-                  className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+                  className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-300 rounded-box w-52"
                 >
                   <li>
                     <a href="/profile" className="justify-between">
@@ -187,21 +167,6 @@ export const Navbar: React.FC<INavBar> = function ({ user }: INavBar) {
           </a>
         </div>
         <div className="navbar-end">
-          <label className="swap swap-rotate">
-            {/* this hidden checkbox controls the state */}
-            <input
-              type="checkbox"
-              className="theme-controller"
-              value="synthwave"
-              onClick={toggleTheme}
-            />
-
-            {/* sun icon */}
-            <Sunny></Sunny>
-
-            {/* moon icon */}
-            <Moon></Moon>
-          </label>
           <div className="dropdown dropdown-end">
             <div
               tabIndex={0}
@@ -218,7 +183,7 @@ export const Navbar: React.FC<INavBar> = function ({ user }: INavBar) {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-300 rounded-box w-52"
             >
               <li>
                 <a href="/profile" className="justify-between">

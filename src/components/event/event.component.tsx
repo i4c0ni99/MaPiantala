@@ -11,20 +11,23 @@ export const EventCard: React.FC<ICardEvent> = function ({
     eventInCard,
 
 }: ICardEvent) {
-    const date= new Date(eventInCard.scheduledDate)
     const user = getCookie('user')
     return (
         <div className="card size-full bg-base-300">
-            {eventInCard.owner.profilePicture && eventInCard.owner.email && (
-                <div className="mx-4 my-4">
-                    <div className="avatar">
-                        <div className="w-10 rounded-full ">
-                            <img src={eventInCard.owner.profilePicture} />
+            { eventInCard.owner.email && (
+              
+                <div className="pl-4 my-4 flex place-items-end">
+                    <div className="avatar sm:size-16 basis-9">
+                        <div className="rounded-full ">
+                            <img src={eventInCard.owner?.profilePicture ? eventInCard.owner.profilePicture : "https://cdn-icons-png.flaticon.com/512/3237/3237472.png"} />
                         </div>
+
                     </div>
-                    <div className="badge badge-default mx-1 badge-lg ">{eventInCard.owner.email}</div>
+                    <h1 className="pl-2 basis-3/5 ">{eventInCard.owner.email}</h1>
                 </div>
             )}
+
+            
 
             {eventInCard.imageUrl && (
                 <figure className="px-10 pt-2">
@@ -32,16 +35,9 @@ export const EventCard: React.FC<ICardEvent> = function ({
                 </figure>
             )}
             <div className=" card  bg-base-200 mr-4 ml-4 mt-4 mb-4 ">
-                <details className="collapse bg-base-200">
-                    <summary className="collapse-title text-xl font-medium">{eventInCard.title}</summary>
-                    <div className="collapse-content">
-                        <h1>{eventInCard.description}</h1>
-                        <h4 className="text-xl font-medium">l'evento si terra il giorno </h4>
-                        <h5 className="text-xl font-medium">{date.getDay() + "/" + date.getMonth() + "/" + date.getFullYear()}</h5>
-                        <h4 className="text-xl font-medium">in {eventInCard.address}</h4>
-                        <h5 className="text-xl font-medium">{eventInCard.partecipantsNumer}</h5>
-                    </div>
-                </details>
+                <div className="w-full py-4 pl-2">
+                    <h1 className="text-xl font-medium">{eventInCard.title}</h1>
+                </div>
                 <CommentCollaps event={eventInCard} />
             </div>
             {user && user.id == eventInCard.owner.id ?

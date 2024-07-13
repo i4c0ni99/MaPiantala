@@ -107,7 +107,6 @@ const router = createBrowserRouter([
     }
 ]);
 
-console.log(getCookie('user'))
 ReactDOM.createRoot(document.getElementById('root')!).render(
         <React.StrictMode>
             <div className="fixed w-full z-50">

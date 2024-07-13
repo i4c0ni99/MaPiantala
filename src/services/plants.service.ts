@@ -49,4 +49,11 @@ export async function udatePlant(plant:Plant) {
         harvesting: plant.harvesting,
         imageUrl: plant.imageUrl,
     })
+
+   
+}
+
+export async function searchPlant(name?:string) {
+        const result = await axiosInstance.get(`/plant?searchQuery=${name}`)
+        return result.data
 }

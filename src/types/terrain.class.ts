@@ -14,7 +14,9 @@ export class Terrain {
         public user: User,
         public comments:Comment[],
         public latitude: number,
-        public longitude: number
+        public longitude: number,
+         public createdAt:Date,
+        public updatedAt:Date
     ) {
 
     }

@@ -18,7 +18,9 @@ export class Event {
         public isPublic: boolean,
         public latitude:number,
         public longitude:number,
-        public category: EventCategory
+        public category: EventCategory,
+        public createdAt:Date,
+        public updatedAt:Date
 
     ) {
 

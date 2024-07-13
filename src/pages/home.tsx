@@ -7,10 +7,24 @@ import { Button, IButton } from "../components/button/Button.component";
 import { ButtonType } from "../components/button/button-types";
 import { loggedIn } from "../utils/axiosInstance";
 import { Copertine } from "./copertine";
+import { getEventsByDistance } from "../services/events.service";
+import { Event } from "../types/Event.class";
+import { EventCard } from "../components/event/event.component";
 
 
 export function Home() {
-    const [terrains, setTerrains] = useState<Terrain[]>([]);
+    interface terrainType {
+        type: 'terrain',
+        terrain: Terrain
+    }
+    interface eventType {
+        type: 'event',
+        event: Event
+    }
+
+    const [terrain_events, setTerrainEvent] = useState<(terrainType | eventType)[]>([])
+    const terrainsType: terrainType[] = []
+    const eventsType: eventType[] = []
     const [logged, setLoggedIn] = useState<boolean>()
     const reserve = () => console.log("Prenotazione");
     const button: React.ReactElement<IButton> = (
@@ -27,9 +41,31 @@ export function Home() {
         const fetchData = async () => {
             try {
                 const terrains: Terrain[] = await getTerrainsMockByDistance();
+                const events: Event[] = await getEventsByDistance()
                 console.log(terrains)
-                setTerrains(terrains);
+            if(terrain_events.length == 0){
+                terrains.forEach((terrain) => {
+                    if(terrain.isPublic && !terrainsType.includes({
+                        type: 'terrain',
+                        terrain: terrain
+                    }))
+                    terrainsType.push({
+                    type: 'terrain',
+                    terrain: terrain
+                })})
 
+                events.forEach((event) =>{
+                    if(event.isPublic && !eventsType.includes({
+                        type: 'event',
+                        event: event
+                    }))
+                    eventsType.push({
+                    type: 'event',
+                    event: event
+                })})
+                            
+                setTerrainEvent([...terrainsType,...eventsType])
+            }
             } catch (error) {
                 console.error('Error fetching data:', error);
             }
@@ -49,13 +85,22 @@ export function Home() {
             <button className="btn btn-outline btn-circle btn-lg btn-accent z-50 fixed text-2xl bottom-8 right-36" ><a href="/terrain-upsert">+</a></button>
 
             <main className="pt-32 pl-2 pr-2 sm:size-11/12 lg:size-1/2 mx-auto">
-                {terrains.map(
-                    (terrain) =>
-                        <div className="mt-8">
-                            <Card terrainCard={terrain} Button={button}></Card>
-                        </div>
-                )
-                }
+                {terrain_events.map(
+                    (terrainEvent) => {
+                        console.log(terrainEvent)
+                        if (terrainEvent.type == 'terrain')
+                            return (
+                            <div className="mt-8">
+                                <Card terrainCard={terrainEvent.terrain} Button={button}></Card>
+                            </div>)
+                        if (terrainEvent.type == 'event')  
+                            return(
+                                <div className="mt-8">
+                                <EventCard eventInCard={terrainEvent.event} />
+                            </div>
+                            ) 
+                    }
+                )}
             </main>
         </>
     );

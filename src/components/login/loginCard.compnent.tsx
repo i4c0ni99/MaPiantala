@@ -18,10 +18,12 @@ export const HeroLogin: React.FC<IHeroLogin> = function ({
             onSubmission(password)
         }
     }
+
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { value, type } = e.target;
         type == 'password' ? setPassword(value) : setEmail(value)
     };
+
     return (
         <div className="hero  bg-base-300 size-full ">
             <div className="hero-content flex-col lg:flex-row-reverse ">

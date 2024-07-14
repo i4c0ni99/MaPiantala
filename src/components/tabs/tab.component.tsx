@@ -1,11 +1,11 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
-import { Terrain } from "../../types/Terrain.class";
-import { Event } from "../../types/Event.class";
+import { Terrain } from "src/types/Terrain.class";
+import { Event } from "src/types/Event.class";
 import { getCookie } from "../../services/cookies.service";
 import { getCommentsbyEvent } from "../../services/events.service";
-import { Comment } from "../../types/Comment.class";
+import { Comment } from "src/types/Comment.class";
 import { axiosInstance } from "../../utils/axiosInstance";
-import { User } from "../../types/User.class";
+import { User } from "src/types/User.class";
 import { getCommentsbyTerrain } from "../../services/terrains.service";
 
 export interface ICollapsComment {

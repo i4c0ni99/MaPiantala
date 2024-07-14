@@ -1,4 +1,4 @@
-import { Event } from "../../types/Event.class";
+import { Event } from "src/types/Event.class";
 import { MapCard } from "../map-for-card/map-card";
 import { ChangeEvent, FormEvent, useState } from "react";
 interface ICardEventDetailAdmin {

@@ -1,4 +1,4 @@
-import { Event } from "../../types/Event.class";
+import { Event } from "src/types/Event.class";
 
 interface IEventCardAdmin {
     event: Event;

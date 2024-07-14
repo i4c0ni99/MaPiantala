@@ -1,5 +1,5 @@
 import { getCookie } from "../../services/cookies.service";
-import { Event } from "../../types/Event.class";
+import { Event } from "src/types/Event.class";
 import { CommentCollaps } from "../tabs/tab.component";
 import { Link } from "react-router-dom";
 

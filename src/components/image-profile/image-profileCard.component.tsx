@@ -1,6 +1,6 @@
 import { ChangeEvent, MouseEvent, useState } from "react";
 import { PiPlantLight } from "react-icons/pi";
-import { User } from "../../types/User.class";
+import { User } from "src/types/User.class";
 
 export interface IHeroImage {
     onSubmission?: (data: string) => void;

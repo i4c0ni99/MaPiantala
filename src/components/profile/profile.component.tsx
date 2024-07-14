@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { User } from "../../types/User.class";
+import { User } from "src/types/User.class";
 
 export interface IHeroProfile {
     user: User;

@@ -1,5 +1,5 @@
 import { getCookie } from "../../services/cookies.service";
-import { Terrain } from "../../types/Terrain.class";
+import { Terrain } from "src/types/Terrain.class";
 import { CommentCollaps } from "../tabs/tab.component";
 import { IButton } from "../button/button.component";
 import { Link } from "react-router-dom";

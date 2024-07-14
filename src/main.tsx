@@ -19,7 +19,7 @@ import { TerrainPage } from './pages/terrain.tsx';
 import { TerrainAdminPage } from './pages/terrain-admin.tsx';
 import { TerrainDetailAdminPage } from './pages/terrain-detail-admin.tsx';
 import { EventAdminPage } from './pages/event-admin.tsx';
-import { EventDetailAdminPage } from './pages/event-deatil-admin.tsx';
+import { EventDetailAdminPage } from './pages/event-detail-admin.tsx';
 import { PlantPageDetail } from './pages/plant-detail.tsx';
 import { SettingsPage } from './pages/settings.tsx';
 import { getCookie } from './services/cookies.service.ts';

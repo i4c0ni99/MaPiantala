@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { User } from "../../types/User.class";
+import { User } from "src/types/User.class";
 
 export interface IHeroSettings {
     onSubmission: (data: User) => void;

@@ -1,4 +1,4 @@
-import { Plant } from "../../types/Plant.class";
+import { Plant } from "src/types/Plant.class";
 
 interface ICardDetailPlant {
     plant?: Plant;

@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
-import { Terrain } from "../../types/Terrain.class";
+import { Terrain } from "src/types/Terrain.class";
 
 export interface ITerrain {
     terrainCreated: Terrain;
@@ -58,13 +58,12 @@ export const CreateEditTerrain = ({
         const { name, value } = e.target;
         if (e.target instanceof HTMLInputElement) {
             // Safe to access `checked` because it's confirmed as an HTMLInputElement of type checkbox
-
-            setTerrain((prev) => ({
+            setTerrain((prev: Terrain) => ({
                 ...prev,
                 [name]: value,
             }));
         } else {
-            setTerrain((prev) => ({
+            setTerrain((prev: Terrain) => ({
                 ...prev,
                 [name]: value,
             }));

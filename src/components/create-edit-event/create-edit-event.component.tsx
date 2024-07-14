@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
-import { Event } from "../../types/Event.class";
-import { EventCategory } from "../../types/EventCategory.enum";
+import { Event } from "src/types/Event.class";
+import { EventCategory } from "src/types/EventCategory.enum";
 
 export interface IEvent {
     eventCreated: Event;

@@ -3,7 +3,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { PiPlantLight } from "react-icons/pi";
 
 export interface IHeroLogin {
-    onSubmission?: (data: {}) => void;
+    onSubmission?: (data: unknown) => void;
 }
 
 export const HeroLogin: React.FC<IHeroLogin> = function ({

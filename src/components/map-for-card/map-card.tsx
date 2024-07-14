@@ -1,7 +1,7 @@
 import { APIProvider, AdvancedMarker, Map } from "@vis.gl/react-google-maps";
-import { Terrain } from "../../types/Terrain.class";
+import { Terrain } from "src/types/Terrain.class";
 export interface IMapCard {
-    obj: Object;
+    obj: unknown;
 }
 
 export const MapCard: React.FC<IMapCard> = function ({ obj }) {

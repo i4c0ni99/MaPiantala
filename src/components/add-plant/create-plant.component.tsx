@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import { Plant } from "../../types/Plant.class";
+import { Plant } from "src/types/Plant.class";
 
 export interface IPlant {
     onSubmission?: (data: Plant) => void;

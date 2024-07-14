@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Plant } from "../../types/Plant.class";
+import { Plant } from "src/types/Plant.class";
 
 interface IPlantCard {
     plant: Plant;

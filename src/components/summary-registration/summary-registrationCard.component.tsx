@@ -1,4 +1,4 @@
-import { User } from "../../types/User.class";
+import { User } from "src/types/User.class";
 import { Password } from "primereact/password";
 
 export interface IHeroSummary {

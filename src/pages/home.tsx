@@ -46,13 +46,19 @@ export function Home() {
     if (logged)
         return (
             <main className="pt-32 pl-2 pr-2 sm:size-11/12 lg:size-1/2 mx-auto">
-                <div className="mt-8">
-                    {terrainEvents.map((item: Terrain | Event) => {
-                        if (item instanceof Terrain)
-                            return <TerrainCard terrain={item}></TerrainCard>;
-                        return <EventCard event={item}></EventCard>;
-                    })}
-                </div>
+                {terrainEvents.map((item: Terrain | Event) => {
+                    if (item instanceof Terrain)
+                        return (
+                            <div className="mt-10">
+                                <TerrainCard terrain={item}></TerrainCard>
+                            </div>
+                        )
+                    return (
+                        <div className="mt-10">
+                            <EventCard event={item}></EventCard>
+                        </div>
+                    );
+                })}
             </main>
         );
     return <Copertine></Copertine>;

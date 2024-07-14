@@ -15,7 +15,7 @@ export async function getCommentsbyEvent(id: string): Promise<Comment[]> {
 }
 
 export async function postEvent(event: Event) {
-    await axiosInstance.post('/event', {
+    return await axiosInstance.post('/event', {
         "title": event.title,
         "description": event.description,
         "scheduledDate": event.scheduledDate,
@@ -35,7 +35,7 @@ export async function getEventById(id?: string): Promise<Event> {
 }
 
 export async function updateEvent(event: Event) {
-    await axiosInstance.patch(`/event/${event.id}`, {
+    const res = await axiosInstance.patch(`/event/${event.id}`, {
         "title": event.title,
         "description": event.description,
         "scheduledDate": event.scheduledDate,
@@ -47,4 +47,6 @@ export async function updateEvent(event: Event) {
         "category": event.category,
         "userId": event.owner.id
     });
+    
+    return res;
 }

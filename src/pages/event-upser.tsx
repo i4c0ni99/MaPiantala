@@ -10,7 +10,7 @@ import { useEffect, useState } from "react";
 export function EventUpsert() {
     const { eventId } = useParams()
     const [event, setEvent] = useState<Event>(new Event(0, 0, '', '', '', new Date(), getCookie('user'), [], ''
-        , false, 0.0, 0.0, EventCategory.GEOLOGICAL))
+        , false, 0.0, 0.0, EventCategory.GEOLOGICAL,new Date(),new Date()))
 
 
     useEffect(() => {

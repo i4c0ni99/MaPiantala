@@ -10,6 +10,8 @@ import { Copertine } from "./copertine";
 import { getEventsByDistance } from "../services/events.service";
 import { Event } from "../types/Event.class";
 import { EventCard } from "../components/event/event.component";
+ 
+
 
 
 export function Home() {
@@ -42,29 +44,25 @@ export function Home() {
             try {
                 const terrains: Terrain[] = await getTerrainsMockByDistance();
                 const events: Event[] = await getEventsByDistance()
-                console.log(terrains)
             if(terrain_events.length == 0){
                 terrains.forEach((terrain) => {
-                    if(terrain.isPublic && !terrainsType.includes({
-                        type: 'terrain',
-                        terrain: terrain
-                    }))
+                    console.log(terrain)
+                    if(terrain.isPublic)
                     terrainsType.push({
                     type: 'terrain',
                     terrain: terrain
                 })})
 
                 events.forEach((event) =>{
-                    if(event.isPublic && !eventsType.includes({
-                        type: 'event',
-                        event: event
-                    }))
+                    console.log(event)
+                    if(event.isPublic)
                     eventsType.push({
                     type: 'event',
                     event: event
                 })})
                             
-                setTerrainEvent([...terrainsType,...eventsType])
+                setTerrainEvent(shuffleArray([...terrainsType,...eventsType]))
+              
             }
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -72,7 +70,7 @@ export function Home() {
         };
 
         fetchData();
-    }, []);
+    }, [terrain_events]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -80,29 +78,39 @@ export function Home() {
         }
         fetchData();
     }, [])
-    if (logged) return (
-        <>
-            <button className="btn btn-outline btn-circle btn-lg btn-accent z-50 fixed text-2xl bottom-8 right-36" ><a href="/terrain-upsert">+</a></button>
 
+    const shuffleArray = (array: (terrainType|eventType)[]) => {
+        for (let i = array.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+      };
+
+    if (logged) return (
+        
             <main className="pt-32 pl-2 pr-2 sm:size-11/12 lg:size-1/2 mx-auto">
                 {terrain_events.map(
                     (terrainEvent) => {
-                        console.log(terrainEvent)
-                        if (terrainEvent.type == 'terrain')
+                        console.log(terrainEvent.type ,'==' )
+                        if (terrainEvent.type == 'terrain'){
+                            console.log(terrainEvent.type,'=',terrainEvent)
                             return (
                             <div className="mt-8">
                                 <Card terrainCard={terrainEvent.terrain} Button={button}></Card>
                             </div>)
-                        if (terrainEvent.type == 'event')  
+                        }
+                        if (terrainEvent.type == 'event') { 
+                            console.log(terrainEvent.type,'=',terrainEvent)
                             return(
                                 <div className="mt-8">
                                 <EventCard eventInCard={terrainEvent.event} />
                             </div>
                             ) 
+                        }
                     }
                 )}
             </main>
-        </>
     );
     return <Copertine></Copertine>
 }

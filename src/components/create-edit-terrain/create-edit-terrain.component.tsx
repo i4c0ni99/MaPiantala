@@ -1,5 +1,6 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { Terrain } from "../../types/terrain.class";
+import { updateEvent } from "../../services/events.service";
 
 
 export interface ITerrain {
@@ -16,12 +17,12 @@ export const CreateEditTerrain = ({
     // Initial state for the form
     const [terrain, setTerrain] = useState<Terrain>(
         new Terrain(terrainCreated.id,terrainCreated.title,terrainCreated.description,terrainCreated.imageUrl,terrainCreated.address,terrainCreated.slot,terrainCreated.terrainSize,terrainCreated.isPublic,terrainCreated.user,terrainCreated.comments,
-            0.0,0.0))
+            0.0,0.0,terrainCreated.createdAt,terrainCreated.updatedAt))
 
     useEffect(() => {
         setTerrain(
             new Terrain(terrainCreated.id,terrainCreated.title,terrainCreated.description,terrainCreated.imageUrl,terrainCreated.address,terrainCreated.slot,terrainCreated.terrainSize,terrainCreated.isPublic,terrainCreated.user,terrainCreated.comments,
-            0,0.0)
+            0,0.0,terrainCreated.createdAt,terrainCreated.updatedAt)
         )
     }, [terrainCreated]);
 
@@ -51,7 +52,7 @@ export const CreateEditTerrain = ({
         // Create a new Terrain instance with the form data
         
         const newTerrain =  new Terrain(terrainCreated.id,terrain.title,terrain.description,terrain.imageUrl,terrain.address,terrain.slot,terrain.terrainSize,terrain.isPublic,terrain.user,terrain.comments,
-            0.0,0.0)
+            0.0,0.0,new Date(),new Date())
        
 
         // Optional callback on submission

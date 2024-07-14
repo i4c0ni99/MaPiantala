@@ -1,46 +1,71 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
-import { Terrain } from "../../types/terrain.class";
-
+import { Terrain } from "src/types/Terrain.class";
 
 export interface ITerrain {
-    terrainCreated: Terrain
+    terrainCreated: Terrain;
     onSubmission?: (data: Terrain) => void;
 }
 
-
-
 export const CreateEditTerrain = ({
     terrainCreated,
-    onSubmission = undefined
+    onSubmission = undefined,
 }: ITerrain) => {
     // Initial state for the form
     const [terrain, setTerrain] = useState<Terrain>(
-        new Terrain(terrainCreated.id,terrainCreated.title,terrainCreated.description,terrainCreated.imageUrl,terrainCreated.address,terrainCreated.slot,terrainCreated.terrainSize,terrainCreated.isPublic,terrainCreated.user,terrainCreated.comments,
-            0.0,0.0,terrainCreated.createdAt,terrainCreated.updatedAt))
+        new Terrain(
+            terrainCreated.id,
+            terrainCreated.title,
+            terrainCreated.description,
+            terrainCreated.imageUrl,
+            terrainCreated.address,
+            terrainCreated.slot,
+            terrainCreated.terrainSize,
+            terrainCreated.isPublic,
+            terrainCreated.user,
+            terrainCreated.comments,
+            0.0,
+            0.0,
+            terrainCreated.createdAt,
+            terrainCreated.updatedAt
+        )
+    );
 
     useEffect(() => {
         setTerrain(
-            new Terrain(terrainCreated.id,terrainCreated.title,terrainCreated.description,terrainCreated.imageUrl,terrainCreated.address,terrainCreated.slot,terrainCreated.terrainSize,terrainCreated.isPublic,terrainCreated.user,terrainCreated.comments,
-            0,0.0,terrainCreated.createdAt,terrainCreated.updatedAt)
-        )
+            new Terrain(
+                terrainCreated.id,
+                terrainCreated.title,
+                terrainCreated.description,
+                terrainCreated.imageUrl,
+                terrainCreated.address,
+                terrainCreated.slot,
+                terrainCreated.terrainSize,
+                terrainCreated.isPublic,
+                terrainCreated.user,
+                terrainCreated.comments,
+                0,
+                0.0,
+                terrainCreated.createdAt,
+                terrainCreated.updatedAt
+            )
+        );
     }, [terrainCreated]);
 
     // Handle input changes
-    const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const { name, value} = e.target;
+    const handleChange = (
+        e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    ) => {
+        const { name, value } = e.target;
         if (e.target instanceof HTMLInputElement) {
             // Safe to access `checked` because it's confirmed as an HTMLInputElement of type checkbox
-           
-            
-            setTerrain(prev => ({
+            setTerrain((prev: Terrain) => ({
                 ...prev,
                 [name]: value,
             }));
         } else {
-           
-            setTerrain(prev => ({
+            setTerrain((prev: Terrain) => ({
                 ...prev,
-                [name]: value
+                [name]: value,
             }));
         }
     };
@@ -49,14 +74,27 @@ export const CreateEditTerrain = ({
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         // Create a new Terrain instance with the form data
-        
-        const newTerrain =  new Terrain(terrainCreated.id,terrain.title,terrain.description,terrain.imageUrl,terrain.address,terrain.slot,terrain.terrainSize,terrain.isPublic,terrain.user,terrain.comments,
-            0.0,0.0,terrain.createdAt,terrain.updatedAt)
-       
+
+        const newTerrain = new Terrain(
+            terrainCreated.id,
+            terrain.title,
+            terrain.description,
+            terrain.imageUrl,
+            terrain.address,
+            terrain.slot,
+            terrain.terrainSize,
+            terrain.isPublic,
+            terrain.user,
+            terrain.comments,
+            0.0,
+            0.0,
+            new Date(),
+            new Date()
+        );
 
         // Optional callback on submission
         if (onSubmission) {
-            console.log('New Terrain Created:', newTerrain);
+            console.log("New Terrain Created:", newTerrain);
             onSubmission(newTerrain);
         }
     };
@@ -65,7 +103,11 @@ export const CreateEditTerrain = ({
         <>
             <div className="card lg:card-side bg-base-300 shadow-xl">
                 <figure className="w-full">
-                    <img className="size-full" src={terrain.imageUrl} alt="Album" />
+                    <img
+                        className="size-full"
+                        src={terrain.imageUrl}
+                        alt="Album"
+                    />
                 </figure>
 
                 <form className="w-full" onSubmit={handleSubmit}>
@@ -131,7 +173,9 @@ export const CreateEditTerrain = ({
 
                         <label className="form-control w-full max-w-xs">
                             <div className="label">
-                                <span className="label-text">Scgli un immagine dal web per la pianta</span>
+                                <span className="label-text">
+                                    Scgli un immagine dal web per la pianta
+                                </span>
                             </div>
                             <input
                                 name="imageUrl"
@@ -144,7 +188,12 @@ export const CreateEditTerrain = ({
                         </label>
 
                         <div className="card-actions mt-10">
-                            <button type="submit" className="btn btn-primary w-24">Save</button>
+                            <button
+                                type="submit"
+                                className="btn btn-primary w-24"
+                            >
+                                Save
+                            </button>
                         </div>
                     </div>
                 </form>

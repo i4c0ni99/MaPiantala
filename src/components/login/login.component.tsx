@@ -1,22 +1,21 @@
-
-
 import { HeroLogin } from "./loginCard.component";
-import {axiosInstance } from "../../utils/axiosInstance";
-import {  getCookie, setToken, setUserCookie} from "../../services/MaPiantalaCookies.service";
+import { axiosInstance } from "../../utils/axiosInstance";
+import {
+    getCookie,
+    setToken,
+    setUserCookie,
+} from "../../services/cookies.service";
 import { useEffect } from "react";
-
-
 
 export const LoginModal = function () {
     useEffect(() => {
         const fetchData = async () => {
-        const user = await axiosInstance.get('user/me/')
-        setUserCookie(user.data)
-        console.log(getCookie('user'))
+            const user = await axiosInstance.get("user/me/");
+            setUserCookie(user.data);
+            console.log(getCookie("user"));
         };
 
         fetchData();
-
     }, [axiosInstance]);
     return (
         <>
@@ -24,7 +23,9 @@ export const LoginModal = function () {
                 <a
                     onClick={() =>
                         (
-                            document.getElementById("my_modal_3") as HTMLDialogElement
+                            document.getElementById(
+                                "my_modal_3"
+                            ) as HTMLDialogElement
                         ).showModal()
                     }
                 >
@@ -36,14 +37,15 @@ export const LoginModal = function () {
                 <div className="w-full h-auto ">
                     <HeroLogin
                         onSubmission={async (submitted) => {
-                            const response = await axiosInstance.post('user/signin', submitted)
-                            setToken(response.data['token'])
-                        }
-                        }
+                            const response = await axiosInstance.post(
+                                "user/signin",
+                                submitted
+                            );
+                            setToken(response.data["token"]);
+                        }}
                     />
-                    
                 </div>
             </dialog>
         </>
     );
-  }
+};

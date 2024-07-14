@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { EventCard } from "../components/event/event.component";
+import { EventCard } from "../components/event-card/event-card.component";
 import { getEventsByDistance } from "../services/events.service";
 import { Event } from "../types/Event.class";
 import { Link } from "react-router-dom";
@@ -30,7 +30,7 @@ export function EventPage() {
             <main className="pt-32 pl-2 pr-2 sm:size-11/12 lg:size-1/2 mx-auto">
                 {events.map((event) =>
                     <div className="mt-8">
-                        <EventCard eventInCard={event} />
+                        <EventCard event={event} />
                     </div>
                 )
                 }

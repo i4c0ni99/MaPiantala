@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getCookie } from '../services/MaPiantalaCookies.service';
+import { getCookie } from '../services/cookies.service';
 
 
 export const axiosInstance = axios.create({

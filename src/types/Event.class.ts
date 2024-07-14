@@ -2,9 +2,6 @@ import { User } from "./User.class";
 import { Comment } from "./Comment.class";
 import { EventCategory } from "./EventCategory.enum";
 export class Event {
-
-
-
     constructor(
         public id:number,
         public partecipantsNumer: number,
@@ -21,9 +18,6 @@ export class Event {
         public category: EventCategory,
         public createdAt:Date,
         public updatedAt:Date
-
-    ) {
-
-    }
-};
+    ) {}
+}
 

@@ -53,7 +53,7 @@ export const CommentCollaps: React.FC<ICollapsComment> = function ({
 
         setComment(e.target.value)
 
-    };
+    }
     // Handle form submission
     async function handleSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
@@ -107,7 +107,7 @@ export const CommentCollaps: React.FC<ICollapsComment> = function ({
                                                 </div>
                                             </div>
                                             <div className="chat-header">
-                                                {comment.user.email}
+                                                {user.email}
                                                 <time className="text-xs opacity-50">
                                                     {comment.createdAt.toString()}
                                                 </time>

@@ -1,22 +1,20 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { User } from "../../types/User.class";
+import { User } from "src/types/User.class";
 
 export interface IHeroSettings {
-
     onSubmission: (data: User) => void;
     oldUser: User;
-
 }
 
 // Simulated database for registered users
-
 
 export const CardSettings: React.FC<IHeroSettings> = function ({
     onSubmission,
     oldUser,
 }: IHeroSettings) {
-    const [showVerifyPassword, setShowVerifyPassword] = useState<boolean>(false);
+    const [showVerifyPassword, setShowVerifyPassword] =
+        useState<boolean>(false);
     const [showPassword, setShowPassword] = useState<boolean>(false);
     const [errorMessage, setErrorMessage] = useState<string>("");
 
@@ -26,7 +24,7 @@ export const CardSettings: React.FC<IHeroSettings> = function ({
         e.preventDefault();
 
         // Validazione password
-        if (userModified.password.length < 6) {
+        if (userModified?.password && userModified.password.length < 6) {
             setErrorMessage("La password deve contenere almeno 6 caratteri.");
             return;
         }
@@ -79,7 +77,9 @@ export const CardSettings: React.FC<IHeroSettings> = function ({
                             <form onSubmit={handleSubmit}>
                                 <div className="form-control">
                                     <label className="label">
-                                        <span className="label-text">Nome*</span>
+                                        <span className="label-text">
+                                            Nome*
+                                        </span>
                                     </label>
                                     <input
                                         type="text"
@@ -93,7 +93,9 @@ export const CardSettings: React.FC<IHeroSettings> = function ({
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
-                                        <span className="label-text">Cognome*</span>
+                                        <span className="label-text">
+                                            Cognome*
+                                        </span>
                                     </label>
                                     <input
                                         type="text"
@@ -108,7 +110,9 @@ export const CardSettings: React.FC<IHeroSettings> = function ({
 
                                 <div className="form-control">
                                     <label className="label">
-                                        <span className="label-text">Email*</span>
+                                        <span className="label-text">
+                                            Email*
+                                        </span>
                                     </label>
                                     <input
                                         type="email"
@@ -123,7 +127,9 @@ export const CardSettings: React.FC<IHeroSettings> = function ({
 
                                 <div className="form-control">
                                     <label className="label">
-                                        <span className="label-text">Immagine profilo</span>
+                                        <span className="label-text">
+                                            Immagine profilo
+                                        </span>
                                     </label>
                                     <input
                                         type="text"
@@ -137,7 +143,9 @@ export const CardSettings: React.FC<IHeroSettings> = function ({
 
                                 <div className="form-control">
                                     <label className="label">
-                                        <span className="label-text">Copertina Profilo</span>
+                                        <span className="label-text">
+                                            Copertina Profilo
+                                        </span>
                                     </label>
                                     <input
                                         type="text"
@@ -151,11 +159,17 @@ export const CardSettings: React.FC<IHeroSettings> = function ({
 
                                 <div className="form-control">
                                     <label className="label">
-                                        <span className="label-text">Crea nuova password</span>
+                                        <span className="label-text">
+                                            Crea nuova password
+                                        </span>
                                     </label>
                                     <div className="relative">
                                         <input
-                                            type={showPassword ? "text" : "password"}
+                                            type={
+                                                showPassword
+                                                    ? "text"
+                                                    : "password"
+                                            }
                                             placeholder="Almeno 6 caratteri"
                                             name="password"
                                             defaultValue={oldUser.password}
@@ -168,18 +182,28 @@ export const CardSettings: React.FC<IHeroSettings> = function ({
                                             onClick={togglePasswordVisibility}
                                             className="absolute inset-y-0 right-0 pr-3 flex items-center"
                                         >
-                                            {showPassword ? <FaEyeSlash /> : <FaEye />}
+                                            {showPassword ? (
+                                                <FaEyeSlash />
+                                            ) : (
+                                                <FaEye />
+                                            )}
                                         </button>
                                     </div>
                                 </div>
 
                                 <div className="form-control">
                                     <label className="label">
-                                        <span className="label-text">Verifica nuova password*</span>
+                                        <span className="label-text">
+                                            Verifica nuova password*
+                                        </span>
                                     </label>
                                     <div className="relative form-control">
                                         <input
-                                            type={showVerifyPassword ? "text" : "password"}
+                                            type={
+                                                showVerifyPassword
+                                                    ? "text"
+                                                    : "password"
+                                            }
                                             placeholder="Riscrivi password"
                                             name="passwordConfirm"
                                             className="input input-bordered w-full pr-10"
@@ -188,10 +212,16 @@ export const CardSettings: React.FC<IHeroSettings> = function ({
 
                                         <button
                                             type="button"
-                                            onClick={toggleVerifyPasswordVisibility}
+                                            onClick={
+                                                toggleVerifyPasswordVisibility
+                                            }
                                             className="absolute inset-y-0 right-0 pr-3 flex items-center"
                                         >
-                                            {showVerifyPassword ? <FaEyeSlash /> : <FaEye />}
+                                            {showVerifyPassword ? (
+                                                <FaEyeSlash />
+                                            ) : (
+                                                <FaEye />
+                                            )}
                                         </button>
                                     </div>
                                 </div>
@@ -212,7 +242,10 @@ export const CardSettings: React.FC<IHeroSettings> = function ({
                                 </div>
                             </form>
                             {errorMessage && (
-                                <div role="alert" className="alert alert-error flex felx-row">
+                                <div
+                                    role="alert"
+                                    className="alert alert-error flex felx-row"
+                                >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         className="stroke-current shrink-0 h-6 w-6"

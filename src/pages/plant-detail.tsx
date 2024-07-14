@@ -12,9 +12,8 @@ export function PlantPageDetail() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-
-                const plant: Plant = await getPlantById(plantId);
-                setPlant(plant);
+                const plant = await getPlantById(plantId);
+                plant && setPlant(plant);
             } catch (error) {
                 console.error('Error fetching data:', error);
             }

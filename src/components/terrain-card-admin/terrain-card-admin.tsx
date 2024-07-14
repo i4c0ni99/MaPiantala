@@ -1,4 +1,4 @@
-import { Terrain } from "../../types/terrain.class"
+import { Terrain } from "src/types/Terrain.class"
 
 interface ITerrainCardAdmin {
     terrain: Terrain

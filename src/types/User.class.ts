@@ -1,9 +1,5 @@
-
-
-
 export class User {
     constructor(
-
         public id : number,
         public email: string,
         public profilePicture: string,
@@ -13,8 +9,5 @@ export class User {
         public passwordConfirm: string,
         public role: string,
         public copertinePicture: string,
-
     ) { }
-
-
 }

@@ -3,14 +3,14 @@ import { Event } from "../types/Event.class";
 import GeocodingService from "../services/geocoding.service";
 import { getEventById, postEvent, updateEvent } from "../services/events.service";
 import { EventCategory } from "../types/EventCategory.enum";
-import { getCookie } from "../services/MaPiantalaCookies.service";
+import { getCookie } from "../services/cookies.service";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 export function EventUpsert() {
     const { eventId } = useParams()
     const [event, setEvent] = useState<Event>(new Event(0, 0, '', '', '', new Date(), getCookie('user'), [], ''
-        , false, 0.0, 0.0, EventCategory.GEOLOGICAL))
+        , false, 0.0, 0.0, EventCategory.GEOLOGICAL,new Date(),new Date()))
 
 
     useEffect(() => {

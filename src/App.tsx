@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './App.css'
 
 function App() {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [count, _] = useState(0)
   return (
     <>

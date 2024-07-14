@@ -1,10 +1,6 @@
 import { useParams } from "react-router-dom";
 import { Event } from "../types/Event.class";
-
 import { useEffect, useState } from "react";
-
-
-
 import { EventDetailAdminCard } from "../components/event-detail-admin/event-detail-admin";
 import { getEventById, updateEvent } from "../services/events.service";
 

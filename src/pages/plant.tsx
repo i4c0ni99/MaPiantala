@@ -1,7 +1,7 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import { PlantCard } from "../components/plant-card/plant-card.component";
 import { Plant } from "../types/Plant.class";
-import { getPlants, searchPlant } from "../services/plants.service";
+import { getPlants, searchPlants } from "../services/plants.service";
 import { Link } from "react-router-dom";
 
 
@@ -19,7 +19,7 @@ export function PlantPage() {
                 setPlants(plants);
                 if (find != ''){
                 console.log("find",find)    
-                setPlants(await searchPlant(find))
+                setPlants(await searchPlants(find))
                 }
             } catch (error) {
                 console.error('Error fetching data:', error);

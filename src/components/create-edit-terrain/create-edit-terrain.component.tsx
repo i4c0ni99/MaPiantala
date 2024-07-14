@@ -1,5 +1,5 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
-import { Terrain } from "../../types/terrain.class";
+import { Terrain } from "../../types/Terrain.class";
 import { updateEvent } from "../../services/events.service";
 
 

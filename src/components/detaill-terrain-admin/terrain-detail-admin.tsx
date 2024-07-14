@@ -5,7 +5,7 @@
 
 
 
-import { Terrain } from "../../types/terrain.class"
+import { Terrain } from "../../types/Terrain.class"
 
 import { MapCard } from "../map-for-card/map-card";
 import { ChangeEvent, FormEvent, useState } from "react";
@@ -81,7 +81,7 @@ export const TerrainDetailAdminCard: React.FC<ICardTErrainDetailAdmin> = functio
                         </label>
                         <div className="card-actions justify-end">
                             <div className="card-actions mt-10 max-w">
-                                <button type="submit" className="btn btn-accent size-full">Publica</button>
+                                <button type="submit" className="btn btn-accent size-full">Pubblica</button>
                             </div>
                         </div>
                     </form>

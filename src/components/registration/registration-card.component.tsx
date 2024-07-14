@@ -3,7 +3,6 @@ import { PiPlantLight } from "react-icons/pi";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { User } from "../../types/User.class";
 
-
 export interface IHeroRegister {
     onSubmission: (data: User) => void;
 }
@@ -12,15 +11,14 @@ export interface IHeroRegister {
 
 export const HeroRegister: React.FC<IHeroRegister> = function ({
     onSubmission,
-
 }: IHeroRegister) {
-
-    const [showVerifyPassword, setShowVerifyPassword] = useState<boolean>(false);
+    const [showVerifyPassword, setShowVerifyPassword] =
+        useState<boolean>(false);
     const [showPassword, setShowPassword] = useState<boolean>(false);
     const [errorMessage, setErrorMessage] = useState<string>("");
-
-    const [newUser, setUser] = useState<User>(new User(0,'','','','','','','UNVERIFIED',''));
-
+    const [newUser, setUser] = useState<User>(
+        new User(0, "", "", "", "", "", "", "UNVERIFIED", "")
+    );
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -35,9 +33,8 @@ export const HeroRegister: React.FC<IHeroRegister> = function ({
             newUser.password,
             newUser.passwordConfirm,
             newUser.role,
-            newUser.copertinePicture,
+            newUser.copertinePicture
         );
-
 
         // Validazione password
         if (newUser.password.length < 6) {
@@ -52,7 +49,6 @@ export const HeroRegister: React.FC<IHeroRegister> = function ({
         if (onSubmission) {
             onSubmission(user);
         }
-
     };
 
     const cleanError = () => {
@@ -69,6 +65,7 @@ export const HeroRegister: React.FC<IHeroRegister> = function ({
             [name]: value,
         }));
     };
+
     const togglePasswordVisibility = () => {
         setShowPassword(!showPassword);
     };
@@ -100,20 +97,22 @@ export const HeroRegister: React.FC<IHeroRegister> = function ({
                             </h1>
                             <p className="py-2 mt-2 hidden sm:block text-sm text-left">
                                 <li className="mt-8">
-                                    Entra a far parte della nostra famiglia, dove potrai esplorare
-                                    e coltivare numerose piante.
+                                    Entra a far parte della nostra famiglia,
+                                    dove potrai esplorare e coltivare numerose
+                                    piante.
                                 </li>
                                 <li className="mt-2">
-                                    {" "}
-                                    Per iniziare a esplorare il nostro vasto database di piante,
-                                    ottenere consigli personalizzati sulla cura delle tue piante e
-                                    connetterti con una comunità di appassionati, effettua
-                                    l'accesso al tuo account.
+                                    Per iniziare a esplorare il nostro vasto
+                                    database di piante, ottenere consigli
+                                    personalizzati sulla cura delle tue piante e
+                                    connetterti con una comunità di
+                                    appassionati, effettua l'accesso al tuo
+                                    account.
                                 </li>
                                 <li className="mt-2">
-                                    {" "}
-                                    Con MaPiantala, il tuo giardino è sempre a portata di mano.
-                                    Accedi ora e inizia a far crescere il tuo pollice verde!
+                                    Con MaPiantala, il tuo giardino è sempre a
+                                    portata di mano. Accedi ora e inizia a far
+                                    crescere il tuo pollice verde!
                                 </li>
                             </p>
                         </div>
@@ -125,7 +124,9 @@ export const HeroRegister: React.FC<IHeroRegister> = function ({
                             >
                                 <div className="form-control">
                                     <label className="label">
-                                        <span className="label-text">Nome*</span>
+                                        <span className="label-text">
+                                            Nome*
+                                        </span>
                                     </label>
                                     <input
                                         type="text"
@@ -134,14 +135,14 @@ export const HeroRegister: React.FC<IHeroRegister> = function ({
                                         defaultValue={newUser.firstName}
                                         className="input input-bordered"
                                         onChange={(e) => handleChange(e)}
-
                                         required
-
                                     />
                                 </div>
                                 <div className="form-control">
                                     <label className="label">
-                                        <span className="label-text">Cognome*</span>
+                                        <span className="label-text">
+                                            Cognome*
+                                        </span>
                                     </label>
                                     <input
                                         type="text"
@@ -150,15 +151,15 @@ export const HeroRegister: React.FC<IHeroRegister> = function ({
                                         defaultValue={newUser.lastName}
                                         className="input input-bordered"
                                         onChange={(e) => handleChange(e)}
-
                                         required
-
                                     />
                                 </div>
 
                                 <div className="form-control">
                                     <label className="label">
-                                        <span className="label-text">Email*</span>
+                                        <span className="label-text">
+                                            Email*
+                                        </span>
                                     </label>
                                     <input
                                         type="email"
@@ -167,27 +168,29 @@ export const HeroRegister: React.FC<IHeroRegister> = function ({
                                         defaultValue={newUser.email}
                                         className="input input-bordered"
                                         onChange={(e) => handleChange(e)}
-
                                         required
-
                                     />
                                 </div>
 
                                 <div className="form-control">
                                     <label className="label">
-                                        <span className="label-text">Password*</span>
+                                        <span className="label-text">
+                                            Password*
+                                        </span>
                                     </label>
                                     <div className="relative">
                                         <input
-                                            type={showPassword ? "text" : "password"}
+                                            type={
+                                                showPassword
+                                                    ? "text"
+                                                    : "password"
+                                            }
                                             placeholder="Almeno 6 caratteri"
                                             name="password"
                                             defaultValue={newUser.password}
                                             className="input input-bordered w-full pr-10"
                                             onChange={(e) => handleChange(e)}
                                             required
-
-
                                         />
 
                                         <button
@@ -195,33 +198,47 @@ export const HeroRegister: React.FC<IHeroRegister> = function ({
                                             onClick={togglePasswordVisibility}
                                             className="absolute inset-y-0 right-0 pr-3 flex items-center"
                                         >
-                                            {showPassword ? <FaEyeSlash /> : <FaEye />}
+                                            {showPassword ? (
+                                                <FaEyeSlash />
+                                            ) : (
+                                                <FaEye />
+                                            )}
                                         </button>
                                     </div>
                                 </div>
 
                                 <div className="form-control">
                                     <label className="label">
-                                        <span className="label-text">Verifica Password*</span>
+                                        <span className="label-text">
+                                            Verifica Password*
+                                        </span>
                                     </label>
                                     <div className="relative form-control">
                                         <input
-                                            type={showVerifyPassword ? "text" : "password"}
+                                            type={
+                                                showVerifyPassword
+                                                    ? "text"
+                                                    : "password"
+                                            }
                                             placeholder="Riscrivi password"
                                             name="passwordConfirm"
-
                                             className="input input-bordered w-full pr-10"
                                             onChange={(e) => handleChange(e)}
                                             required
-
                                         />
 
                                         <button
                                             type="button"
-                                            onClick={toggleVerifyPasswordVisibility}
+                                            onClick={
+                                                toggleVerifyPasswordVisibility
+                                            }
                                             className="absolute inset-y-0 right-0 pr-3 flex items-center"
                                         >
-                                            {showVerifyPassword ? <FaEyeSlash /> : <FaEye />}
+                                            {showVerifyPassword ? (
+                                                <FaEyeSlash />
+                                            ) : (
+                                                <FaEye />
+                                            )}
                                         </button>
                                     </div>
                                 </div>
@@ -236,7 +253,10 @@ export const HeroRegister: React.FC<IHeroRegister> = function ({
                                 </div>
                             </form>
                             {errorMessage && (
-                                <div role="alert" className="alert alert-error flex felx-row">
+                                <div
+                                    role="alert"
+                                    className="alert alert-error flex felx-row"
+                                >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         className="stroke-current shrink-0 h-6 w-6"
@@ -259,7 +279,9 @@ export const HeroRegister: React.FC<IHeroRegister> = function ({
                             <a
                                 onClick={() => {
                                     (
-                                        document.getElementById("my_modal_3") as HTMLDialogElement
+                                        document.getElementById(
+                                            "my_modal_3"
+                                        ) as HTMLDialogElement
                                     ).showModal();
                                 }}
                                 className="my-2 underline label-text-alt link link-accent"

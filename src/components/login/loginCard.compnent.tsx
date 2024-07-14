@@ -1,7 +1,4 @@
 import { ChangeEvent, FormEvent, useState } from "react"
-import md5 from "md5";
-
-
 
 export interface IHeroLogin {
     onSubmission?: (data: string) => void;
@@ -14,19 +11,12 @@ export const HeroLogin: React.FC<IHeroLogin> = function ({
     const [password, setPassword] = useState<string>("")
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault()
-        email
-        password
+        e.preventDefault();
 
         if (onSubmission) {
             onSubmission(email)
-
-            onSubmission(md5(password).toString())
+            onSubmission(password)
         }
-
-
-
-
     }
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { value, type } = e.target;

@@ -1,7 +1,7 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
-import { Terrain } from "../../types/terrain.class";
+import { Terrain } from "../../types/Terrain.class";
 import { Event } from "../../types/Event.class";
-import { getCookie } from "../../services/MaPiantalaCookies.service";
+import { getCookie } from "../../services/cookies.service";
 import { getCommentsbyEvent } from "../../services/events.service";
 import { Comment } from "../../types/Comment.class";
 import { axiosInstance } from "../../utils/axiosInstance";
@@ -9,20 +9,14 @@ import { User } from "../../types/User.class";
 import { getCommentsbyTerrain } from "../../services/terrains.service";
 
 export interface ICollapsComment {
-
-
     terrain?: Terrain;
     event?: Event;
-
 }
 
 export const CommentCollaps: React.FC<ICollapsComment> = function ({
     terrain,
     event,
-
-
 }: ICollapsComment) {
-
     const user: User = getCookie('user')
     const [comments, setComments] = useState<Comment[]>([]);
     const [commentCreate, setCommentCreate] = useState(" ")

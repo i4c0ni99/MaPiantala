@@ -1,31 +1,26 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { Plant } from "../../types/Plant.class";
 
-
 export interface IPlant {
-
     onSubmission?: (data: Plant) => void;
 }
 
-
-
-export const CreateEditPlant = ({
-    onSubmission = undefined
-}: IPlant) => {
+export const CreateEditPlant = ({ onSubmission = undefined }: IPlant) => {
     // Initial state for the form
-    const [plant, setPlant] = useState<Plant>(() => new Plant(0,'', '', '', '', '', '', '', '', '', '', '', '', ''));
-  
-
-
+    const [plant, setPlant] = useState<Plant>(
+        () => new Plant(0, "", "", "", "", "", "", "", "", "", "", "", "", "")
+    );
 
     // Handle input changes
-    const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const handleChange = (
+        e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    ) => {
         const { name, value } = e.target;
 
         if (e.target instanceof HTMLInputElement) {
-            setPlant(prev => ({
+            setPlant((prev) => ({
                 ...prev,
-                [name]: value
+                [name]: value,
             }));
         }
     };
@@ -34,10 +29,23 @@ export const CreateEditPlant = ({
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         // Create a new Terrain instance with the form data
-        const newPlant = new Plant(plant.id, plant.title, plant.category, plant.description, plant.usage,
-            plant.exposure, plant.temperatureRange, plant.terrainType, plant.transplant, plant.fertilization,
-            plant.irrigation, plant.colturalCare, plant.harvesting, plant.imageUrl);
-        console.log('New Terrain Created:', newPlant);
+        const newPlant = new Plant(
+            plant.id,
+            plant.title,
+            plant.category,
+            plant.description,
+            plant.usage,
+            plant.exposure,
+            plant.temperatureRange,
+            plant.terrainType,
+            plant.transplant,
+            plant.fertilization,
+            plant.irrigation,
+            plant.colturalCare,
+            plant.harvesting,
+            plant.imageUrl
+        );
+        console.log("New Terrain Created:", newPlant);
 
         // Optional callback on submission
         if (onSubmission) {
@@ -49,7 +57,11 @@ export const CreateEditPlant = ({
         <>
             <div className="card lg:card-side bg-base-300 shadow-xl">
                 <figure className="w-full ">
-                    <img className=" size-full" src={plant.imageUrl} alt="Album" />
+                    <img
+                        className=" size-full"
+                        src={plant.imageUrl}
+                        alt="Album"
+                    />
                 </figure>
 
                 <form className="w-full" onSubmit={handleSubmit}>
@@ -69,7 +81,6 @@ export const CreateEditPlant = ({
                             />
                         </label>
 
-
                         <label className="form-control w-full max-w-xs">
                             <div className="label">
                                 <span className="label-text">Descrizione</span>
@@ -85,7 +96,9 @@ export const CreateEditPlant = ({
                         </label>
                         <label className="form-control w-full max-w-xs">
                             <div className="label">
-                                <span className="label-text">Prendersene cura</span>
+                                <span className="label-text">
+                                    Prendersene cura
+                                </span>
                             </div>
                             <input
                                 name="coltureCare"
@@ -124,7 +137,9 @@ export const CreateEditPlant = ({
                         </label>
                         <label className="form-control w-full max-w-xs">
                             <div className="label">
-                                <span className="label-text">Distanza tra le piante</span>
+                                <span className="label-text">
+                                    Distanza tra le piante
+                                </span>
                             </div>
                             <input
                                 name="transplant"
@@ -137,7 +152,9 @@ export const CreateEditPlant = ({
                         </label>
                         <label className="form-control w-full max-w-xs">
                             <div className="label">
-                                <span className="label-text">Esposizione al sole</span>
+                                <span className="label-text">
+                                    Esposizione al sole
+                                </span>
                             </div>
                             <input
                                 name="exposure"
@@ -163,7 +180,9 @@ export const CreateEditPlant = ({
                         </label>
                         <label className="form-control w-full max-w-xs">
                             <div className="label">
-                                <span className="label-text">Tipo di terreno</span>
+                                <span className="label-text">
+                                    Tipo di terreno
+                                </span>
                             </div>
                             <input
                                 name="terrainType"
@@ -176,7 +195,9 @@ export const CreateEditPlant = ({
                         </label>
                         <label className="form-control w-full max-w-xs">
                             <div className="label">
-                                <span className="label-text">Scgli un immagine dal web per la pianta</span>
+                                <span className="label-text">
+                                    Scgli un immagine dal web per la pianta
+                                </span>
                             </div>
                             <input
                                 name="imageUrl"
@@ -228,7 +249,12 @@ export const CreateEditPlant = ({
                             />
                         </label>
                         <div className="card-actions mt-10 max-w">
-                            <button type="submit" className="btn btn-accent size-full">Save</button>
+                            <button
+                                type="submit"
+                                className="btn btn-accent size-full"
+                            >
+                                Save
+                            </button>
                         </div>
                     </div>
                 </form>

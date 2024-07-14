@@ -1,6 +1,6 @@
 import { getCookie } from "../../services/cookies.service";
 import { Terrain } from "../../types/Terrain.class";
-import { CommentCollaps } from "../collaps/collaps-comment.compone";
+import { CommentCollaps } from "../tabs/tab.component";
 import { IButton } from "../button/button.component";
 import { Link } from "react-router-dom";
 

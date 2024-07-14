@@ -2,8 +2,6 @@ import { TerrainCard } from "../components/terrain-card/terrain-card.component";
 import { getTerrainsByDistance } from "../services/terrains.service";
 import { Terrain } from "../types/Terrain.class";
 import { useState, useEffect } from "react";
-import { Button, IButton } from "../components/button/button.component";
-import { ButtonType } from "../components/button/button-types";
 import { loggedIn } from "../utils/axiosInstance";
 import { Copertine } from "./copertine";
 import { getEventsByDistance } from "../services/events.service";
@@ -17,14 +15,6 @@ const terrainEventsComparator = (p: Terrain | Event, q: Terrain | Event) => {
 export function Home() {
     const [terrainEvents, setTerrainEvent] = useState<(Terrain | Event)[]>([]);
     const [logged, setLoggedIn] = useState<boolean>();
-    const reserve = () => console.log("Prenotazione");
-    const button: React.ReactElement<IButton> = (
-        <Button
-            style={ButtonType.Secondary}
-            text={"Prenota"}
-            onButtonClick={reserve}
-        ></Button>
-    );
 
     useEffect(() => {
         const fetchData = async () => {

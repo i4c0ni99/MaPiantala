@@ -22,7 +22,8 @@ export function TerrainUpsert() {
         [],
         0.0,
         0.0,
-
+        new Date(),
+        new Date()
     ))
 
 

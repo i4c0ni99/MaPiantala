@@ -109,7 +109,7 @@ export const CommentCollaps: React.FC<ICollapsComment> = function ({
                                             <div className="chat-header">
                                                 {comment.user.email}
                                                 <time className="text-xs opacity-50">
-                                                    {comment.createdAt.toString()}
+                                                {new Date(comment.createdAt).toLocaleDateString()}
                                                 </time>
                                             </div>
                                             <div className="chat-bubble lg:w-96  sm:w-10 break-words">{comment.text}</div>
@@ -127,7 +127,7 @@ export const CommentCollaps: React.FC<ICollapsComment> = function ({
                                             <div className="chat-header">
                                                 {comment.user.email}
                                                 <time className="text-xs opacity-50">
-                                                    {comment.createdAt.toString()}
+                                                {new Date(comment.createdAt).toLocaleDateString()}
                                                 </time>
                                             </div>
                                             <div className="chat-bubble lg:w-96  sm:w-10 break-words">{comment.text}</div>
@@ -156,14 +156,13 @@ export const CommentCollaps: React.FC<ICollapsComment> = function ({
             </>
         );
     if (event) {
-        const date = new Date(event.scheduledDate)
         return (
             <>
                 <div role="tablist" className="tabs tabs-lifted">
                     <input type="radio" name="my_tabs_1" role="tab" className="tab" aria-label="Dettagli" defaultChecked />
                     <div role="tabpanel" className="tab-content bg-base-200 border-base-200 rounded-box p-6">
                         <h1 className="lg:text-xl sm:text-sm font-medium">{event.description}</h1>
-                        <h4 className="lg:text-xl sm:text-sm font-medium">l'evento si terra il giorno {date.getDay()}/{date.getMonth()}/{date.getFullYear()} in {event.address}
+                        <h4 className="lg:text-xl sm:text-sm font-medium">l'evento si terra il giorno {new Date(event.scheduledDate).toLocaleDateString()} in {event.address}
                         </h4>
                     </div>
                     <input
@@ -191,7 +190,7 @@ export const CommentCollaps: React.FC<ICollapsComment> = function ({
                                             <div className="chat-header">
                                                 {comment.user.email}
                                                 <time className="text-xs opacity-50">
-                                                    {comment.createdAt.toString()}
+                                                    {new Date(comment.createdAt).toLocaleDateString()}
                                                 </time>
                                             </div>
                                             <div className="chat-bubble lg:w-96  sm:w-10 break-words">{comment.text}</div>
@@ -209,7 +208,7 @@ export const CommentCollaps: React.FC<ICollapsComment> = function ({
                                             <div className="chat-header">
                                                 {comment.user.email}
                                                 <time className="text-xs opacity-50">
-                                                    {comment.createdAt.toString()}
+                                                {new Date(comment.createdAt).toLocaleDateString()}
                                                 </time>
                                             </div>
                                             <div className="chat-bubble lg:w-96  sm:w-10 break-words">{comment.text}</div>

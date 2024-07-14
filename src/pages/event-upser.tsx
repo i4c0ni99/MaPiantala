@@ -17,6 +17,7 @@ export function EventUpsert() {
         const fetchData = async () => {
             try {
                 const event: Event = await getEventById(eventId);
+               
                 setEvent(event)
             } catch (error) {
                 console.error('Error fetching data:', error);

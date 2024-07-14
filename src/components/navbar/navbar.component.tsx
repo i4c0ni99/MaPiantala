@@ -1,5 +1,3 @@
-
-import { Moon, Sunny } from "../../assets/Icon/Iconi";
 import { User } from "../../types/User.class";
 import { LoginModal } from "../login/login.component";
 import { logOut} from "../../services/MaPiantalaCookies.service";

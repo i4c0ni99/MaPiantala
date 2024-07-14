@@ -1,27 +1,32 @@
 import { User } from "../types/User.class";
-import { getCookie, setUserCookie } from "../services/MaPiantalaCookies.service";
+import {
+  getCookie,
+  setUserCookie,
+} from "../services/MaPiantalaCookies.service";
 import { CardSettings } from "../components/settings-profile/settings-profile.component";
-import { axiosInstance } from "../utils/axiosInstance";
+import { updateUser } from "../services/users.service";
+import { Profile } from "../components/profile/profile.component";
 
 export function SettingsPage() {
-    //const user = useState<User>()
-    //console.log('useState:',user)
-    
-    return (
-        <>
-            <main>
-                <CardSettings
-                    onSubmission={async (data: User) => {
-                        console.log(data.email)
-                        console.log(data.password)
-                        setUserCookie(data)
-                        await axiosInstance.patch(`/user/`,{firstName: data.firstName, lastName: data.lastName, email: data.email, password : data.password, passwordConfirm : data.passwordConfirm, profilePicture : data.profilePicture, copertinePicture: data.copertinePicture})
-                    }}
-                    oldUser={getCookie('user')}
-                />
-            </main>
-        </>
-    );
+  const user = getCookie("user");
 
-
+  return (
+    <>
+      <main>
+        <div className="h-96 w-full">
+          <Profile user={user}></Profile>
+        </div>
+        <CardSettings
+          onSubmission={async (data: User) => {
+            console.log(data.email);
+            console.log(data.password);
+            setUserCookie(data);
+            updateUser;
+            window.localStorage;
+          }}
+          oldUser={getCookie("user")}
+        />
+      </main>
+    </>
+  );
 }

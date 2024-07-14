@@ -1,7 +1,6 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { User } from "../../types/User.class";
-import { Profile } from "../profile/profile.component";
 
 export interface IHeroSettings {
   onSubmission: (data: User) => void;
@@ -33,8 +32,6 @@ export const CardSettings: React.FC<IHeroSettings> = function ({
       return;
     }
 
-
-
     cleanError();
 
     console.log("prima: " + oldUser);
@@ -42,7 +39,6 @@ export const CardSettings: React.FC<IHeroSettings> = function ({
 
     if (onSubmission) {
       onSubmission(userModified);
-      
     }
   };
 
@@ -73,10 +69,7 @@ export const CardSettings: React.FC<IHeroSettings> = function ({
 
   return (
     <>
-      <div className=" fixed h-80 w-full z-40">
-      <Profile user={userModified}></Profile>
-      </div>
-      <div className="card bg-base-300 pt-80 size-full">
+      <div className="card bg-base-300 pt-2 size-full">
         <div className="card-content flex-col mt-2">
           <div className="text-center mt-2 size-full">
             <div className="items-center">
@@ -209,7 +202,7 @@ export const CardSettings: React.FC<IHeroSettings> = function ({
                     </div>
                   </div>
 
-                  <div className=" my-2 ">
+                  <div className=" my-2 pt-3">
                     <button
                       type="submit"
                       className="btn btn-accent mx-2 btn-outline size-auto"

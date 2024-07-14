@@ -21,7 +21,7 @@ export function ProfilePage() {
         };
 
         fetchData();
-    }, []);
+    }, [user.id]);
 
     return (
         <>

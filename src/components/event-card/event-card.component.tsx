@@ -1,6 +1,6 @@
 import { getCookie } from "../../services/cookies.service";
 import { Event } from "../../types/Event.class";
-import { CommentCollaps } from "../Collaps/collaps-comment.compone";
+import { CommentCollaps } from "../collaps/collaps-comment.compone";
 import { Link } from "react-router-dom";
 
 export interface ICardEvent {
@@ -60,7 +60,7 @@ export const EventCard: React.FC<ICardEvent> = function ({
             ) : (
                 <div className="size-full grid justify-items-end py-2 px-8">
                     <button className="btn btn-accent h-4 w-32 ">
-                        prenota
+                        Prenota
                     </button>
                 </div>
             )}

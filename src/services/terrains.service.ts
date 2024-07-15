@@ -52,7 +52,7 @@ export async function getTerrainById(id?: string): Promise<Terrain | null> {
 }
 
 export async function updateTerrain(terrain: Terrain) {
-    await axiosInstance.patch(`/terrain/${terrain.id}`, {
+    return await axiosInstance.patch(`/terrain/${terrain.id}`, {
         "title": terrain.title,
         "description": terrain.description,
         "latitude": terrain.latitude,
@@ -87,8 +87,8 @@ export async function getTerrainsByUser(id: number) {
     });
 }
 
-export async function postTerrain(terrain: Terrain): Promise<void> {
-    await axiosInstance.post('/terrain', {
+export async function postTerrain(terrain: Terrain) {
+    return await axiosInstance.post('/terrain', {
         "title": terrain.title,
         "description": terrain.description,
         "latitude": terrain.latitude,

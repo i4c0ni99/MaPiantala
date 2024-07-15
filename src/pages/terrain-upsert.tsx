@@ -59,7 +59,9 @@ export function TerrainUpsert() {
                             data.latitude = address.location.lat;
                             data.longitude = address.location.lng;
                             data.isPublic = false;
-                            updateTerrain(data);
+                            const res = await updateTerrain(data);
+
+                            window.confirm(res.statusText)
                             console.log("update", data);
                             window.location.href = "/terrain";
                         } else {
@@ -70,7 +72,9 @@ export function TerrainUpsert() {
                             data.latitude = address.location.lat;
                             data.longitude = address.location.lng;
                             data.user = terrain.user;
-                            postTerrain(data);
+                            const res = await postTerrain(data);
+
+                            window.confirm(res.statusText);
                             window.location.href = "/terrain";
                         }
                     }}

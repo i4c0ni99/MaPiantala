@@ -1,6 +1,6 @@
 import { User } from "src/types/User.class";
-import { LoginModal } from "../login/login.component";
-import { logOut } from "../../services/cookies.service";
+import { LoginModal } from "src/components/login/login.component";
+import { logOut } from "src/services/cookies.service";
 
 export interface INavBar {
     user?: User;

@@ -24,7 +24,7 @@ export const Profile: React.FC<IHeroProfile> = function ({
             }}
         >
             <div className="hero-overlay bg-opacity-60"></div>
-            <div className="hero-content text-neutral-content">
+            <div className="hero-content text-neutral-content mt-20">
                 <div className="max-w-md">
                     <h1 className="mb-5 text-5xl font-bold">
                         Hello {user?.firstName + " " + user?.lastName}
@@ -34,8 +34,8 @@ export const Profile: React.FC<IHeroProfile> = function ({
                     </button>
                 </div>
             </div>
-            <div className="self-end h-32 w-full pb-2">
-                <div className="avatar size-full pl-2">
+            <div className="self-end h-32 w-full pb-2 mb-10">
+                <div className="avatar size-full pl-2 ml-10">
                     <div className="size-28 rounded-full">
                         <img
                             src={

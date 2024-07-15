@@ -1,12 +1,12 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { Terrain } from "src/types/Terrain.class";
 import { Event } from "src/types/Event.class";
-import { getCookie } from "../../services/cookies.service";
-import { getCommentsbyEvent } from "../../services/events.service";
+import { getCookie } from "src/services/cookies.service";
+import { getCommentsbyEvent } from "src/services/events.service";
 import { Comment } from "src/types/Comment.class";
-import { axiosInstance } from "../../utils/axiosInstance";
+import { axiosInstance } from "src/utils/axiosInstance";
 import { User } from "src/types/User.class";
-import { getCommentsbyTerrain } from "../../services/terrains.service";
+import { getCommentsbyTerrain } from "src/services/terrains.service";
 
 export interface ICollapsComment {
     terrain?: Terrain;
@@ -42,7 +42,7 @@ export const CommentCollaps: React.FC<ICollapsComment> = function ({
         };
 
         fetchData();
-    }, [commentCreate]);
+    }, [commentCreate, event, terrain]);
 
     function handleChange(
         e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -123,7 +123,9 @@ export const CommentCollaps: React.FC<ICollapsComment> = function ({
                                             <div className="chat-header">
                                                 {comment.user.email}
                                                 <time className="text-xs opacity-50">
-                                                    {comment.createdAt.toString()}
+                                                    {new Date(
+                                                        comment.createdAt
+                                                    ).toLocaleDateString()}
                                                 </time>
                                             </div>
                                             <div className="chat-bubble lg:w-96  sm:w-10 break-words">
@@ -149,7 +151,9 @@ export const CommentCollaps: React.FC<ICollapsComment> = function ({
                                             <div className="chat-header">
                                                 {comment.user.email}
                                                 <time className="text-xs opacity-50">
-                                                    {comment.createdAt.toString()}
+                                                    {new Date(
+                                                        comment.createdAt
+                                                    ).toLocaleDateString()}
                                                 </time>
                                             </div>
                                             <div className="chat-bubble lg:w-96  sm:w-10 break-words">
@@ -241,7 +245,9 @@ export const CommentCollaps: React.FC<ICollapsComment> = function ({
                                             <div className="chat-header">
                                                 {comment.user.email}
                                                 <time className="text-xs opacity-50">
-                                                    {comment.createdAt.toString()}
+                                                    {new Date(
+                                                        comment.createdAt
+                                                    ).toLocaleDateString()}
                                                 </time>
                                             </div>
                                             <div className="chat-bubble lg:w-96  sm:w-10 break-words">
@@ -267,7 +273,9 @@ export const CommentCollaps: React.FC<ICollapsComment> = function ({
                                             <div className="chat-header">
                                                 {comment.user.email}
                                                 <time className="text-xs opacity-50">
-                                                    {comment.createdAt.toString()}
+                                                    {new Date(
+                                                        comment.createdAt
+                                                    ).toLocaleDateString()}
                                                 </time>
                                             </div>
                                             <div className="chat-bubble lg:w-96  sm:w-10 break-words">

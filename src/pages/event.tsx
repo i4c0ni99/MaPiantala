@@ -25,7 +25,7 @@ export function EventPage() {
     return (
         <>
             <Link rel="stylesheet" to="/event-upsert">
-                <button className="btn btn-outline btn-circle btn-lg btn-accent z-50 fixed text-2xl bottom-8 right-36">+</button>
+                <button className="btn btn-outline btn-circle btn-lg btn-accent z-50 fixed text-2xl bottom-8 lg:right-36 right-4">+</button>
             </Link>
             <main className="pt-32 pl-2 pr-2 sm:size-11/12 lg:size-1/2 mx-auto">
                 {events.map((event) =>

@@ -1,6 +1,7 @@
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { Event } from "src/types/Event.class";
 import { EventCategory } from "src/types/EventCategory.enum";
+import { formatDate } from "../../utils/date-formatter";
 
 export interface IEvent {
     eventCreated: Event;
@@ -103,7 +104,7 @@ export const CreateEditEvent = ({
             onSubmission(newEvent);
         }
     };
-
+    
     return (
         <>
             <div className="card lg:card-side bg-base-300 shadow-xl">
@@ -167,9 +168,10 @@ export const CreateEditEvent = ({
                                     Scegli una data per il tuo evento{" "}
                                 </span>
                             </div>
+                           
                             <input
                                 name="scheduledDate"
-                                defaultValue={`${event.scheduledDate.getDate}`}
+                                defaultValue={formatDate(new Date(event.scheduledDate))}
                                 onChange={handleChange}
                                 type="date"
                                 className="input input-accent w-full max-w-xs"

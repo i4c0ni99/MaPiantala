@@ -42,7 +42,7 @@ export function TerrainUpsert() {
         };
 
         fetchData();
-    }, []);
+    }, [terrainId]);
 
     return (
         <>

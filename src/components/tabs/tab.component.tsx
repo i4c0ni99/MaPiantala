@@ -188,7 +188,6 @@ export const CommentCollaps: React.FC<ICollapsComment> = function ({
             </>
         );
     if (event) {
-        const date = new Date(event.scheduledDate);
         return (
             <>
                 <div role="tablist" className="tabs tabs-lifted">
@@ -208,8 +207,7 @@ export const CommentCollaps: React.FC<ICollapsComment> = function ({
                             {event.description}
                         </h1>
                         <h4 className="lg:text-xl sm:text-sm font-medium">
-                            l'evento si terra il giorno {date.getDay()}/
-                            {date.getMonth()}/{date.getFullYear()} in{" "}
+                            l'evento si terra il giorno {new Date(event.scheduledDate).toLocaleDateString()} in{" "}
                             {event.address}
                         </h4>
                     </div>
